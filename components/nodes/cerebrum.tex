@@ -1,0 +1,69 @@
+\node[default, draw](soma){Soma};
+
+\node[default, draw, below left=of soma, switch ocg={cytoplasm}](cytoplasm){
+    \basic{cytoplasm}{Cytoplasm}
+};
+\node[above left=of cytoplasm](space1){};
+\node[default, draw, above=2cm of cytoplasm](proteinsynthesis){Protein Synthesis};
+
+\node[default, draw, below right=of soma, fill=gray](organelle2){Organelle};
+
+\node[default, draw, below=of cytoplasm, fill=gray](organelle1){Organelle};
+\node[default, draw, below=of organelle2](nucleus){Nucleus};
+\node[right=of nucleus, switch ocg={ne}](nuclear envelope){Contained within
+    \basicc{ne}{Nuclear Envelope}
+};
+
+\node[default, draw, above left=of organelle1](mitochondria){Mitochondria};
+\node[default, draw, left=of organelle1, switch ocg={ga}](golgi apparatus){
+    \basic{ga}{Golgi Apparatus}
+};
+\node[default, draw, below left=of organelle1](plasmic reticulum){Plasmic Reticulum};
+
+
+\node[default,draw, below left=of plasmic reticulum, switch ocg={rpr}](rough plasmic reticulum){
+    \basic{rpr}{Rough Plasmic Reticulum}
+};
+\node[default, draw, below right=of plasmic reticulum, switch ocg=spr](smooth plasmic reticulum){
+    \basic{spr}{Smooth Plasmic Reticulum}
+};
+
+\node[default, draw, below=of nucleus](chromosome){Chromosome};
+\node[default, draw, below=of chromosome, switch ocg={da}](deoxyribonucleic acid){
+    \basic{da}{Deoxyribonucleic Acid}
+};
+\node[right=of deoxyribonucleic acid, switch ocg={nano}](2nm){
+    Same in all the cells / size:\basic{nano}{2$\mu$m}
+};
+\node[default, draw, below=of deoxyribonucleic acid](gene){Gene};
+\node[default, draw, below left=of rough plasmic reticulum](mrna){mRNA};
+\node[default, draw](rna)at ($(mrna)!.5!(gene)$){RNA};
+
+% ------------------------------------ Arrows -----------------------------------------------------------
+
+\draw[line](soma) to (cytoplasm);
+\draw[line](soma) to (organelle2);
+
+\draw[line](organelle2) to (nucleus);
+
+\draw[line](cytoplasm) to (organelle1);
+
+\draw[-](organelle1.west) to (mitochondria.east);
+\draw[-](organelle1.west) to (golgi apparatus.east);
+\draw[-](organelle1.west) to (plasmic reticulum.east);
+
+\draw[line](plasmic reticulum) to (rough plasmic reticulum);
+\draw[line](plasmic reticulum) to (smooth plasmic reticulum);
+
+\draw[line](nucleus) to (chromosome);
+\draw[line](nucleus) to (nuclear envelope);
+
+\draw[line](chromosome) to (deoxyribonucleic acid);
+
+\draw[line](deoxyribonucleic acid) to (gene);
+\draw[line](deoxyribonucleic acid.east) to (2nm);
+
+\draw[arrow, green](gene) to node[above, black]{Transcription} (rna);
+\draw[arrow, green](rna) to (mrna);
+\draw[arrow, green](mrna) |- (space1.center) to (cytoplasm);
+\draw[arrow, green](cytoplasm) to (proteinsynthesis);
