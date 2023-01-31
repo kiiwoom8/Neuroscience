@@ -1,7 +1,9 @@
 \node[default, draw](soma){Soma};
 
-\node[default, draw, below left=of soma, switch ocg={cytoplasm}](cytoplasm){
+\node[default, draw, below left=of soma, switch ocg={cytoplasm cytoplas}](cytoplasm){
     \basic{cytoplasm}{Cytoplasm}
+} node at (cytoplasm){
+    \basicr{cytoplas}{?}
 };
 \node[default, draw, above=2cm of cytoplasm](proteinsynthesis){Protein Synthesis};
 
@@ -79,3 +81,19 @@
 \draw[arrow, green](mrna) |- (space1.center) to (nucleus);
 \draw[arrow, green](nucleus) edge[deco={Export}] (cytoplasm);
 \draw[arrow, green](cytoplasm) to (proteinsynthesis);
+
+\node[default, below=of gene](gene2){};
+\draw(gene2.north) -- +(5,0) |- (gene2.south) -- +(-5,0) node(space2){} |- cycle;
+\node[rectangle, draw, left=.17cm of gene2, minimum height=1cm, minimum width=1cm](intron1){Intron};
+\node[rectangle, draw, switch ocg={pm}, minimum height=1cm, minimum width=.3cm, fill=gray](premotor) at($(gene2)+(-4.7,0)$){};
+\node[below=0 of premotor]{
+    \basic{pm}{Premotor}
+};
+\node(exon1)at($(premotor.east)!0.5!(intron1.west)$) {Exon};
+\node[rectangle, right=0cm of intron1, minimum height=1cm, minimum width=2cm](exon2){Exon};
+\node[rectangle, draw, right=0cm of exon2, minimum height=1cm, minimum width=2.5cm](intron2){Intron};
+\node[rectangle, draw, switch ocg={term}, minimum height=1cm, minimum width=.3cm, fill=gray](terminator)
+at($(gene2)+(4.7,0)$){} node[below=0 of terminator]{\basic{term}{Terminator}};
+\node(exon2) at($(intron2.east)!0.5!(terminator.west)$){Exon};
+
+\draw[arrow](gene) to (gene2);
