@@ -18,7 +18,9 @@
 \node[default, draw, left=of organelle1, switch ocg={ga}](golgi apparatus){
     \basic{ga}{Golgi Apparatus}
 };
-\node[default, draw, below left=of organelle1](plasmic reticulum){Plasmic Reticulum};
+\node[default, draw, below left=of organelle1, switch ocg={pr}](plasmic reticulum){
+    \basic{pr}{Plasmic Reticulum}
+};
 
 
 \node[default,draw, below left=of plasmic reticulum, switch ocg={rpr}](rough plasmic reticulum){
@@ -36,7 +38,9 @@
     Same in all the cells / size:\basic{nano}{2$\mu$m}
 };
 \node[default, draw, below=of deoxyribonucleic acid](gene){Gene};
-\node[default, draw, below left=of rough plasmic reticulum](mrna){mRNA};
+\node[default, draw, below left=of rough plasmic reticulum, switch ocg={mra}](mrna){
+    \basic{mra}{Messenger Ribonucleic Acid}
+};
 \node[default, draw](rna)at ($(mrna)!.5!(gene)$){RNA};
 
 % ------------------------------------ Arrows -----------------------------------------------------------
