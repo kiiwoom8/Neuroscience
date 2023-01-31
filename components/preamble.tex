@@ -42,3 +42,10 @@
         \textcolor{red}{\hspace{2pt}#2}
     \end{ocg}
 }
+\newcommand{\question}[6]{
+    \node[default, draw, #1=#2cm of #3, switch ocg={#4 #5}](#4){
+        \basic{#4}{#6}
+    } node at (#4){
+        \basicr{#5}{?}
+    };
+}

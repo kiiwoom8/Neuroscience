@@ -1,10 +1,7 @@
 \node[default, draw](soma){Soma};
 
-\node[default, draw, below left=of soma, switch ocg={cytoplasm cytoplas}](cytoplasm){
-    \basic{cytoplasm}{Cytoplasm}
-} node at (cytoplasm){
-    \basicr{cytoplas}{?}
-};
+\question{below left}{1}{soma}{cytoplasm}{cytoplas}{Cytoplasm}
+
 \node[default, draw, above=2cm of cytoplasm](proteinsynthesis){Protein Synthesis};
 
 \node[default, draw, below right=of soma, fill=gray](organelle2){Organelle};
@@ -16,38 +13,30 @@
 };
 
 \node[default, draw, above left=of organelle1](mitochondria){Mitochondria};
-\node[default, draw, left=of organelle1, switch ocg={ga}](golgi apparatus){
-    \basic{ga}{Golgi Apparatus}
-};
-\node[default, draw, below left=of organelle1, switch ocg={pr}](plasmic reticulum){
-    \basic{pr}{Plasmic Reticulum}
-};
 
+\question{left}{1}{organelle1}{golgiApparatus}{ga}{Golgi Apparatus}
 
-\node[default,draw, below left=of plasmic reticulum, switch ocg={rpr}](rough plasmic reticulum){
-    \basic{rpr}{Rough Plasmic Reticulum}
-};
-\node[default, draw, below right=of plasmic reticulum, switch ocg=spr](smooth plasmic reticulum){
-    \basic{spr}{Smooth Plasmic Reticulum}
-};
+\question{below left}{1}{organelle1}{plasmicReticulum}{pr}{Plasmic Reticulum}
+\question{below left}{1}{plasmicReticulum}{roughPlasmicReticulum}{rpr}{Rough Plasmic Reticulum}
+\question{below right}{1}{plasmicReticulum}{smoothPlasmicReticulum}{spr}{Smooth Plasmic Reticulum}
 
 \node[default, draw, below=of nucleus](chromosome){Chromosome};
 \node[right=of chromosome, switch ocg={numb}](46chromosomes){
     Number of human's chromosomes:\basic{numb}{46}
 };
-\node[default, draw, below=of chromosome, switch ocg={da}](deoxyribonucleic acid){
-    \basic{da}{Deoxyribonucleic Acid}
-};
-\node[right=of deoxyribonucleic acid, switch ocg={nano}](2nm){
+
+\question{below}{1}{chromosome}{deoxyribonucleicAcid}{da}{Deoxyribonucleic Acid}
+
+\node[right=of deoxyribonucleicAcid, switch ocg={nano}](2nm){
     Same in all the cells / size:\basic{nano}{2$\mu$m}
 };
-\node[below right=of deoxyribonucleic acid, yshift=1cm, switch ocg={ge}](geneexpression){
+\node[below right=of deoxyribonucleicAcid, yshift=1cm, switch ocg={ge}](geneexpression){
     What DNA reading is known as:\basic{ge}{Gene Expression}
 };
-\node[default, draw, below=of deoxyribonucleic acid](gene){Gene};
-\node[default, draw, right=10cm of gene, switch ocg={mra}](mrna){
-    \basic{mra}{Messenger Ribonucleic Acid}
-};
+\node[default, draw, below=of deoxyribonucleicAcid](gene){Gene};
+
+\question{right}{10}{gene}{mrna}{mra}{Messenger Ribonucleic Acid}
+
 \node[default, draw](rna)at ($(mrna)!.5!(gene)$){RNA};
 
 % ------------------------------------ Arrows -----------------------------------------------------------
@@ -60,21 +49,21 @@
 \draw[line](cytoplasm) to (organelle1);
 
 \draw[-](organelle1.west) to (mitochondria.east);
-\draw[-](organelle1.west) to (golgi apparatus.east);
-\draw[-](organelle1.west) to (plasmic reticulum.east);
+\draw[-](organelle1.west) to (golgiApparatus.east);
+\draw[-](organelle1.west) to (plasmicReticulum.east);
 
-\draw[line](plasmic reticulum) to (rough plasmic reticulum);
-\draw[line](plasmic reticulum) to (smooth plasmic reticulum);
+\draw[line](plasmicReticulum) to (roughPlasmicReticulum);
+\draw[line](plasmicReticulum) to (smoothPlasmicReticulum);
 
 \draw[line](nucleus) to (chromosome);
 \draw[line](nucleus) to (nuclear envelope);
 
-\draw[line](chromosome) to (deoxyribonucleic acid);
+\draw[line](chromosome) to (deoxyribonucleicAcid);
 \draw[line](chromosome) to (46chromosomes);
 
-\draw[line](deoxyribonucleic acid) to (gene);
-\draw[line](deoxyribonucleic acid.east) to (2nm);
-\draw[line](deoxyribonucleic acid.east) to (geneexpression.west);
+\draw[line](deoxyribonucleicAcid) to (gene);
+\draw[line](deoxyribonucleicAcid.east) to (2nm);
+\draw[line](deoxyribonucleicAcid.east) to (geneexpression.west);
 
 \draw[arrow, green](gene) to node[above, black]{Transcription} (rna);
 \draw[arrow, green](rna) to node[above, black]{Splicing} (mrna);
