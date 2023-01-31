@@ -3,15 +3,14 @@
 \node[default, draw, below left=of soma, switch ocg={cytoplasm}](cytoplasm){
     \basic{cytoplasm}{Cytoplasm}
 };
-\node[above left=of cytoplasm](space1){};
 \node[default, draw, above=2cm of cytoplasm](proteinsynthesis){Protein Synthesis};
 
 \node[default, draw, below right=of soma, fill=gray](organelle2){Organelle};
 
 \node[default, draw, below=of cytoplasm, fill=gray](organelle1){Organelle};
 \node[default, draw, below=of organelle2](nucleus){Nucleus};
-\node[right=of nucleus, switch ocg={ne}](nuclear envelope){Contained within
-    \basicc{ne}{Nuclear Envelope}
+\node[below right=of nucleus, yshift=.5cm](space1){};
+\node[right=of nucleus, switch ocg={ne}](nuclear envelope){Contained within\basic{ne}{Nuclear Envelope}
 };
 
 \node[default, draw, above left=of organelle1](mitochondria){Mitochondria};
@@ -31,14 +30,20 @@
 };
 
 \node[default, draw, below=of nucleus](chromosome){Chromosome};
+\node[right=of chromosome, switch ocg={numb}](46chromosomes){
+    Number of human's chromosomes:\basic{numb}{46}
+};
 \node[default, draw, below=of chromosome, switch ocg={da}](deoxyribonucleic acid){
     \basic{da}{Deoxyribonucleic Acid}
 };
 \node[right=of deoxyribonucleic acid, switch ocg={nano}](2nm){
     Same in all the cells / size:\basic{nano}{2$\mu$m}
 };
+\node[below right=of deoxyribonucleic acid, yshift=1cm, switch ocg={ge}](geneexpression){
+    What DNA reading is known as:\basic{ge}{Gene Expression}
+};
 \node[default, draw, below=of deoxyribonucleic acid](gene){Gene};
-\node[default, draw, below left=of rough plasmic reticulum, switch ocg={mra}](mrna){
+\node[default, draw, right=10cm of gene, switch ocg={mra}](mrna){
     \basic{mra}{Messenger Ribonucleic Acid}
 };
 \node[default, draw](rna)at ($(mrna)!.5!(gene)$){RNA};
@@ -63,11 +68,14 @@
 \draw[line](nucleus) to (nuclear envelope);
 
 \draw[line](chromosome) to (deoxyribonucleic acid);
+\draw[line](chromosome) to (46chromosomes);
 
 \draw[line](deoxyribonucleic acid) to (gene);
 \draw[line](deoxyribonucleic acid.east) to (2nm);
+\draw[line](deoxyribonucleic acid.east) to (geneexpression.west);
 
 \draw[arrow, green](gene) to node[above, black]{Transcription} (rna);
-\draw[arrow, green](rna) to (mrna);
-\draw[arrow, green](mrna) |- (space1.center) to (cytoplasm);
+\draw[arrow, green](rna) to node[above, black]{Splicing} (mrna);
+\draw[arrow, green](mrna) |- (space1.center) to (nucleus);
+\draw[arrow, green](nucleus) edge[deco={Export}] (cytoplasm);
 \draw[arrow, green](cytoplasm) to (proteinsynthesis);

@@ -1,7 +1,7 @@
 \documentclass{article}
 \usepackage{tikz, incgraph, ocgx}
 \igrset{border=4cm}
-\usetikzlibrary{positioning, calc, ocgx}
+\usetikzlibrary{positioning, calc, ocgx, decorations.text}
 \tikzset{
     default/.append style={
             rectangle,
@@ -18,15 +18,22 @@
             -,
             shorten >=5pt,
             shorten <=5pt
+        },
+    deco/.style n args={1}{
+            postaction={
+                    decorate,
+                    decoration={
+                            text along path,
+                            text align=center,
+                            raise=4pt,
+                            reverse path,
+                            text={#1}
+                        }
+                }
         }
 }
 \newcommand{\basic}[2]{
     \begin{ocg}{#1}{#1}{0}
         \textcolor{red}{\hspace{2pt}#2}
-    \end{ocg}
-}
-\newcommand{\basicc}[2]{
-    \begin{ocg}{#1}{#1}{0}
-        \textcolor{red}{#2}
     \end{ocg}
 }
