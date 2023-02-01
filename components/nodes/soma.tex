@@ -1,3 +1,5 @@
+\node at(0,5) {\Huge Soma};
+
 \node[default, draw](soma){Soma};
 \question{below left}{1}{soma}{cytoplasm}{cytoplas}{Cytoplasm}
 \node[default, draw, above=2cm of cytoplasm](proteinsynthesis){Protein Synthesis};
@@ -6,23 +8,21 @@
 \node[default, draw, below=of organelle2](nucleus){Nucleus};
 \node[below right=of nucleus, yshift=.5cm](space1){};
 % some what reason, yshift is needed only on this node
-\node[right=of nucleus, yshift=-1pt, switch ocg={ne nee}](nuclearEnvelope){\basic{ne}{\textcolor{black}{Contained within} Nuclear Envelope}}
+\node[right=of nucleus, switch ocg={ne nee}](nuclearEnvelope){\basic{ne}{\textcolor{black}{Contained within} Nuclear Envelope}}
 node[right=of nucleus]{\basicr{nee}{\textcolor{black}{Contained within:} ?}
 };
 \node[default, draw, above left=of organelle1](mitochondria){Mitochondria};
 \question{left}{1}{organelle1}{golgiApparatus}{ga}{Golgi Apparatus}
-\question{below left}{1}{organelle1}{plasmicReticulum}{pr}{Plasmic Reticulum}
+\question{below left}{1}{organelle1}{endoplasmicReticulum}{pr}{Endoplasmic Reticulum}
 
-% \question{below left}{1}{plasmicReticulum}{roughPlasmicReticulum}{rpr}{Rough Plasmic Reticulum}
-\node[default, draw, below left=1cm of plasmicReticulum, xshift=2cm, switch ocg={rpr rprr}](roughPlasmicReticulum){
-    \basic{rpr}{Rough Plasmic Reticulum}
-} node at (roughPlasmicReticulum){
+\node[default, draw, below left=1cm of endoplasmicReticulum, xshift=2cm, switch ocg={rpr rprr}](roughEndoplasmicReticulum){
+    \basic{rpr}{Rough Endoplasmic Reticulum}
+} node at (roughEndoplasmicReticulum){
     \basicr{rprr}{?}
 };
-% \question{below right}{1}{plasmicReticulum}{smoothPlasmicReticulum}{spr}{Smooth Plasmic Reticulum}
-\node[default, draw, below right=1cm of plasmicReticulum, xshift=-2cm, switch ocg={spr sprr}](smoothPlasmicReticulum){
-    \basic{spr}{Smooth Plasmic Reticulum}}
-node at(smoothPlasmicReticulum){
+\node[default, draw, below right=1cm of endoplasmicReticulum, xshift=-2cm, switch ocg={spr sprr}](smoothEndoplasmicReticulum){
+    \basic{spr}{Smooth Endoplasmic Reticulum}}
+node at(smoothEndoplasmicReticulum){
     \basicr{sprr}{?}
 };
 
@@ -54,9 +54,9 @@ node[below right=of deoxyribonucleicAcid, yshift=1cm]{
 \draw[line](cytoplasm) to (organelle1);
 \draw[-](organelle1.west) to (mitochondria.east);
 \draw[-](organelle1.west) to (golgiApparatus.east);
-\draw[-](organelle1.west) to (plasmicReticulum.east);
-\draw[line](plasmicReticulum) to (roughPlasmicReticulum);
-\draw[line](plasmicReticulum) to (smoothPlasmicReticulum);
+\draw[-](organelle1.west) to (endoplasmicReticulum.east);
+\draw[line](endoplasmicReticulum) to (roughEndoplasmicReticulum);
+\draw[line](endoplasmicReticulum) to (smoothEndoplasmicReticulum);
 \draw[line](nucleus) to (chromosome);
 \draw[line](nucleus) to (nuclearEnvelope);
 \draw[line](chromosome) to (deoxyribonucleicAcid);
@@ -64,11 +64,11 @@ node[below right=of deoxyribonucleicAcid, yshift=1cm]{
 \draw[line](deoxyribonucleicAcid) to (gene);
 \draw[line](deoxyribonucleicAcid.east) to (2nm);
 \draw[line](deoxyribonucleicAcid.east) to (geneexpression.west);
-\draw[arrow, green](gene) to node[above, black, switch ocg={transcription transcrioptio}](transcription){
+\draw[arrow, green](gene) to node[above, black, switch ocg={transcription transcriptio}](transcription){
     \basic{transcription}{Transcription}
 } (rna);
 \node at(transcription){
-    \basicr{transcrioptio}{?}
+    \basicr{transcriptio}{?}
 };
 \draw[arrow, green](rna) to node[above, black, switch ocg={splicing splicin}](splicing){
     \basic{splicing}{Splicing}} (mrna);
@@ -82,7 +82,7 @@ node[below right=of deoxyribonucleicAcid, yshift=1cm]{
 \node[default, below=of gene](gene2){};
 \draw(gene2.north) -- +(5,0) |- (gene2.south) -- +(-5,0) node(space2){} |- cycle;
 \node[rectangle, draw, left=.17cm of gene2, minimum height=1cm, minimum width=1cm, switch ocg={intron intro}](intron1){
-    \basic{intron}{\textcolor{blue}{Intron}}}
+    \basic{intron}{\textcolor{blue}{Intron1}}}
 node at(intron1){
     \basicr{intro}{\textcolor{blue}{?}}
 };
@@ -93,17 +93,17 @@ node[below=0 of premotor]{
     \basicr{pmm}{?}
 };
 \node[minimum width=2cm,minimum height=1cm, switch ocg={exon exo}](exon1)at($(premotor.east)!0.5!(intron1.west)$) {
-    \basic{exon}{Exon}
+    \basic{exon}{Exon1}
 } node at (exon1){
     \basicr{exo}{?}
 };
 \node[rectangle, right=0cm of intron1, minimum height=1cm, minimum width=2cm, switch ocg={exon exo}](exon2){
-    \basic{exon}{Exon}
+    \basic{exon}{Exon2}
 } node at (exon2){
     \basicr{exo}{?}
 };
 \node[rectangle, draw, right=0cm of exon2, minimum height=1cm, minimum width=2.5cm, switch ocg={intron intro}](intron2){
-    \basic{intron}{\textcolor{blue}{Intron}}}
+    \basic{intron}{\textcolor{blue}{Intron2}}}
 node at(intron2) {
     \basicr{intro}{\textcolor{blue}{?}}
 };
@@ -114,8 +114,11 @@ node[below=0 of terminator]{
     \basicr{ter}{\textcolor{red}{?}}
 };
 \node[minimum height=1cm, switch ocg={exon exo}](exon2) at($(intron2.east)!0.5!(terminator.west)$){
-    \basic{exon}{Exon}
+    \basic{exon}{Exon3}
 } node at (exon2) {
     \basicr{exo}{?}
 };
 \draw[arrow](gene) to (gene2);
+
+\node[default, draw, below right=7cm of transcription](rnap){RNA Polymerase};
+\draw[arrow](transcription) to (rnap);
