@@ -7,7 +7,6 @@
 \node[default, draw, below=of cytoplasm, fill=gray](organelle1){Organelle};
 \node[default, draw, below=of organelle2](nucleus){Nucleus};
 \node[below right=of nucleus, yshift=.5cm](space1){};
-% some what reason, yshift is needed only on this node
 \node[right=of nucleus, switch ocg={ne nee}](nuclearEnvelope){\basic{ne}{\textcolor{black}{Contained within} Nuclear Envelope}}
 node[right=of nucleus]{\basicr{nee}{\textcolor{black}{Contained within:} ?}
 };
@@ -120,5 +119,33 @@ node[below=0 of terminator]{
 };
 \draw[arrow](gene) to (gene2);
 
-\node[default, draw, below right=7cm of transcription](rnap){RNA Polymerase};
-\draw[arrow](transcription) to (rnap);
+\question{below right}{4}{transcription}{rnap}{rnapp}{RNA polymerase}
+\node[below=of rnap, switch ocg={helicase helicasee}](helicase){
+    \basic{helicase}{\textcolor{black}{Using} Helicase}}
+node at(helicase){
+    \basicr{helicasee}{\textcolor{black}{Using:} ?}
+};
+\draw[line] (rnap) to (helicase);
+\draw[arrow](transcription) edge[dotted] (rnap);
+\node[default, draw, right=2cm of rnap](dna){DNA};
+\draw[arrow](rnap) to node[above]{open}(dna);
+\node[default, draw, right=2cm of dna](nucleotides){One strand of Nucleotides};
+\draw[arrow](dna) to node[above]{expose}(nucleotides);
+\draw[arrow, blue](helicase) -- node[below, switch ocg={guide guidee}](guide){
+    \basic{guide}{Guide the nucleotides into position}
+}
+(nucleotides|-helicase) to (nucleotides);
+\node at(guide){\basicr{guidee}{\textcolor{blue}{1. }?}};
+\node[below=0 of guide, switch ocg={facilitate facilitatee}](facilitate){
+    \basic{facilitate}{Facilitate attachment and elongation}}
+node at(facilitate){
+    \basicr{facilitatee}{\textcolor{blue}{2. }?}
+};
+\node[below=0 of facilitate, switch ocg={measure measuree}](measure){
+    \basic{measure}{Measure and proofread replacement capability, and termination recognition capability}
+}
+node at(measure){
+    \basicr{measuree}{\textcolor{blue}{3. }?}
+};
+\draw[arrow](nucleotides) edge[dotted](rna);
+
