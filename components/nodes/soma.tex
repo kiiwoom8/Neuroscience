@@ -85,13 +85,19 @@ node[below right=of deoxyribonucleicAcid, yshift=1cm]{
 node at(intron1){
     \basicr{intro}{\textcolor{blue}{?}}
 };
-\node[rectangle, draw, switch ocg={pm pmm}, minimum height=1cm, minimum width=.3cm, fill=gray](premotor) at($(gene2)+(-4.7,0)$){};
-\node[below=0 of premotor, switch ocg={pm pmm}]{
-    \basic{pm}{Premotor}}
-node[below=0 of premotor]{
+\node[below=of intron1, switch ocg={splice splicee}](splice){
+    \basic{splice}{\textcolor{black}{Removed while} Splicing}}
+node at(splice) {
+    \basicr{splicee}{\textcolor{black}{Removed while:} ?}
+};
+\draw[line](intron1) to (splice);
+\node[rectangle, draw, switch ocg={pm pmm}, minimum height=1cm, minimum width=.3cm, fill=gray](promotor) at($(gene2)+(-4.7,0)$){};
+\node[below=0 of promotor, switch ocg={pm pmm}]{
+    \basic{pm}{Promotor}}
+node[below=0 of promotor]{
     \basicr{pmm}{?}
 };
-\node[minimum width=2cm,minimum height=1cm, switch ocg={exon exo}](exon1)at($(premotor.east)!0.5!(intron1.west)$) {
+\node[minimum width=2cm,minimum height=1cm, switch ocg={exon exo}](exon1)at($(promotor.east)!0.5!(intron1.west)$) {
     \basic{exon}{Exon1}
 } node at (exon1){
     \basicr{exo}{?}
