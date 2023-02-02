@@ -44,7 +44,7 @@ node[below right=of deoxyribonucleicAcid, yshift=1cm]{
 };
 \node[default, draw, below=of deoxyribonucleicAcid](gene){Gene};
 \node[default, draw, right=5 of gene](rna){RNA};
-\node[default, draw, right=5 of rna](spliceosome){Spliceosome};
+\question{right}{5}{rna}{spliceosome}{spli}{Spliceosome}
 \question{right}{5}{spliceosome}{mrna}{mra}{Messenger Ribonucleic Acid}
 % ------------------------------------ Arrows -----------------------------------------------------------
 \draw[line](soma) to (cytoplasm);
@@ -89,9 +89,15 @@ node at(helicase){
 \draw[line] (rnap) to (helicase);
 \draw[arrow, red!50!green!100!blue!100](transcription) -- (rnap);
 \node[default, draw, right=2cm of rnap](dna){DNA};
-\draw[arrow, red!50!green!100!blue!100](rnap) to node[above]{open}(dna);
+\draw[arrow, red!50!green!100!blue!100](rnap) to node[above]{Open}(dna);
 \node[default, draw, right=2cm of dna](nucleotides){One strand of Nucleotides};
-\draw[arrow, red!50!green!100!blue!100](dna) to node[above]{expose}(nucleotides);
+\draw[dashed, brown]($(dna.north)+(0,1)$) -| ($(rnap.east)+(.3,0)$) |- ($(dna.south)+(0,-1)$) -| ($(nucleotides.west)+(-0.3, 0)$) |- node[right, switch ocg={elongation elongationn}](elongation){
+        \basic{elongation}{Elongation}
+    } cycle;
+\node at($(elongation)+(-.5,0)$){
+    \basicr{elongationn}{?}
+};
+\draw[arrow, red!50!green!100!blue!100](dna) to node[above]{Expose}(nucleotides);
 \draw[arrow, blue](helicase) -- node[below, switch ocg={guide guidee}](guide){
     \basic{guide}{Guide the nucleotides into position}
 }
@@ -117,7 +123,7 @@ node(third) at(measure){
 \node at($(alternativeSplicing)+(-1,0)$){
     \basicr{alternativeSplicingg}{?}
 };
-\draw[dotted]($(rnap.east)+(.5,0)$) -- +(0,1) -| ($(rnap.west)+(-.5,0)$) --
+\draw[dashed, purple]($(rnap.east)+(.5,0)$) -- +(0,1) -| ($(rnap.west)+(-.5,0)$) --
 node[left, switch ocg={transcriptionFactor transcriptionFactorr}](transcriptionFactor){
         \basic{transcriptionFactor}{Transcription Factor}
     }
@@ -174,11 +180,10 @@ node[below=0 of terminator]{
 };
 \node[minimum height=1cm, switch ocg={exon exo}](exon2) at($(intron2.east)!0.5!(terminator.west)$){
     \basic{exon}{Exon3}
-} node at (exon2) {
+} node at (exon2){
     \basicr{exo}{?}
 };
 \draw[line](promotor) to (regulatorySequences);
-\draw[arrow, dotted](nucleotides) -- ($(promotor)+(-.5,0)$);
 \node[default, below=2 of gene2](gene3){};
 \draw(gene3.north) -- +(4.85,0) |- (gene3.south) -- +(-4.85,0) node(space3){} |- cycle;
 \node[draw, rectangle, minimum width=.3cm, minimum height=1cm, fill=blue, switch ocg={cap capp}](cap) at($(gene3)+(-4.7,0)$){};
@@ -224,3 +229,4 @@ node at(polya2Text){
 \node[switch ocg={splicing splicin}] at($(splicing2)+(-.5,0)$){
     \basicr{splicin}{?}
 };
+\draw[arrow, dotted](nucleotides) to ($(promotor.west)+(-2pt,0)$);
