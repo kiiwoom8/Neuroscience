@@ -43,8 +43,9 @@ node[below right=of deoxyribonucleicAcid, yshift=1cm]{
     \basicr{gee}{\textcolor{black}{What DNA reading is known as:} ?}
 };
 \node[default, draw, below=of deoxyribonucleicAcid](gene){Gene};
-\question{right}{10}{gene}{mrna}{mra}{Messenger Ribonucleic Acid}
-\node[default, draw](rna)at ($(mrna)!.5!(gene)$){RNA};
+\node[default, draw, right=5 of gene](rna){RNA};
+\node[default, draw, right=5 of rna](spliceosome){Spliceosome};
+\question{right}{5}{spliceosome}{mrna}{mra}{Messenger Ribonucleic Acid}
 % ------------------------------------ Arrows -----------------------------------------------------------
 \draw[line](soma) to (cytoplasm);
 \draw[line](soma) to (organelle2);
@@ -69,7 +70,8 @@ node[below right=of deoxyribonucleicAcid, yshift=1cm]{
 \node at(transcription){
     \basicr{transcriptio}{?}
 };
-\draw[arrow, green](rna) to node[above, black, switch ocg={splicing splicin}](splicing){
+\draw[arrow,green](rna) to (spliceosome);
+\draw[arrow, green](spliceosome) to node[above, black, switch ocg={splicing splicin}](splicing){
     \basic{splicing}{Splicing}} (mrna);
 \node at(splicing){
     \basicr{splicin}{?}
@@ -107,24 +109,25 @@ node(third) at(measure){
     \basicr{measuree}{\textcolor{blue}{3. }?}
 };
 \draw[arrow, red!50!green!100!blue!100](nucleotides) -- (rna);
-\node[default, draw, below=of third](different){Different mRNAs};
-\draw[arrow, gray](rna) to (rna|-different) to node[below, switch ocg={alternativeSplicing alternativeSplicingg}](alternativeSplicing){
+\node[default, draw, above=of spliceosome](different){Different mRNAs};
+\draw[arrow, gray](spliceosome) to node[right, switch ocg={alternativeSplicing alternativeSplicingg}](alternativeSplicing){
     \basic{alternativeSplicing}{Alternative Splicing}
 }
 (different);
-\node at(alternativeSplicing){
+\node at($(alternativeSplicing)+(-1,0)$){
     \basicr{alternativeSplicingg}{?}
 };
-\draw[dotted]($(rnap.east)+(.5,0)$) -- +(0,1) -| ($(rnap.west)+(-.5,0)$) -- ++(0,-1) -|
-node[right, switch ocg={transcriptionFactor transcriptionFactorr}](transcriptionFactor){
+\draw[dotted]($(rnap.east)+(.5,0)$) -- +(0,1) -| ($(rnap.west)+(-.5,0)$) --
+node[left, switch ocg={transcriptionFactor transcriptionFactorr}](transcriptionFactor){
         \basic{transcriptionFactor}{Transcription Factor}
-    } cycle;
-\node at($(transcriptionFactor)+(-1.5,0)$){
+    }
+++(0,-1) -| cycle;
+\node at($(transcriptionFactor)+(1.5,0)$){
     \basicr{transcriptionFactorr}{?}
 };
 
 % Gene
-\node[default, above right=3 of nucleotides](gene2){};
+\node[default, right=8 of nucleotides](gene2){};
 \draw(gene2.north) -- +(5,0) |- (gene2.south) -- +(-5,0) node(space2){} |- cycle;
 \node[rectangle, draw, left=.17cm of gene2, minimum height=1cm, minimum width=1cm, switch ocg={intron intro}](intron1){
     \basic{intron}{\textcolor{blue}{Intron1}}}
@@ -175,4 +178,49 @@ node[below=0 of terminator]{
     \basicr{exo}{?}
 };
 \draw[line](promotor) to (regulatorySequences);
-\draw[arrow, dotted](nucleotides) -- (promotor2);
+\draw[arrow, dotted](nucleotides) -- ($(promotor)+(-.5,0)$);
+\node[default, below=2 of gene2](gene3){};
+\draw(gene3.north) -- +(4.85,0) |- (gene3.south) -- +(-4.85,0) node(space3){} |- cycle;
+\node[draw, rectangle, minimum width=.3cm, minimum height=1cm, fill=blue, switch ocg={cap capp}](cap) at($(gene3)+(-4.7,0)$){};
+\node[below=0 of cap, switch ocg={cap capp}](capText){
+    \basic{cap}{5' Cap}
+}
+node at(capText){
+    \basicr{capp}{?}
+};
+\node[draw, rectangle, minimum width=.3cm, minimum height=1cm, fill=green, switch ocg={polya polyaa}](polya) at($(gene3)+(4.7,0)$){};
+\node[below=0 of polya, switch ocg={polya polyaa}](polyaText){
+    \basic{polya}{3' Poly-A Tail}
+}
+node at(polyaText){
+    \basicr{polyaa}{?}
+};
+\draw[arrow](gene2) to (gene3);
+
+\node[default, below=2 of gene3, switch ocg={exon exo}](gene4){
+    \basic{exon}{Exon}
+}
+node at(gene4){
+    \basicr{exo}{?}
+};
+\draw(gene4.north) -- +(2.85,0) |- (gene4.south) -- +(-2.85,0) node(space3){} |- cycle;
+\node[draw, rectangle, minimum width=.3cm, minimum height=1cm, fill=blue, switch ocg={cap capp}](cap2) at($(gene4)+(-2.7,0)$){};
+\node[below=0 of cap2, switch ocg={cap capp}](cap2Text){
+    \basic{cap}{5' Cap}
+}
+node at(cap2Text){
+    \basicr{capp}{?}
+};
+\node[draw, rectangle, minimum width=.3cm, minimum height=1cm, fill=green, switch ocg={polya polyaa}](polya2) at($(gene4)+(2.7,0)$){};
+\node[below=0 of polya2, switch ocg={polya polyaa}](polya2Text){
+    \basic{polya}{3' Poly-A Tail}
+}
+node at(polya2Text){
+    \basicr{polyaa}{?}
+};
+\draw[arrow](gene3) to node[right, switch ocg={splicing splicin}](splicing2){
+    \basic{splicing}{Splicing}
+} (gene4);
+\node[switch ocg={splicing splicin}] at($(splicing2)+(-.5,0)$){
+    \basicr{splicin}{?}
+};
