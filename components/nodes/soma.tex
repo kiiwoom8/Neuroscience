@@ -155,8 +155,24 @@ node at(facilitate){
 \node[below=0 of facilitate, switch ocg={measure measuree}](measure){
     \basic{measure}{Measure and proofread replacement capability, and termination recognition capability}
 }
-node at(measure){
+node(third) at(measure){
     \basicr{measuree}{\textcolor{blue}{3. }?}
 };
 \draw[arrow](nucleotides) edge[dotted](rna);
 \draw[line](promotor) to (regulatorySequences);
+
+\node[default, draw, below=of third](different){Different mRNAs};
+\draw[arrow, gray](rna) to (rna|-different) to node[below, switch ocg={alternativeSplicing alternativeSplicingg}](alternativeSplicing){
+    \basic{alternativeSplicing}{Alternative Splicing}
+}
+(different);
+\node at(alternativeSplicing){
+    \basicr{alternativeSplicingg}{?}
+};
+\draw[dotted]($(rnap.east)+(.5,0)$) -- +(0,1) -| ($(rnap.west)+(-.5,0)$) -- ++(0,-1) -|
+node[right, switch ocg={transcriptionFactor transcriptionFactorr}](transcriptionFactor){
+        \basic{transcriptionFactor}{Transcription Factor}
+    } cycle;
+\node at($(transcriptionFactor)+(-1.5,0)$){
+    \basicr{transcriptionFactorr}{?}
+};
