@@ -77,8 +77,54 @@ node[below right=of deoxyribonucleicAcid, yshift=1cm]{
 \draw[arrow, green](mrna) |- (space1.center) to (nucleus);
 \draw[arrow, green, out=30, in=45, looseness=1.5, postaction={decorate, decoration={text along path, text align=center, reverse path, raise=5pt, text={Export}}}](nucleus) to (ribosome);
 \draw[arrow, green](ribosome) to (proteinSynthesis);
+
+\question{below right}{4}{transcription}{rnap}{rnapp}{RNA polymerase}
+\node[below=of rnap, switch ocg={helicase helicasee}](helicase){
+    \basic{helicase}{\textcolor{black}{Using} Helicase}}
+node at(helicase){
+    \basicr{helicasee}{\textcolor{black}{Using:} ?}
+};
+\draw[line] (rnap) to (helicase);
+\draw[arrow, red!50!green!100!blue!100](transcription) -- (rnap);
+\node[default, draw, right=2cm of rnap](dna){DNA};
+\draw[arrow, red!50!green!100!blue!100](rnap) to node[above]{open}(dna);
+\node[default, draw, right=2cm of dna](nucleotides){One strand of Nucleotides};
+\draw[arrow, red!50!green!100!blue!100](dna) to node[above]{expose}(nucleotides);
+\draw[arrow, blue](helicase) -- node[below, switch ocg={guide guidee}](guide){
+    \basic{guide}{Guide the nucleotides into position}
+}
+(nucleotides|-helicase) to (nucleotides);
+\node at(guide){\basicr{guidee}{\textcolor{blue}{1. }?}};
+\node[below=0 of guide, switch ocg={facilitate facilitatee}](facilitate){
+    \basic{facilitate}{Facilitate attachment and elongation}}
+node at(facilitate){
+    \basicr{facilitatee}{\textcolor{blue}{2. }?}
+};
+\node[below=0 of facilitate, switch ocg={measure measuree}](measure){
+    \basic{measure}{Measure and proofread replacement capability, and termination recognition capability}
+}
+node(third) at(measure){
+    \basicr{measuree}{\textcolor{blue}{3. }?}
+};
+\draw[arrow, red!50!green!100!blue!100](nucleotides) -- (rna);
+\node[default, draw, below=of third](different){Different mRNAs};
+\draw[arrow, gray](rna) to (rna|-different) to node[below, switch ocg={alternativeSplicing alternativeSplicingg}](alternativeSplicing){
+    \basic{alternativeSplicing}{Alternative Splicing}
+}
+(different);
+\node at(alternativeSplicing){
+    \basicr{alternativeSplicingg}{?}
+};
+\draw[dotted]($(rnap.east)+(.5,0)$) -- +(0,1) -| ($(rnap.west)+(-.5,0)$) -- ++(0,-1) -|
+node[right, switch ocg={transcriptionFactor transcriptionFactorr}](transcriptionFactor){
+        \basic{transcriptionFactor}{Transcription Factor}
+    } cycle;
+\node at($(transcriptionFactor)+(-1.5,0)$){
+    \basicr{transcriptionFactorr}{?}
+};
+
 % Gene
-\node[default, below=of gene](gene2){};
+\node[default, above right=3 of nucleotides](gene2){};
 \draw(gene2.north) -- +(5,0) |- (gene2.south) -- +(-5,0) node(space2){} |- cycle;
 \node[rectangle, draw, left=.17cm of gene2, minimum height=1cm, minimum width=1cm, switch ocg={intron intro}](intron1){
     \basic{intron}{\textcolor{blue}{Intron1}}}
@@ -128,51 +174,5 @@ node[below=0 of terminator]{
 } node at (exon2) {
     \basicr{exo}{?}
 };
-\draw[arrow](gene) to (gene2);
-
-\question{below right}{4}{transcription}{rnap}{rnapp}{RNA polymerase}
-\node[below=of rnap, switch ocg={helicase helicasee}](helicase){
-    \basic{helicase}{\textcolor{black}{Using} Helicase}}
-node at(helicase){
-    \basicr{helicasee}{\textcolor{black}{Using:} ?}
-};
-\draw[line] (rnap) to (helicase);
-\draw[arrow](transcription) edge[dotted] (rnap);
-\node[default, draw, right=2cm of rnap](dna){DNA};
-\draw[arrow](rnap) to node[above]{open}(dna);
-\node[default, draw, right=2cm of dna](nucleotides){One strand of Nucleotides};
-\draw[arrow](dna) to node[above]{expose}(nucleotides);
-\draw[arrow, blue](helicase) -- node[below, switch ocg={guide guidee}](guide){
-    \basic{guide}{Guide the nucleotides into position}
-}
-(nucleotides|-helicase) to (nucleotides);
-\node at(guide){\basicr{guidee}{\textcolor{blue}{1. }?}};
-\node[below=0 of guide, switch ocg={facilitate facilitatee}](facilitate){
-    \basic{facilitate}{Facilitate attachment and elongation}}
-node at(facilitate){
-    \basicr{facilitatee}{\textcolor{blue}{2. }?}
-};
-\node[below=0 of facilitate, switch ocg={measure measuree}](measure){
-    \basic{measure}{Measure and proofread replacement capability, and termination recognition capability}
-}
-node(third) at(measure){
-    \basicr{measuree}{\textcolor{blue}{3. }?}
-};
-\draw[arrow](nucleotides) edge[dotted](rna);
 \draw[line](promotor) to (regulatorySequences);
-
-\node[default, draw, below=of third](different){Different mRNAs};
-\draw[arrow, gray](rna) to (rna|-different) to node[below, switch ocg={alternativeSplicing alternativeSplicingg}](alternativeSplicing){
-    \basic{alternativeSplicing}{Alternative Splicing}
-}
-(different);
-\node at(alternativeSplicing){
-    \basicr{alternativeSplicingg}{?}
-};
-\draw[dotted]($(rnap.east)+(.5,0)$) -- +(0,1) -| ($(rnap.west)+(-.5,0)$) -- ++(0,-1) -|
-node[right, switch ocg={transcriptionFactor transcriptionFactorr}](transcriptionFactor){
-        \basic{transcriptionFactor}{Transcription Factor}
-    } cycle;
-\node at($(transcriptionFactor)+(-1.5,0)$){
-    \basicr{transcriptionFactorr}{?}
-};
+\draw[arrow, dotted](nucleotides) -- (promotor2);
