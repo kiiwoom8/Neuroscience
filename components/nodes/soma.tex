@@ -2,18 +2,18 @@
 
 \node[default, draw](soma){Soma};
 \question{below left}{1}{soma}{cytoplasm}{cytoplas}{Cytoplasm}
-\node[default, draw, above=2cm of cytoplasm](proteinsynthesis){Protein Synthesis};
 \node[default, draw, below right=of soma, fill=gray](organelle2){Organelle};
 \node[default, draw, below=of cytoplasm, fill=gray](organelle1){Organelle};
 \node[default, draw, below=of organelle2](nucleus){Nucleus};
-\node[below right=of nucleus, yshift=.5cm](space1){};
+\node[below right=of nucleus, yshift=.3cm](space1){};
 \node[right=of nucleus, switch ocg={ne nee}](nuclearEnvelope){\basic{ne}{\textcolor{black}{Contained within} Nuclear Envelope}}
 node[right=of nucleus]{\basicr{nee}{\textcolor{black}{Contained within:} ?}
 };
-\node[default, draw, above left=of organelle1](mitochondria){Mitochondria};
 \question{left}{1}{organelle1}{golgiApparatus}{ga}{Golgi Apparatus}
-\question{below left}{1}{organelle1}{endoplasmicReticulum}{pr}{Endoplasmic Reticulum}
-
+\node[default, draw, above=.3 of golgiApparatus](mitochondria){Mitochondria};
+\question{below}{.3}{golgiApparatus}{endoplasmicReticulum}{pr}{Endoplasmic Reticulum}
+\question{above}{.3}{mitochondria}{ribosome}{ribosomee}{Ribosome}
+\node[default, draw, above=of ribosome](proteinSynthesis){Protein Sysnthesis};
 \node[default, draw, below left=1cm of endoplasmicReticulum, xshift=2cm, switch ocg={rpr rprr}](roughEndoplasmicReticulum){
     \basic{rpr}{Rough Endoplasmic Reticulum}
 } node at (roughEndoplasmicReticulum){
@@ -24,7 +24,6 @@ node[right=of nucleus]{\basicr{nee}{\textcolor{black}{Contained within:} ?}
 node at(smoothEndoplasmicReticulum){
     \basicr{sprr}{?}
 };
-
 \node[default, draw, below=of nucleus](chromosome){Chromosome};
 \node[right=of chromosome, switch ocg={numb numbb}](46chromosomes){
     \basic{numb}{\textcolor{black}{Number of human's chromosomes:} 46}}
@@ -54,6 +53,7 @@ node[below right=of deoxyribonucleicAcid, yshift=1cm]{
 \draw[-](organelle1.west) to (mitochondria.east);
 \draw[-](organelle1.west) to (golgiApparatus.east);
 \draw[-](organelle1.west) to (endoplasmicReticulum.east);
+\draw[-](organelle1.west) to (ribosome.east);
 \draw[line](endoplasmicReticulum) to (roughEndoplasmicReticulum);
 \draw[line](endoplasmicReticulum) to (smoothEndoplasmicReticulum);
 \draw[line](nucleus) to (chromosome);
@@ -75,8 +75,8 @@ node[below right=of deoxyribonucleicAcid, yshift=1cm]{
     \basicr{splicin}{?}
 };
 \draw[arrow, green](mrna) |- (space1.center) to (nucleus);
-\draw[arrow, green](nucleus) edge[deco={Export}] (cytoplasm);
-\draw[arrow, green](cytoplasm) to (proteinsynthesis);
+\draw[arrow, green, out=30, in=45, looseness=1.5, postaction={decorate, decoration={text along path, text align=center, reverse path, raise=5pt, text={Export}}}](nucleus) to (ribosome);
+\draw[arrow, green](ribosome) to (proteinSynthesis);
 % Gene
 \node[default, below=of gene](gene2){};
 \draw(gene2.north) -- +(5,0) |- (gene2.south) -- +(-5,0) node(space2){} |- cycle;
@@ -92,10 +92,15 @@ node at(splice) {
 };
 \draw[line](intron1) to (splice);
 \node[rectangle, draw, switch ocg={pm pmm}, minimum height=1cm, minimum width=.3cm, fill=gray](promotor) at($(gene2)+(-4.7,0)$){};
-\node[below=0 of promotor, switch ocg={pm pmm}]{
+\node[below=0 of promotor, switch ocg={pm pmm}](promotor2){
     \basic{pm}{Promotor}}
 node[below=0 of promotor]{
     \basicr{pmm}{?}
+};
+\node[above=of promotor, switch ocg={regulatorySequences regulatorySequencess}](regulatorySequences){
+    \basic{regulatorySequences}{Regulatory Sequences}}
+node at(regulatorySequences){
+    \basicr{regulatorySequencess}{\textcolor{black}{Found near it:} ?}
 };
 \node[minimum width=2cm,minimum height=1cm, switch ocg={exon exo}](exon1)at($(promotor.east)!0.5!(intron1.west)$) {
     \basic{exon}{Exon1}
@@ -154,4 +159,4 @@ node at(measure){
     \basicr{measuree}{\textcolor{blue}{3. }?}
 };
 \draw[arrow](nucleotides) edge[dotted](rna);
-
+\draw[line](promotor) to (regulatorySequences);
