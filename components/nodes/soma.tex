@@ -5,10 +5,20 @@
 \node[default, draw, below right=of soma, fill=gray](organelle2){Organelle};
 \node[default, draw, below=of cytoplasm, fill=gray](organelle1){Organelle};
 \node[default, draw, below=of organelle2](nucleus){Nucleus};
-\node[below right=of nucleus, yshift=.3cm](space1){};
-\node[right=of nucleus, switch ocg={ne nee}](nuclearEnvelope){\basic{ne}{\textcolor{black}{Contained within} Nuclear Envelope}}
-node[right=of nucleus]{\basicr{nee}{\textcolor{black}{Contained within:} ?}
+\draw[brown, dashed]($(nucleus.north)+(0,.5)$)
+-| node[right, switch ocg={nuclearEnvelope nuclearEnvelopee}](nuclearEnvelope){
+        \basic{nuclearEnvelope}{Nuclear Envelope}
+    }
+($(nucleus.east)+(.5,0)$)
+|- ($(nucleus.south)+(0,-.5)$)
+-| ($(nucleus.west)+(-.5,0)$)
+|- cycle;
+\node at(nuclearEnvelope){
+    \basicr{nuclearEnvelopee}{?}
 };
+\node[default, draw, above right=of nuclearEnvelope](pore){Pores};
+\draw[arrow, green](nuclearEnvelope) to (pore);
+\node[below right=of nucleus, yshift=.3cm](space1){};
 \question{left}{1}{organelle1}{golgiApparatus}{ga}{Golgi Apparatus}
 \node[default, draw, above=.3 of golgiApparatus](mitochondria){Mitochondria};
 \question{below}{.3}{golgiApparatus}{endoplasmicReticulum}{pr}{Endoplasmic Reticulum}
@@ -58,7 +68,6 @@ node[below right=of deoxyribonucleicAcid, yshift=1cm]{
 \draw[line](endoplasmicReticulum) to (roughEndoplasmicReticulum);
 \draw[line](endoplasmicReticulum) to (smoothEndoplasmicReticulum);
 \draw[line](nucleus) to (chromosome);
-\draw[line](nucleus) to (nuclearEnvelope);
 \draw[line](chromosome) to (deoxyribonucleicAcid);
 \draw[line](chromosome) to (46chromosomes);
 \draw[line](deoxyribonucleicAcid) to (gene);
@@ -77,7 +86,7 @@ node[below right=of deoxyribonucleicAcid, yshift=1cm]{
     \basicr{splicin}{?}
 };
 \draw[arrow, green](mrna) |- (space1.center) to (nucleus);
-\draw[arrow, green, out=30, in=45, looseness=1.5, postaction={decorate, decoration={text along path, text align=center, reverse path, raise=5pt, text={Export}}}](nucleus) to (ribosome);
+\draw[arrow, green, out=150, in=30, looseness=0.7, postaction={decorate, decoration={text along path, text align=center, reverse path, raise=5pt, text={Export}}}](pore) to (ribosome);
 \draw[arrow, green](ribosome) to (proteinSynthesis);
 
 \question{below right}{4}{transcription}{rnap}{rnapp}{RNA polymerase}
