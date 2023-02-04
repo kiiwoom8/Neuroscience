@@ -1,7 +1,7 @@
 % \node[align=center](title) at(page.north, 5){\Huge Soma};
 
 \node[default, draw](soma){Soma};
-\question{below left}{1}{soma}{cytoplasm}{cytoplas}{Cytoplasm}
+\question{below left}{1}{soma}{cytoplasm}{Cytoplasm}
 \node[default, draw, below right=of soma, fill=gray](organelle2){Organelle};
 \node[default, draw, below=of cytoplasm, fill=gray](organelle1){Organelle};
 \node[default, draw, below=of organelle2](nucleus){Nucleus};
@@ -19,10 +19,10 @@
 \node[default, draw, above right=of nuclearEnvelope](pore){Pores};
 \draw[arrow, green](nuclearEnvelope) to (pore);
 \node[below right=of nucleus, yshift=.3cm](space1){};
-\question{left}{1}{organelle1}{golgiApparatus}{ga}{Golgi Apparatus}
+\question{left}{1}{organelle1}{golgiApparatus}{Golgi Apparatus}
 \node[default, draw, above=.3 of golgiApparatus](mitochondria){Mitochondria};
-\question{below}{.3}{golgiApparatus}{endoplasmicReticulum}{pr}{Endoplasmic Reticulum}
-\question{above}{.3}{mitochondria}{ribosome}{ribosomee}{Ribosome}
+\question{below}{.3}{golgiApparatus}{endoplasmicReticulum}{Endoplasmic Reticulum}
+\question{above}{.3}{mitochondria}{ribosome}{Ribosome}
 \node[default, draw, above=of ribosome](proteinSynthesis){Protein Sysnthesis};
 \node[default, draw, below left=1cm of endoplasmicReticulum, xshift=2cm, switch ocg={rpr rprr}](roughEndoplasmicReticulum){
     \basic{rpr}{Rough Endoplasmic Reticulum}
@@ -39,7 +39,7 @@ node at(smoothEndoplasmicReticulum){
     \basic{numb}{\textcolor{black}{Number of human's chromosomes:} 46}}
 node[right=of chromosome]{\basicr{numbb}{\textcolor{black}{Number of human's chromosomes:} ?}
 };
-\question{below}{1}{chromosome}{deoxyribonucleicAcid}{da}{Deoxyribonucleic Acid}
+\question{below}{1}{chromosome}{deoxyribonucleicAcid}{Deoxyribonucleic Acid}
 \node[right=of deoxyribonucleicAcid, switch ocg={nano nanoo}](2nm){
     \basic{nano}{\textcolor{black}{Same in all the cells / size:} 2$\mu$m}
 }
@@ -54,8 +54,8 @@ node[below right=of deoxyribonucleicAcid, yshift=1cm]{
 };
 \node[default, draw, below=of deoxyribonucleicAcid](gene){Gene};
 \node[default, draw, right=5 of gene](rna){RNA};
-\question{right}{5}{rna}{spliceosome}{spli}{Spliceosome}
-\question{right}{5}{spliceosome}{mrna}{mra}{Messenger Ribonucleic Acid}
+\question{right}{5}{rna}{spliceosome}{Spliceosome}
+\question{right}{5}{spliceosome}{mrna}{Messenger Ribonucleic Acid}
 % ------------------------------------ Arrows -----------------------------------------------------------
 \draw[line](soma) to (cytoplasm);
 \draw[line](soma) to (organelle2);
@@ -89,7 +89,7 @@ node[below right=of deoxyribonucleicAcid, yshift=1cm]{
 \draw[arrow, green, out=150, in=30, looseness=0.7, postaction={decorate, decoration={text along path, text align=center, reverse path, raise=5pt, text={Export}}}](pore) to (ribosome);
 \draw[arrow, green](ribosome) to (proteinSynthesis);
 
-\question{below right}{4}{transcription}{rnap}{rnapp}{RNA polymerase}
+\question{below right}{4}{transcription}{rnap}{RNA polymerase}
 \node[below=of rnap, switch ocg={helicase helicasee}](helicase){
     \basic{helicase}{\textcolor{black}{Using} Helicase}}
 node at(helicase){

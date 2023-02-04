@@ -1,1 +1,4 @@
-\node[default, draw]{Enzyme};
+\node[default, draw](enzyme){Enzyme};
+\question{below}{1}{enzyme}{substrate}{Substrate}
+\draw[arrow](enzyme) to (substrate);
+\question{below}{1}{substrate}{product}{Product}
