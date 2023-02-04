@@ -1,8 +1,8 @@
-\node[default, draw](soma){Soma};
+\question{}{soma}{Soma}{?}
 \question{below left=of soma}{cytoplasm}{Cytoplasm}{?}
-\node[default, draw, below right=of soma, fill=gray](organelle2){Organelle};
-\node[default, draw, below=of cytoplasm, fill=gray](organelle1){Organelle};
-\node[default, draw, below=of organelle2](nucleus){Nucleus};
+\question{below right=of soma, fill=gray}{organelle2}{Organelle}{?}
+\question{below=of cytoplasm, fill=gray}{organelle1}{Organelle}{?}
+\question{below=of organelle2}{nucleus}{Nucleus}{?}
 \draw[brown, dashed]($(nucleus.north)+(0,.5)$)
 -| coordinate(nuclearEnvelopeSquare)
 ($(nucleus.east)+(.5,0)$)
@@ -26,11 +26,12 @@
 node at(smoothEndoplasmicReticulum){
     \basicr{sprr}{?}
 };
-\node[default, draw, below=of nucleus](chromosome){Chromosome};
-\comment{right=of chromosome}{chromosomeText}{\textcolor{black}{Number of human's chromosomes:} 46}{\textcolor{black}{Number of human's chromosomes:} ?}
+\question{below=of nucleus}{chromosome}{Chromosome}{?}
+\comment{right=of chromosome}{chromosomeText}{\textcolor{black}{Number of human's:} 46}{\textcolor{black}{Number of human's:} ?}
 \question{below= of chromosome}{deoxyribonucleicAcid}{Deoxyribonucleic Acid}{?}
-\comment{right=of deoxyribonucleicAcid}{dnaTextFirst}{\textcolor{black}{Same in all the cells / size:} 2$\mu$m}{\textcolor{black}{Same in all the cells / size:} ?}
-\comment{below right=of deoxyribonucleicAcid, yshift=1cm}{geneExpression}{\textcolor{black}{What DNA reading is known as:} Gene Expression}{\textcolor{black}{What DNA reading is known as:} ?}
+\comment{right=.3 of deoxyribonucleicAcid}{dnaTextFirst}{Same in all the cells}{?}
+\comment{above=of dnaTextFirst.west, anchor=west, yshift=-.5cm}{size}{\textcolor{black}{Size: }2$\mu$m}{\textcolor{black}{Size: }?}
+\comment{below =of dnaTextFirst.west, anchor=west, yshift=.5cm}{geneExpression}{\textcolor{black}{What DNA reading is known as:} Gene Expression}{\textcolor{black}{What DNA reading is known as:} ?}
 \node[default, draw, below=of deoxyribonucleicAcid](gene){Gene};
 \node[default, draw, right=5 of gene](rna){RNA};
 \question{right=5 of rna}{spliceosome}{Spliceosome}{?}
@@ -50,9 +51,6 @@ node at(smoothEndoplasmicReticulum){
 \draw[line](chromosome) to (deoxyribonucleicAcid);
 \draw[line](chromosome) to (chromosomeText);
 \draw[line](deoxyribonucleicAcid) to (gene);
-\draw[line](deoxyribonucleicAcid.east) to (dnaTextFirst);
-\draw[line](deoxyribonucleicAcid.east) to (geneExpression.west);
-
 \draw[arrow, green](gene) to coordinate(geneToRna) (rna);
 \comment{above=0 of geneToRna}{transcription}{Transcription}{?}
 
