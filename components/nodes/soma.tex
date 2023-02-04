@@ -10,8 +10,6 @@
 -| ($(nucleus.west)+(-.5,0)$)
 |- cycle;
 \comment{right=0 of nuclearEnvelopeSquare}{nuclearEnvelope}{Nuclear Envelope}{?}
-\node[default, draw, right=of nuclearEnvelope](pore){Pores};
-\draw[arrow, green](nuclearEnvelope) to (pore);
 \node[below right=of nucleus, yshift=.3cm](space1){};
 \question{left=of organelle1}{golgiApparatus}{Golgi Apparatus}{?}
 \node[default, draw, above=1.2 of golgiApparatus.east, anchor=east](mitochondria){Mitochondria};
@@ -68,12 +66,12 @@ node at(smoothEndoplasmicReticulum){
 \question{below right=4 of transcription}{rnap}{RNA polymerase}{?}
 
 \draw[arrow, red!50!green!100!blue!100](transcription) -- (rnap);
-\node[default, draw, right=2cm of rnap](dna){DNA};
+\question{right=2cm of rnap}{dna}{DNA}{?}
 \draw[arrow, red!50!green!100!blue!100](rnap) to node[above](open){Open}(dna);
 \comment{below=of open}{helicase}{\textcolor{black}{Using} Helicase}{\textcolor{black}{Using: }?}
 \draw[line] (open) to (helicase);
 
-\node[default, draw, right=2cm of dna](nucleotides){One strand of Nucleotides};
+\question{right=2cm of dna}{nucleotides}{One strand of Nucleotides}{?}
 \draw[dashed, brown]($(dna.north)+(0,1)$) -| ($(rnap.east)+(.3,0)$) |- ($(dna.south)+(0,-1)$) -| ($(nucleotides.west)+(-0.3, 0)$) |- coordinate(elongationText) cycle;
 \comment{right=0 of elongationText}{elongation}{Elongation}{?}
 \draw[arrow, red!50!green!100!blue!100](dna) to node[above]{Expose}(nucleotides);
