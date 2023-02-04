@@ -1,28 +1,22 @@
-% \node[align=center](title) at(page.north, 5){\Huge Soma};
-
 \node[default, draw](soma){Soma};
-\question{below left}{1}{soma}{cytoplasm}{Cytoplasm}
+\question{below left=of soma}{cytoplasm}{Cytoplasm}{?}
 \node[default, draw, below right=of soma, fill=gray](organelle2){Organelle};
 \node[default, draw, below=of cytoplasm, fill=gray](organelle1){Organelle};
 \node[default, draw, below=of organelle2](nucleus){Nucleus};
 \draw[brown, dashed]($(nucleus.north)+(0,.5)$)
--| node[right, switch ocg={nuclearEnvelope nuclearEnvelopee}](nuclearEnvelope){
-        \basic{nuclearEnvelope}{Nuclear Envelope}
-    }
+-| coordinate(nuclearEnvelopeSquare)
 ($(nucleus.east)+(.5,0)$)
 |- ($(nucleus.south)+(0,-.5)$)
 -| ($(nucleus.west)+(-.5,0)$)
 |- cycle;
-\node at(nuclearEnvelope){
-    \basicr{nuclearEnvelopee}{?}
-};
-\node[default, draw, above right=of nuclearEnvelope](pore){Pores};
+\comment{right=0 of nuclearEnvelopeSquare}{nuclearEnvelope}{Nuclear Envelope}{?}
+\node[default, draw, right=of nuclearEnvelope](pore){Pores};
 \draw[arrow, green](nuclearEnvelope) to (pore);
 \node[below right=of nucleus, yshift=.3cm](space1){};
-\question{left}{1}{organelle1}{golgiApparatus}{Golgi Apparatus}
-\node[default, draw, above=.3 of golgiApparatus](mitochondria){Mitochondria};
-\question{below}{.3}{golgiApparatus}{endoplasmicReticulum}{Endoplasmic Reticulum}
-\question{above}{.3}{mitochondria}{ribosome}{Ribosome}
+\question{left=of organelle1}{golgiApparatus}{Golgi Apparatus}{?}
+\node[default, draw, above=1.2 of golgiApparatus.east, anchor=east](mitochondria){Mitochondria};
+\question{below=1.2 of golgiApparatus.east, anchor=east}{endoplasmicReticulum}{Endoplasmic Reticulum}{?}
+\question{above=1.2 of mitochondria.east, anchor=east}{ribosome}{Ribosome}{?}
 \node[default, draw, above=of ribosome](proteinSynthesis){Protein Sysnthesis};
 \node[default, draw, below left=1cm of endoplasmicReticulum, xshift=2cm, switch ocg={rpr rprr}](roughEndoplasmicReticulum){
     \basic{rpr}{Rough Endoplasmic Reticulum}
@@ -35,27 +29,14 @@ node at(smoothEndoplasmicReticulum){
     \basicr{sprr}{?}
 };
 \node[default, draw, below=of nucleus](chromosome){Chromosome};
-\node[right=of chromosome, switch ocg={numb numbb}](46chromosomes){
-    \basic{numb}{\textcolor{black}{Number of human's chromosomes:} 46}}
-node[right=of chromosome]{\basicr{numbb}{\textcolor{black}{Number of human's chromosomes:} ?}
-};
-\question{below}{1}{chromosome}{deoxyribonucleicAcid}{Deoxyribonucleic Acid}
-\node[right=of deoxyribonucleicAcid, switch ocg={nano nanoo}](2nm){
-    \basic{nano}{\textcolor{black}{Same in all the cells / size:} 2$\mu$m}
-}
-node[right=of deoxyribonucleicAcid]{
-    \basicr{nanoo}{\textcolor{black}{Same in all the cells / size:} ?}
-};
-\node[below right=of deoxyribonucleicAcid, yshift=1cm, switch ocg={ge gee}](geneexpression){
-    \basic{ge}{\textcolor{black}{What DNA reading is known as:} Gene Expression}
-}
-node[below right=of deoxyribonucleicAcid, yshift=1cm]{
-    \basicr{gee}{\textcolor{black}{What DNA reading is known as:} ?}
-};
+\comment{right=of chromosome}{chromosomeText}{\textcolor{black}{Number of human's chromosomes:} 46}{\textcolor{black}{Number of human's chromosomes:} ?}
+\question{below= of chromosome}{deoxyribonucleicAcid}{Deoxyribonucleic Acid}{?}
+\comment{right=of deoxyribonucleicAcid}{dnaTextFirst}{\textcolor{black}{Same in all the cells / size:} 2$\mu$m}{\textcolor{black}{Same in all the cells / size:} ?}
+\comment{below right=of deoxyribonucleicAcid, yshift=1cm}{geneExpression}{\textcolor{black}{What DNA reading is known as:} Gene Expression}{\textcolor{black}{What DNA reading is known as:} ?}
 \node[default, draw, below=of deoxyribonucleicAcid](gene){Gene};
 \node[default, draw, right=5 of gene](rna){RNA};
-\question{right}{5}{rna}{spliceosome}{Spliceosome}
-\question{right}{5}{spliceosome}{mrna}{Messenger Ribonucleic Acid}
+\question{right=5 of rna}{spliceosome}{Spliceosome}{?}
+\question{right=5 of spliceosome}{mrna}{Messenger Ribonucleic Acid}{?}
 % ------------------------------------ Arrows -----------------------------------------------------------
 \draw[line](soma) to (cytoplasm);
 \draw[line](soma) to (organelle2);
@@ -69,69 +50,53 @@ node[below right=of deoxyribonucleicAcid, yshift=1cm]{
 \draw[line](endoplasmicReticulum) to (smoothEndoplasmicReticulum);
 \draw[line](nucleus) to (chromosome);
 \draw[line](chromosome) to (deoxyribonucleicAcid);
-\draw[line](chromosome) to (46chromosomes);
+\draw[line](chromosome) to (chromosomeText);
 \draw[line](deoxyribonucleicAcid) to (gene);
-\draw[line](deoxyribonucleicAcid.east) to (2nm);
-\draw[line](deoxyribonucleicAcid.east) to (geneexpression.west);
-\draw[arrow, green](gene) to node[above, black, switch ocg={transcription transcriptio}](transcription){
-    \basic{transcription}{Transcription}
-} (rna);
-\node at(transcription){
-    \basicr{transcriptio}{?}
-};
+\draw[line](deoxyribonucleicAcid.east) to (dnaTextFirst);
+\draw[line](deoxyribonucleicAcid.east) to (geneExpression.west);
+
+\draw[arrow, green](gene) to coordinate(geneToRna) (rna);
+\comment{above=0 of geneToRna}{transcription}{Transcription}{?}
+
 \draw[arrow,green](rna) to (spliceosome);
-\draw[arrow, green](spliceosome) to node[above, black, switch ocg={splicing splicin}](splicing){
-    \basic{splicing}{Splicing}} (mrna);
-\node at(splicing){
-    \basicr{splicin}{?}
-};
+\draw[arrow, green](spliceosome)to coordinate(spliceosomeToMrna) (mrna);
+\comment{above=0 of spliceosomeToMrna}{splicing}{Splicing}{?}
 \draw[arrow, green](mrna) |- (space1.center) to (nucleus);
-\draw[arrow, green, out=150, in=30, looseness=0.7, postaction={decorate, decoration={text along path, text align=center, reverse path, raise=5pt, text={Export}}}](pore) to (ribosome);
+\draw[arrow, green, postaction={decorate, decoration={text along path, text align=center, reverse path, raise=5pt, text={Export}}}](nuclearEnvelope) |- ($(soma.north west)+(0,1)$) to (ribosome);
 \draw[arrow, green](ribosome) to (proteinSynthesis);
 
-\question{below right}{4}{transcription}{rnap}{RNA polymerase}
-\node[below=of rnap, switch ocg={helicase helicasee}](helicase){
-    \basic{helicase}{\textcolor{black}{Using} Helicase}}
-node at(helicase){
-    \basicr{helicasee}{\textcolor{black}{Using:} ?}
-};
-\draw[line] (rnap) to (helicase);
+\question{below right=4 of transcription}{rnap}{RNA polymerase}{?}
+
 \draw[arrow, red!50!green!100!blue!100](transcription) -- (rnap);
 \node[default, draw, right=2cm of rnap](dna){DNA};
-\draw[arrow, red!50!green!100!blue!100](rnap) to node[above]{Open}(dna);
+\draw[arrow, red!50!green!100!blue!100](rnap) to node[above](open){Open}(dna);
+\comment{below=of open}{helicase}{\textcolor{black}{Using} Helicase}{\textcolor{black}{Using: }?}
+\draw[line] (open) to (helicase);
+
 \node[default, draw, right=2cm of dna](nucleotides){One strand of Nucleotides};
-\draw[dashed, brown]($(dna.north)+(0,1)$) -| ($(rnap.east)+(.3,0)$) |- ($(dna.south)+(0,-1)$) -| ($(nucleotides.west)+(-0.3, 0)$) |- node[right, switch ocg={elongation elongationn}](elongation){
-        \basic{elongation}{Elongation}
-    } cycle;
-\node at($(elongation)+(-.5,0)$){
-    \basicr{elongationn}{?}
-};
+\draw[dashed, brown]($(dna.north)+(0,1)$) -| ($(rnap.east)+(.3,0)$) |- ($(dna.south)+(0,-1)$) -| ($(nucleotides.west)+(-0.3, 0)$) |- coordinate(elongationText) cycle;
+\comment{right=0 of elongationText}{elongation}{Elongation}{?}
 \draw[arrow, red!50!green!100!blue!100](dna) to node[above]{Expose}(nucleotides);
-\draw[arrow, blue](helicase) -- node[below, switch ocg={guide guidee}](guide){
-    \basic{guide}{Guide the nucleotides into position}
-}
-(nucleotides|-helicase) to (nucleotides);
-\node at(guide){\basicr{guidee}{\textcolor{blue}{1. }?}};
-\node[below=0 of guide, switch ocg={facilitate facilitatee}](facilitate){
-    \basic{facilitate}{Facilitate attachment and elongation}}
-node at(facilitate){
-    \basicr{facilitatee}{\textcolor{blue}{2. }?}
-};
-\node[below=0 of facilitate, switch ocg={measure measuree}](measure){
-    \basic{measure}{Measure and proofread replacement capability, and termination recognition capability}
-}
-node(third) at(measure){
-    \basicr{measuree}{\textcolor{blue}{3. }?}
-};
+\draw[arrow, blue](rnap) |- coordinate(rnapToNucleotide) ($(helicase.south)+(0,-.5)$) -| (nucleotides);
+\comment{below=.3 of rnapToNucleotide, anchor=west}{first}{\textcolor{blue}{1. }Guide the nudleotides into position}{\textcolor{blue}{1. }?}
+\comment{below=.5 of first.west, anchor=west}{second}{\textcolor{blue}{2. }Facilitate attachment and elongation}{\textcolor{blue}{2. }?}
+\comment{below=.5 of second.west, anchor=west}{third}{\textcolor{blue}{3. }Measure and proofread replacement capability and termination recognition capability}{\textcolor{blue}{3. }?}
+
+\question{below left=of third}{substrate}{Substrate}{?}
+\question{below=of substrate}{product}{Product}{?}
+\draw[arrow](substrate) to coordinate(substrateToProduct)(product);
+\question{circle, scale=.7, right=of substrateToProduct}{enzyme}{\Large Enzyme}{?}
+\draw[line](substrateToProduct) to (enzyme);
+\comment{right=.25cm of enzyme}{enzymeTextSecond}{\textcolor{black}{Lower }Activation Energy}{\textcolor{black}{Lower: }?}
+\comment{above=of enzymeTextSecond.west, anchor=west, yshift=-.5cm}{enzymeTextFirst}{\textcolor{black}{Needed in order to }occur at rates fast enough to sustain life}{\textcolor{black}{Needed in order to:} ?}
+\comment{below=of enzymeTextSecond.west, anchor=west, yshift=.5cm}{equilibrium}{\textcolor{black}{Do not alter the }Equilibrium}{\textcolor{black}{Do not alter the: }?}
+\question{below right=of enzyme}{drug}{Drugs, Poisons}{?}
+\draw[arrow,-|](drug) -| (enzyme);
+
 \draw[arrow, red!50!green!100!blue!100](nucleotides) -- (rna);
 \node[default, draw, above=of spliceosome](different){Different mRNAs};
-\draw[arrow, gray](spliceosome) to node[right, switch ocg={alternativeSplicing alternativeSplicingg}](alternativeSplicing){
-    \basic{alternativeSplicing}{Alternative Splicing}
-}
-(different);
-\node at($(alternativeSplicing)+(-1,0)$){
-    \basicr{alternativeSplicingg}{?}
-};
+\draw[arrow, gray](spliceosome) to coordinate(spliceosomeToDifferent) (different);
+\comment{right=0 of spliceosomeToDifferent}{alternativeSplicing}{Alternative Splicing}{?}
 \draw[dashed, purple]($(rnap.east)+(.5,0)$) -- +(0,1) -| ($(rnap.west)+(-.5,0)$) --
 node[left, switch ocg={transcriptionFactor transcriptionFactorr}](transcriptionFactor){
         \basic{transcriptionFactor}{Transcription Factor}
@@ -232,10 +197,6 @@ node at(cap2Text){
 node at(polya2Text){
     \basicr{polyaa}{?}
 };
-\draw[arrow](gene3) to node[right, switch ocg={splicing splicin}](splicing2){
-    \basic{splicing}{Splicing}
-} (gene4);
-\node[switch ocg={splicing splicin}] at($(splicing2)+(-.5,0)$){
-    \basicr{splicin}{?}
-};
+\draw[arrow](gene3) to coordinate(gene3ToGene4) (gene4);
+\comment{right=0 of gene3ToGene4}{splicingSecond}{Splicing}{?}
 \draw[arrow, dotted](spliceosome) to ($(promotor.west)+(-2pt,0)$);

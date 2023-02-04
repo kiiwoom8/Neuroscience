@@ -42,10 +42,20 @@
         \textcolor{red}{\hspace{2pt}#2}
     \end{ocg}
 }
-\newcommand{\question}[5]{
-    \node[default, draw, #1=#2cm of #3, switch ocg={#4 #4e}](#4){
-        \basic{#4}{#5}
-    } node at (#4){
-        \basicr{#4e}{?}
+\newcommand{\question}[4]{
+    \node[default, draw, #1, switch ocg={#2 #2e}](#2){
+        \basic{#2}{#3}
+    };
+    \node at(#2){
+        \basicr{#2e}{#4}
+    };
+}
+\newcommand{\comment}[4]{
+    \node[#1,
+        switch ocg={#2 #2e}](#2){
+        \basic{#2}{#3}
+    }
+    node[#1]{
+        \basicr{#2e}{#4}
     };
 }
