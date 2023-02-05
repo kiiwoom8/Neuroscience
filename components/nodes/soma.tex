@@ -156,20 +156,12 @@ node[below=0 of terminator]{
 \draw[line](promotor) to (regulatorySequences);
 \node[default, below=2 of gene2](gene3){};
 \draw(gene3.north) -- +(4.85,0) |- (gene3.south) -- +(-4.85,0) node(space3){} |- cycle;
-\node[draw, rectangle, minimum width=.3cm, minimum height=1cm, fill=blue, switch ocg={cap capp}](cap) at($(gene3)+(-4.7,0)$){};
-\node[below=0 of cap, switch ocg={cap capp}](capText){
-    \basic{cap}{5' Cap}
-}
-node at(capText){
-    \basicr{capp}{?}
-};
-\node[draw, rectangle, minimum width=.3cm, minimum height=1cm, fill=green, switch ocg={polya polyaa}](polya) at($(gene3)+(4.7,0)$){};
-\node[below=0 of polya, switch ocg={polya polyaa}](polyaText){
-    \basic{polya}{3' Poly-A Tail}
-}
-node at(polyaText){
-    \basicr{polyaa}{?}
-};
+\node[draw, rectangle, minimum width=.3cm, minimum height=1cm, fill=blue, switch ocg={capText capTexte}](cap) at($(gene3)+(-4.7,0)$){};
+\comment{below=0 of cap}{capText}{5' Cap}{?}
+\node[draw, rectangle, minimum width=.3cm, minimum height=1cm, fill=green, switch ocg={polyaText polyaTexte}](polya) at($(gene3)+(4.7,0)$){};
+\comment{right=of polya}{preMrna}{Pre-mRNA}{?}
+\draw[arrow](polya) to (preMrna);
+\comment{below=0 of polya}{polyaText}{3' Poly-A Tail}{?}
 \draw[arrow](gene2) to (gene3);
 
 \node[default, below=2 of gene3, switch ocg={exon exo}](gene4){
@@ -193,6 +185,9 @@ node at(cap2Text){
 node at(polya2Text){
     \basicr{polyaa}{?}
 };
+\comment{right=of polya2}{mrnaSecond}{mRNA}{?}
+\draw[arrow](polya2) to (mrnaSecond);
 \draw[arrow](gene3) to coordinate(gene3ToGene4) (gene4);
 \comment{right=0 of gene3ToGene4}{splicingSecond}{Splicing}{?}
-\draw[arrow, dotted](spliceosome) to ($(promotor.west)+(-2pt,0)$);
+\comment{left=0 of gene3ToGene4}{modification}{Post-Transcriptional Modification}{?}
+\draw[arrow, dotted](splicing) to ($(promotor.west)+(-2pt,0)$);

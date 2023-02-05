@@ -1,0 +1,13 @@
+\node[default, draw](dna){DNA};
+\question{below=of dna}{rna}{RNA}{?}
+\draw[arrow](dna) to (rna);
+\question{right=3cm of rna}{mrna}{mRNA}{?}
+\question{left=3cm of rna}{ncRna}{ncRNA}{?}
+\draw[arrow](rna) to coordinate(rnaToMrna) (mrna);
+\comment{above=0 of rnaToMrna}{transcription}{Transcription}{?}
+\draw[arrow](rna) to coordinate(rnaToNcRna) (ncRna);
+\comment{above=0 of rnaToNcRna}{ncRnaText}{Transcription}{?}
+\comment{right=.2 of mrna}{mrnaText}{$1\sim 3$ \textcolor{black}{\% of total RNA samples}}{? \textcolor{black}{\% of total RNA samples}}
+\comment{above=.5 of mrnaText.west, anchor=west}{mrnaTextFirst}{Coding RNA}{?}
+\comment{left=of ncRna}{ncRnaTextSecond}{Not Transcribed}{?}
+\draw[line](ncRna) to (ncRnaTextSecond);
