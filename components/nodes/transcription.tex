@@ -11,3 +11,9 @@
 \comment{above=.5 of mrnaText.west, anchor=west}{mrnaTextFirst}{Coding RNA}{?}
 \comment{left=of ncRna}{ncRnaTextSecond}{Not Translated}{?}
 \draw[line](ncRna) to (ncRnaTextSecond);
+\draw[dashed, brown]($(rna.south)+(0,-.5)$)
+-| ($(dna.east)+(.5,0)$) |- coordinate(nucleicAcid) ($(dna.north)+(0,.5)$) -| ($(rna.west)+(-.5,0)$) |- cycle;
+\question{right=of nucleicAcid}{nucleicAcidText}{Nucleic Acid}{?}
+\draw[arrow](nucleicAcid) to (nucleicAcidText);
+\question{right=of nucleicAcidText}{nucleotide}{Nucleotide}{?}
+\node at($(nucleicAcidText.east)!.5!(nucleotide.west)$){\huge$\ni$};
