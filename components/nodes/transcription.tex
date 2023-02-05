@@ -14,6 +14,18 @@
 \draw[dashed, brown]($(rna.south)+(0,-.5)$)
 -| ($(dna.east)+(.5,0)$) |- coordinate(nucleicAcid) ($(dna.north)+(0,.5)$) -| ($(rna.west)+(-.5,0)$) |- cycle;
 \question{right=of nucleicAcid}{nucleicAcidText}{Nucleic Acid}{?}
-\draw[arrow](nucleicAcid) to (nucleicAcidText);
+\draw[line](nucleicAcid) to (nucleicAcidText);
 \question{right=of nucleicAcidText}{nucleotide}{Nucleotide}{?}
 \node at($(nucleicAcidText.east)!.5!(nucleotide.west)$){\huge$\ni$};
+\comment{right=of nucleotide}{nucleotideStructure}
+{
+\chemfig{
+O^{-}-P(=[:90]O)(-[:-90]O^{-})-O
+-[:-30]-[:-90]([:-18]<[:-60](-[6]OH)-[0,,,,line width=3pt]>[:60]
+(-[:90]N
+*5([:72]-
+*6(-N=-N=(-NH_2)-=)
+--N=-))
+-[:150,1.15]O-[:210,1.15])
+}}{?}
+\draw[line](nucleotide) to (nucleotideStructure);
