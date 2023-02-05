@@ -1,21 +1,26 @@
 \node[default, draw](dna){DNA};
 \question{below=of dna}{rna}{RNA}{?}
-\draw[arrow](dna) to (rna);
-\question{right=3cm of rna}{mrna}{mRNA}{?}
-\question{left=3cm of rna}{ncRna}{ncRNA}{?}
-\draw[arrow](rna) to coordinate(rnaToMrna) (mrna);
+\question{right=3cm of dna}{mrna}{mRNA}{?}
+\question{left=3cm of dna}{ncRna}{ncRNA}{?}
+\draw[arrow](dna) to coordinate(rnaToMrna) (mrna);
 \comment{above=0 of rnaToMrna}{transcription}{Transcription}{?}
-\draw[arrow](rna) to coordinate(rnaToNcRna) (ncRna);
+\draw[arrow](dna) to coordinate(rnaToNcRna) (ncRna);
 \comment{above=0 of rnaToNcRna}{ncRnaText}{Transcription}{?}
 \comment{right=.2 of mrna}{mrnaText}{$1\sim 3$ \textcolor{black}{\% of total RNA samples}}{? \textcolor{black}{\% of total RNA samples}}
 \comment{above=.5 of mrnaText.west, anchor=west}{mrnaTextFirst}{Coding RNA}{?}
 \comment{left=of ncRna}{ncRnaTextSecond}{Not Translated}{?}
 \draw[line](ncRna) to (ncRnaTextSecond);
 \draw[dashed, brown]($(rna.south)+(0,-.5)$)
--| ($(dna.east)+(.5,0)$) |- coordinate(nucleicAcid) ($(dna.north)+(0,.5)$) -| ($(rna.west)+(-.5,0)$) |- cycle;
+-| coordinate(nucleicAcid) ($(dna.east)+(.5,0)$) |- ($(dna.north)+(0,.5)$) -| ($(rna.west)+(-.5,0)$) |- cycle;
 \question{right=of nucleicAcid}{nucleicAcidText}{Nucleic Acid}{?}
-\draw[line](nucleicAcid) to (nucleicAcidText);
+\comment{above=of nucleicAcidText}{nucleicAcidTextSecond}{Polymer}{?}
+\draw[line](nucleicAcidText) to (nucleicAcidTextSecond);
+\draw[line, dashed, brown](nucleicAcid) to (nucleicAcidText);
 \question{right=of nucleicAcidText}{nucleotide}{Nucleotide}{?}
+\comment{below=0 of nucleotide}{nucleotideTextFirst}{\textcolor{black}{1. }Porvide Chemical Energy}{\textcolor{black}{1. }?}
+\comment{below=0 of nucleotideTextFirst}{nucleotideTextSecond}{\textcolor{black}{2. }Participate in Cell Signaling}{\textcolor{black}{2. }?}
+\comment{above=of nucleotide}{nucleotideText}{Monomer}{?}
+\draw[line](nucleotide) to (nucleotideText);
 \node at($(nucleicAcidText.east)!.5!(nucleotide.west)$){\huge$\ni$};
 \comment{right=of nucleotide}{nucleotideStructure}
 {
@@ -29,3 +34,27 @@ O^{-}-P(=[:90]O)(-[:-90]O^{-})-O
 -[:150,1.15]O-[:210,1.15])
 }}{?}
 \draw[line](nucleotide) to (nucleotideStructure);
+\comment{right=0 of nucleotideStructure}{nucleotideStructureTextSecond}
+{\textcolor{black}{Center: }\textcolor{blue}{Ribose} \textcolor{black}{or} Deoxyribose}{\textcolor{black}{Center: }?}
+\comment{above=of nucleotideStructureTextSecond.west, anchor=west}{nucleotideStructureTextFirst}
+{\textcolor{black}{Upper Left: }Phosphate Group}{\textcolor{black}{Upper Left: }?}
+\comment{below=of nucleotideStructureTextSecond.west, anchor=west}{nucleotideStructureTextThird}
+{\textcolor{black}{Upper Right: }Nucleobase \textcolor{blue}{(Adenine)}}{\textcolor{black}{Upper Right: }?}
+
+\draw[dashed, brown](nucleotideStructureTextSecond.north)
+-| (nucleotideStructureTextThird.south west)
+|- (nucleotideStructureTextThird.south east)
+|- coordinate(nucleoside) cycle;
+\question{right=of nucleoside}{nucleosideText}{Nucleoside}{?}
+\draw[line, dashed, brown](nucleoside) to (nucleosideText);
+
+\question{above=of transcription}{polymerase}{RNA Polymerase}{?}
+\draw[line](transcription) to (polymerase);
+\question{above=of polymerase}{transcriptionFactor}{Transcription Factor}{?}
+\draw[line](polymerase) to node[circle, fill=white]{+} (transcriptionFactor);
+\comment{right=of polymerase}{promotor}{Bind to the Promotor}{?}
+\draw[arrow](polymerase) to (promotor);
+\comment{right=of promotor}{transcriptionBubble}{Generate a Transcription Bubble}{?}
+\draw[arrow](promotor) to (transcriptionBubble);
+\comment{above=of transcriptionBubble}{transcriptionBubbleText}{\textcolor{black}{Size: }$12\sim 14$ base pairs}{\textcolor{black}{Size: }?}
+\draw[line](transcriptionBubble) to (transcriptionBubbleText);
