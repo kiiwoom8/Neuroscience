@@ -6,6 +6,11 @@
 
 \begin{document}
 % \maketitle
+\begin{inctext}[label={overlay}, overlay={\node at($(page.north)+(0,-3)$){\Huge DNA};}]
+    \begin{tikzpicture}
+        \input{components/nodes/dna.tex}
+    \end{tikzpicture}
+\end{inctext}
 \begin{inctext}[label={overlay}, overlay={\node at($(page.north)+(0,-3)$){\Huge Transcription};}]
     \begin{tikzpicture}
         \input{components/nodes/transcription.tex}
