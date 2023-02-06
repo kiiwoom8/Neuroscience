@@ -1,18 +1,46 @@
-\draw[samples=100] plot(\x, {cos(deg(2*\x))});
-\draw[samples=100] plot[xshift=1.5cm, yshift=.5cm](\x, {cos(2*deg(\x))});
-\draw[dashed, brown](0,1) to (0,-.5) coordinate(minorGroove);
-\comment{below=0 of minorGroove}{minorGrooveText}{\textcolor{brown}{Minor Groove}}{?}
-\draw[dashed, purple](-1.55,1.5) to (-1.55, -1) coordinate(majorGroove);
-\comment{below=0 of majorGroove}{majorGrooveText}{\textcolor{purple}{Major Groove}}{?}
-% \coordinate(center) at($(majorGrooveText.south)+(0,-3)$);
-% \draw[draw] (center) circle (3cm);
+% \draw[samples=100] plot(\x, {cos(deg(2*\x))});
+% \draw[samples=100] plot[xshift=1.5cm, yshift=.5cm](\x, {cos(2*deg(\x))});
+\draw[dashed, blue](0,1) to (0,-.5) coordinate(minorGroove);
+\comment{below=0 of minorGroove}{minorGrooveText}{\textcolor{blue}{Minor Groove}}{?}
+\draw[dashed, red](-1.55,1.5) to (-1.55, -1) coordinate(majorGroove);
+\comment{below=0 of majorGroove}{majorGrooveText}{\textcolor{red}{Major Groove}}{?}
+
 \coordinate (center) at($(majorGrooveText.south)+(0,-4)$);
-\draw[arrow, latex-latex, dashed, purple] ($(center)+(-30:4)$) arc (-30:210:4cm);
-\draw[arrow, latex-latex, dashed, brown]($(center)+(210:4)$) arc (210:330:4cm);
-\node at(center){
+\draw[arrow, latex-latex, dashed, red] ($(center)+(-30:4)$) arc (-30:210:4cm);
+\draw[arrow, latex-latex, dashed, blue]($(center)+(210:4)$) arc (210:330:4cm);
+\node at(center)(adenineThymine){
 \chemfig{
 [:45]-N*5(-*6(-N=-N?[a]-(-N(-[:120]H)-[:30]H
 (-[:0,2,,,thick,dotted,red]O=_[:-60]*6(-N(-H?[a,,thick,dotted,red])-(=_O)-N(-R)-=(-)-))
 )-=)--N=-)
 }
 };
+\coordinate(center2) at($(center)+(12,0)$);
+\draw[arrow, latex-latex, dashed, red]($(center2)+(-30:4)$) arc (-30:210:4cm);
+\draw[arrow, latex-latex, dashed, blue]($(center2)+(210:4)$) arc (210:330:4cm);
+\node at(center2)(guanineCytosine){
+\chemfig{
+[:45]-N*5(-*6(-N=
+(-N(-[:240]H)-[:0]H?[b])
+-N?[a]=(-N(-[:120]H)-[:30]H
+-[:0,2,,,thick,dotted,red]H-[:0]N(-[:60]H)-[:300]*6(
+=N?[a,,thick,dotted,red]-(=_O?[b,,thick,dotted,red])-N(-)-=-
+)
+)-=)--N=-)
+}
+};
+
+\comment{left=2 of adenineThymine}{adenine}{Adenine}{?}
+\draw[-](adenineThymine) to (adenine);
+\comment{below right=of adenineThymine}{thymine}{Thymine}{?}
+\draw[-](adenineThymine) to (thymine.north west);
+\comment{left=2 of guanineCytosine}{guanine}{Guanine}{?}
+\draw[-](guanineCytosine) to (guanine);
+\comment{right=2 of guanineCytosine}{cytosine}{Cytosine}{?}
+\draw[-](guanineCytosine) to (cytosine);
+
+\coordinate(center3) at($(center)!0.5!(center2)$);
+\coordinate(center4) at($(center3)+(0,5)$);
+\coordinate(center5) at($(center4)+(1.5cm,.5cm)$);
+\draw[samples=100, shift=(center4)] plot(\x, {cos(deg(2*\x))});
+\draw[samples=100, shift=(center5)] plot (\x, {cos(2*deg(\x))});
