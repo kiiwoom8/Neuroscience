@@ -39,11 +39,11 @@ O^{-}-P(=[:90]O)(-[:-90]O^{-})-O
 \comment{above=of nucleotideStructureTextSecond.west, anchor=west}{nucleotideStructureTextFirst}
 {\textcolor{black}{Upper Left: }Phosphate Group}{\textcolor{black}{Upper Left: }?}
 \comment{below=of nucleotideStructureTextSecond.west, anchor=west}{nucleotideStructureTextThird}
-{\textcolor{black}{Upper Right: }Nucleobase \textcolor{blue}{(Adenine)}}{\textcolor{black}{Upper Right: }?}
+{\textcolor{black}{Upper Right: }Nucleobase}{\textcolor{black}{Upper Right: }?}
 
 \draw[dashed, brown](nucleotideStructureTextSecond.north)
 -| (nucleotideStructureTextThird.south west)
-|- (nucleotideStructureTextThird.south east)
+-| (nucleotideStructureTextSecond.east)
 |- coordinate(nucleoside) cycle;
 \question{right=of nucleoside}{nucleosideText}{Nucleoside}{?}
 \draw[line, dashed, brown](nucleoside) to (nucleosideText);
@@ -58,3 +58,15 @@ O^{-}-P(=[:90]O)(-[:-90]O^{-})-O
 \draw[arrow](promotor) to (transcriptionBubble);
 \comment{above=of transcriptionBubble}{transcriptionBubbleText}{\textcolor{black}{Size: }$12\sim 14$ base pairs}{\textcolor{black}{Size: }?}
 \draw[line](transcriptionBubble) to (transcriptionBubbleText);
+\coordinate(base) at($(nucleotideStructureTextThird.south)+(-1,-.5)$);
+\question {below=0 of base}{guanine}{Guanine}{?}
+\question{left=.5 of guanine}{adenine}{Adenine}{?}
+\question{right=.5 of guanine}{cytosine}{Cytosine}{?}
+\question{right=.5 of cytosine}{thymine}{Thymine}{?}
+\draw[arrow, latex-latex, out=300, in=240](guanine) to node[below]{pair} (cytosine);
+\draw[arrow, latex-latex, out=315, in=225](adenine) to (thymine);
+% \comment{above=of nucleotideStructureTextFirst}{phosphateText}{Nucleotides are connected by the phosphate molecule and form the long strand of DNA}{?}
+% \draw[line](nucleotideStructureTextFirst) to (phosphateText);
+\draw(nucleotideStructureTextFirst.east) -- ++(.3,0) coordinate(connection) |- (nucleotideStructureTextSecond.east);
+\comment{above right=.5 of connection}{connectionText}{Connected to form the long stand of DNA}{?}
+\draw[-](connection) to (connectionText.south west);
