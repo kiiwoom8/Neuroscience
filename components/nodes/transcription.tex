@@ -35,7 +35,7 @@ O^{-}-P(=[:90]O)(-[:-90]O^{-})-O
 }}{?}
 \draw[line](nucleotide) to (nucleotideStructure);
 \comment{right=0 of nucleotideStructure}{nucleotideStructureTextSecond}
-{\textcolor{black}{Center: }\textcolor{blue}{Ribose} \textcolor{black}{or} Deoxyribose}{\textcolor{black}{Center: }?}
+{\textcolor{black}{Center: }Ribose \textcolor{black}{or} \textcolor{blue}{Deoxyribose}}{\textcolor{black}{Center: }?}
 \comment{above=of nucleotideStructureTextSecond.west, anchor=west}{nucleotideStructureTextFirst}
 {\textcolor{black}{Upper Left: }Phosphate Group}{\textcolor{black}{Upper Left: }?}
 \comment{below=of nucleotideStructureTextSecond.west, anchor=west}{nucleotideStructureTextThird}
@@ -46,7 +46,7 @@ O^{-}-P(=[:90]O)(-[:-90]O^{-})-O
 -| (nucleotideStructureTextSecond.east)
 |- coordinate(nucleoside) cycle;
 \question{right=of nucleoside}{nucleosideText}{Nucleoside}{?}
-\draw[line, dashed, brown](nucleoside) to (nucleosideText);
+\draw[dashed, brown](nucleoside) to (nucleosideText);
 
 \question{above=of transcription}{polymerase}{RNA Polymerase}{?}
 \draw[line](transcription) to (polymerase);
@@ -63,6 +63,8 @@ O^{-}-P(=[:90]O)(-[:-90]O^{-})-O
 \question{left=.5 of guanine}{adenine}{Adenine}{?}
 \question{right=.5 of guanine}{cytosine}{Cytosine}{?}
 \question{right=.5 of cytosine}{thymine}{Thymine}{?}
+\comment{right=of thymine}{uracil}{Replaced with Uracil in RNA}{?}
+\draw[line](thymine) to (uracil);
 \draw[arrow, latex-latex, out=300, in=240](guanine) to node[below]{pair} (cytosine);
 \draw[arrow, latex-latex, out=315, in=225](adenine) to (thymine);
 % \comment{above=of nucleotideStructureTextFirst}{phosphateText}{Nucleotides are connected by the phosphate molecule and form the long strand of DNA}{?}

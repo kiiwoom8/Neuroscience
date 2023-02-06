@@ -72,9 +72,9 @@ node at(smoothEndoplasmicReticulum){
 \question{right=2cm of dna}{nucleotides}{One strand of Nucleotides}{?}
 \draw[dashed, brown]($(dna.north)+(0,1)$) -| ($(rnap.east)+(.3,0)$) |- ($(dna.south)+(0,-1)$) -| ($(nucleotides.west)+(-0.3, 0)$) |- coordinate(elongationText) cycle;
 \comment{right=0 of elongationText}{elongation}{Elongation}{?}
-\draw[arrow, red!50!green!100!blue!100](dna) to node[above]{Expose}(nucleotides);
+\draw[arrow, red!50!green!100!blue!100](dna) to node[above]{Export}(nucleotides);
 \draw[arrow, blue](rnap) |- coordinate(rnapToNucleotide) ($(helicase.south)+(0,-.5)$) -| (nucleotides);
-\comment{below=.3 of rnapToNucleotide, anchor=west}{first}{\textcolor{blue}{1. }Guide the nudleotides into position}{\textcolor{blue}{1. }?}
+\comment{below=.3 of rnapToNucleotide, anchor=west}{first}{\textcolor{blue}{1. }Guide nucleotides into position}{\textcolor{blue}{1. }?}
 \comment{below=.5 of first.west, anchor=west}{second}{\textcolor{blue}{2. }Facilitate attachment and elongation}{\textcolor{blue}{2. }?}
 \comment{below=.5 of second.west, anchor=west}{third}{\textcolor{blue}{3. }Measure and proofread replacement capability and termination recognition capability}{\textcolor{blue}{3. }?}
 
