@@ -94,14 +94,9 @@ node at(smoothEndoplasmicReticulum){
 \draw[arrow, gray](spliceosome) to coordinate(spliceosomeToDifferent) (different);
 \comment{right=0 of spliceosomeToDifferent}{alternativeSplicing}{Alternative Splicing}{?}
 \draw[dashed, purple]($(rnap.east)+(.5,0)$) -- +(0,1) -| ($(rnap.west)+(-.5,0)$) --
-node[left, switch ocg={transcriptionFactor transcriptionFactorr}](transcriptionFactor){
-        \basic{transcriptionFactor}{Transcription Factor}
-    }
+coordinate(transcriptionFactor)
 ++(0,-1) -| cycle;
-\node at($(transcriptionFactor)+(1.5,0)$){
-    \basicr{transcriptionFactorr}{?}
-};
-
+\comment{left=0 of transcriptionFactor}{transcriptionFactorText}{Transcription Factor \textcolor{blue}{(Regulatory Proteins)}}{?}
 % Gene
 \node[default, right=8 of nucleotides](gene2){};
 \draw(gene2.north) -- +(5,0) |- (gene2.south) -- +(-5,0) node(space2){} |- cycle;
