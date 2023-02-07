@@ -100,15 +100,17 @@ O^{-}-P(=[:90]O)(-[:-90]O^{-})-O
 \node at(center2)(guanineCytosine){
 \chemfig{
 [:45]-N*5(-*6(-N=
-(-N(-[:240]H)-[:0]H?[b])
--N?[a]=(-N(-[:120]H)-[:30]H
+(-N(-[:240]H)-[:0]H?[b]@{hydrogen1})
+-N(-H?[a])=(-N(-[:120]H)-[:30]H
 -[:0,2,,,thick,dotted,red]H-[:0]N(-[:60]H)-[:300]*6(
 =N?[a,,thick,dotted,red]-(=_O?[b,,thick,dotted,red])-N(-)-=-
 )
 )-=)--N=-)
 }
 };
-
+\chemmove{
+    % \draw[arrow, blue, shorten >=10pt, shorten <=10pt](hydrogen1) to (oxygen1);
+}
 \comment{left=2 of adenineThymine}{adenine}{Adenine}{?}
 \draw[-](adenineThymine) to (adenine);
 \comment{below right=of adenineThymine}{thymine}{Thymine}{?}
