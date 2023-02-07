@@ -63,8 +63,19 @@ O^{-}-P(=[:90]O)(-[:-90]O^{-})-O
 \question{left=.5 of guanine}{adenine}{Adenine}{?}
 \question{right=.5 of guanine}{cytosine}{Cytosine}{?}
 \question{right=.5 of cytosine}{thymine}{Thymine}{?}
+\draw[dashed, green]($(cytosine.west)+(-.2,0)$)
+|- ($(thymine.south)+(0,-.2)$)
+-| ($(thymine.east)+(.2,0)$)
+|- coordinate(pyrimidine) ($(cytosine.north)+(0,.2)$) -| cycle;
+\comment{right=of pyrimidine}{pyrimidineText}{Pyrimidine}{?}
+\draw[dashed, green](pyrimidine) to (pyrimidineText);
+\draw[dashed, blue]($(adenine.west)+(-.2,0)$)
+|- coordinate(purine) ($(guanine.south)+(0,-.2)$)
+-| ($(guanine.east)+(.2,0)$) |- ($(adenine.north)+(0,.2)$) -| cycle;
+\comment{left=of purine}{purineText}{Purine}{?}
+\draw[dashed, blue](purine) to (purineText);
 \comment{right=of thymine}{uracil}{Replaced with Uracil in RNA}{?}
-\draw[line](thymine) to (uracil);
+\draw[-](thymine) to (uracil);
 \draw[arrow, latex-latex, out=300, in=240](guanine) to node[below]{pair} (cytosine);
 \draw[arrow, latex-latex, out=315, in=225](adenine) to coordinate(adenineToThymine) (thymine);
 \draw(nucleotideStructureTextFirst.east) -- ++(.3,0) coordinate(connection) |- (nucleotideStructureTextSecond.east);
@@ -95,16 +106,17 @@ O=[:-30]P(-[:60]O-[:60])(-[:240]O^{-})-[:-30]O-[:-30]C@{oxygen2}H_2
 \draw[dashed, red]($(center4)+(-1.55,1.5)$) to ($(center4)+(-1.55, -1)$) coordinate(majorGroove);
 \comment{below=0 of majorGroove}{majorGrooveText}{\textcolor{red}{Major Groove}}{?}
 
-\coordinate (center) at($(center4)+(.5,0)+(-6,-7)$);
+\coordinate (center) at($(center4)+(-5.5,-6)$);
 \draw[arrow, latex-latex, dashed, red] ($(center)+(-30:4)$) arc (-30:210:4cm);
 \draw[arrow, latex-latex, dashed, blue]($(center)+(210:4)$) arc (210:330:4cm);
+
 \node at(center)(adenineThymine){
 \chemfig{
 [:45]-N*5(-*6(-N=-N?[a]-(-N(-[:120]H)-[:30]H
 (-[:0,2,,,thick,dotted,red]O=_[:-60]*6(-N(-H?[a,,thick,dotted,red])-(=_O)-N(-R)-=(-)-))
 )-=)--N=-)
 }};
-\coordinate(center2) at($(center4)+(.5,0)+(6,-7)$);
+\coordinate(center2) at($(center4)+(6.5,-6)$);
 \draw[arrow, latex-latex, dashed, red]($(center2)+(-30:4)$) arc (-30:210:4cm);
 \draw[arrow, latex-latex, dashed, blue]($(center2)+(210:4)$) arc (210:330:4cm);
 \node at(center2)(guanineCytosine){
@@ -126,7 +138,13 @@ O=[:-30]P(-[:60]O-[:60])(-[:240]O^{-})-[:-30]O-[:-30]C@{oxygen2}H_2
 \draw[-](guanineCytosine) to (guanine);
 \comment{right=2 of guanineCytosine}{cytosine}{Cytosine}{?}
 \draw[-](guanineCytosine) to (cytosine);
-
+\draw[-latex, dashed]($(center)+(-7,-3)$) coordinate(threePrime2) to coordinate(transcribe) ($(center)+(-7,3)$) coordinate(fivePrime2);
+\draw[latex-, dashed]($(center2)+(7,-3)$) coordinate(fivePrime3) to ($(center2)+(7,3)$) coordinate(threePrime3);
+\comment{right=0 of threePrime2}{threePrimeText}{$3^{\prime}$}{?}
+\node[right=0 of fivePrime2](fivePrimeText){$5^{\prime}$};
+\comment{right=0 of threePrime3}{threePrimeTextSecond}{$3^{\prime}$}{?}
+\comment{right=0 of fivePrime3}{fivePrimeTextSecond}{$5^{\prime}$}{?}
+\comment{left=0 of transcribe}{transcribeText}{Transcribe}{?}
 \node at($(center2)+(0,-4.5)$){\href{https://www.labxchange.org/library/pathway/lx-pathway:c9f00da6-1b2b-43ec-9a0d-de38ccc3f97f/items/lx-pb:c9f00da6-1b2b-43ec-9a0d-de38ccc3f97f:html:e3d9ae3f}{Adress}};
 % https://www.vedantu.com/question-answer/which-of-the-following-would-not-be-considered-class-12-biology-cbse-5fb37455b8881b0c51d41bf3
 % https://www.youtube.com/watch?v=ad6h4ErsSTY
