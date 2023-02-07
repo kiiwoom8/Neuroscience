@@ -22,28 +22,28 @@
 \comment{above=of nucleotide}{nucleotideText}{Monomer}{?}
 \draw[line](nucleotide) to (nucleotideText);
 \node at($(nucleicAcidText.east)!.5!(nucleotide.west)$){\huge$\ni$};
-\comment{right=of nucleotide}{nucleotideStructure}
+\node[right=of nucleotide](nucleotideStructure)
 {
 \chemfig{
 O^{-}-P(=[:90]O)(-[:-90]O^{-})-O
 -[:-30]-[:-90]([:-18]<[:-60](-[6]OH)-[0,,,,line width=3pt]>[:60]
-(-[:90]N
+(@{hydrogen5}-[:90]N@{nitrogen1}
 *5([:72]-
 *6(-N=-N=(-NH_2)-=)
 --N=-))
 -[:150,1.15]O-[:210,1.15])
-}}{?}
+}};
 \draw[line](nucleotide) to (nucleotideStructure);
 \comment{right=0 of nucleotideStructure}{nucleotideStructureTextSecond}
 {\textcolor{black}{Center: }\textcolor{blue}{Ribose} \textcolor{black}{or} Deoxyribose}{\textcolor{black}{Center: }?}
 \comment{above=of nucleotideStructureTextSecond.west, anchor=west}{nucleotideStructureTextFirst}
 {\textcolor{black}{Upper Left: }Phosphate Group}{\textcolor{black}{Upper Left: }?}
 \comment{below=of nucleotideStructureTextSecond.west, anchor=west}{nucleotideStructureTextThird}
-{\textcolor{black}{Upper Right: }Nucleobase}{\textcolor{black}{Upper Right: }?}
+{\textcolor{black}{Upper Right: }Nitrogenous Base}{\textcolor{black}{Upper Right: }?}
 
 \draw[dashed, brown](nucleotideStructureTextSecond.north)
 -| (nucleotideStructureTextThird.south west)
--| (nucleotideStructureTextSecond.east)
+-| (nucleotideStructureTextThird.east)
 |- coordinate(nucleoside) cycle;
 \question{right=of nucleoside}{nucleosideText}{Nucleoside}{?}
 \draw[dashed, brown](nucleoside) to (nucleosideText);
