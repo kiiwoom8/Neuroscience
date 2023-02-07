@@ -73,7 +73,7 @@ O^{-}-P(=[:90]O)(-[:-90]O^{-})-O
 \chemfig{
 O=[:-30]P(-[:60]O-[:60])(-[:240]O^{-})-[:-30]O
 @{oxygen2}-[:-30]?[a]@{hydrogen2}<[:-60]@{hydrogen3}
-(-[:240]O@{oxygen3}-[:240]P(=[:150]O)(-[:240]O^{-})-[:-30]O-[:-30])
+(-[:240]@{oxygen3}O-[:240]P(=[:150]O)(-[:240]O^{-})-[:-30]O-[:-30])
 -[0,,,,line width=3pt]
 >[:60]-[:150,1.18]O?[a]
 }};
@@ -86,7 +86,7 @@ O=[:-30]P(-[:60]O-[:60])(-[:240]O^{-})-[:-30]O
 \coordinate(center4) at($(center3)+(-.5,0)$);
 \coordinate(center5) at($(center4)+(1.5cm,.5cm)$);
 \draw[yellow, samples=100, shift=(center4)] plot(\x, {cos(deg(2*\x))});
-\draw[blue, samples=100, shift=(center5)] plot (\x, {cos(2*deg(\x))});
+\draw[brown, samples=100, shift=(center5)] plot (\x, {cos(2*deg(\x))});
 
 \draw[dashed, blue]($(center4)+(0,1)$) to ($(center4)+(0,-.5)$) coordinate(minorGroove);
 \comment{right=8 of minorGroove}{polynucleotide}{Polynucleotide}{?}
