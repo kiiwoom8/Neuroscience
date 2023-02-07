@@ -35,7 +35,7 @@ O^{-}-P(=[:90]O)(-[:-90]O^{-})-O
 }}{?}
 \draw[line](nucleotide) to (nucleotideStructure);
 \comment{right=0 of nucleotideStructure}{nucleotideStructureTextSecond}
-{\textcolor{black}{Center: }Ribose \textcolor{black}{or} \textcolor{blue}{Deoxyribose}}{\textcolor{black}{Center: }?}
+{\textcolor{black}{Center: }\textcolor{blue}{Ribose} \textcolor{black}{or} Deoxyribose}{\textcolor{black}{Center: }?}
 \comment{above=of nucleotideStructureTextSecond.west, anchor=west}{nucleotideStructureTextFirst}
 {\textcolor{black}{Upper Left: }Phosphate Group}{\textcolor{black}{Upper Left: }?}
 \comment{below=of nucleotideStructureTextSecond.west, anchor=west}{nucleotideStructureTextThird}
@@ -67,19 +67,30 @@ O^{-}-P(=[:90]O)(-[:-90]O^{-})-O
 \draw[line](thymine) to (uracil);
 \draw[arrow, latex-latex, out=300, in=240](guanine) to node[below]{pair} (cytosine);
 \draw[arrow, latex-latex, out=315, in=225](adenine) to coordinate(adenineToThymine) (thymine);
-% \comment{above=of nucleotideStructureTextFirst}{phosphateText}{Nucleotides are connected by the phosphate molecule and form the long strand of DNA}{?}
-% \draw[line](nucleotideStructureTextFirst) to (phosphateText);
 \draw(nucleotideStructureTextFirst.east) -- ++(.3,0) coordinate(connection) |- (nucleotideStructureTextSecond.east);
 \comment{above right=.5 of connection}{connectionText}{Connected to form the long stand of DNA}{?}
+\node[right=of connectionText](phosphodiesterBondStructure){
+\chemfig{
+O=[:-30]P(-[:60]O-[:60])(-[:240]O^{-})-[:-30]O
+@{oxygen2}-[:-30]?[a]@{hydrogen2}<[:-60]@{hydrogen3}
+(-[:240]O@{oxygen3}-[:240]P(=[:150]O)(-[:240]O^{-})-[:-30]O-[:-30])
+-[0,,,,line width=3pt]
+>[:60]-[:150,1.18]O?[a]
+}};
 \draw[-](connection) to (connectionText.south west);
+\draw[-latex](connectionText) to (phosphodiesterBondStructure);
+\comment{right=of phosphodiesterBondStructure}{phosphodiesterBond}{Phosphodiester Bond}{?}
+\draw[line](phosphodiesterBondStructure) to (phosphodiesterBond);
 
 \coordinate(center3) at($(adenineToThymine)+(0,-2)$);
 \coordinate(center4) at($(center3)+(-.5,0)$);
 \coordinate(center5) at($(center4)+(1.5cm,.5cm)$);
-\draw[samples=100, shift=(center4)] plot(\x, {cos(deg(2*\x))});
-\draw[samples=100, shift=(center5)] plot (\x, {cos(2*deg(\x))});
+\draw[yellow, samples=100, shift=(center4)] plot(\x, {cos(deg(2*\x))});
+\draw[blue, samples=100, shift=(center5)] plot (\x, {cos(2*deg(\x))});
 
 \draw[dashed, blue]($(center4)+(0,1)$) to ($(center4)+(0,-.5)$) coordinate(minorGroove);
+\comment{right=8 of minorGroove}{polynucleotide}{Polynucleotide}{?}
+\draw[-]($(polynucleotide.west)+(-1,0)$) to (polynucleotide);
 \comment{below=0 of minorGroove}{minorGrooveText}{\textcolor{blue}{Minor Groove}}{?}
 \draw[dashed, red]($(center4)+(-1.55,1.5)$) to ($(center4)+(-1.55, -1)$) coordinate(majorGroove);
 \comment{below=0 of majorGroove}{majorGrooveText}{\textcolor{red}{Major Groove}}{?}
@@ -92,8 +103,7 @@ O^{-}-P(=[:90]O)(-[:-90]O^{-})-O
 [:45]-N*5(-*6(-N=-N?[a]-(-N(-[:120]H)-[:30]H
 (-[:0,2,,,thick,dotted,red]O=_[:-60]*6(-N(-H?[a,,thick,dotted,red])-(=_O)-N(-R)-=(-)-))
 )-=)--N=-)
-}
-};
+}};
 \coordinate(center2) at($(center4)+(.5,0)+(6,-7)$);
 \draw[arrow, latex-latex, dashed, red]($(center2)+(-30:4)$) arc (-30:210:4cm);
 \draw[arrow, latex-latex, dashed, blue]($(center2)+(210:4)$) arc (210:330:4cm);
@@ -108,10 +118,6 @@ O^{-}-P(=[:90]O)(-[:-90]O^{-})-O
 )-=)--N=-)
 }
 };
-\chemmove{
-    \draw[arrow, blue](hydrogen1) to (oxygen1);
-}
-% 
 \comment{left=2 of adenineThymine}{adenine}{Adenine}{?}
 \draw[-](adenineThymine) to (adenine);
 \comment{below right=of adenineThymine}{thymine}{Thymine}{?}
@@ -122,6 +128,6 @@ O^{-}-P(=[:90]O)(-[:-90]O^{-})-O
 \draw[-](guanineCytosine) to (cytosine);
 
 \node at($(center2)+(0,-4.5)$){\href{https://www.labxchange.org/library/pathway/lx-pathway:c9f00da6-1b2b-43ec-9a0d-de38ccc3f97f/items/lx-pb:c9f00da6-1b2b-43ec-9a0d-de38ccc3f97f:html:e3d9ae3f}{Adress}};
-https://www.vedantu.com/question-answer/which-of-the-following-would-not-be-considered-class-12-biology-cbse-5fb37455b8881b0c51d41bf3
-https://www.youtube.com/watch?v=ad6h4ErsSTY
+% https://www.vedantu.com/question-answer/which-of-the-following-would-not-be-considered-class-12-biology-cbse-5fb37455b8881b0c51d41bf3
+% https://www.youtube.com/watch?v=ad6h4ErsSTY
 

@@ -60,6 +60,14 @@
         \basicr{#2e}{#4}
     };
 }
+\newcommand{\commentAt}[4]{
+    \node[switch ocg={#2 #2e}](#2) at(#1){
+        \basic{#2}{#3}
+    }
+    node at(#1){
+        \basicr{#2e}{#4}
+    };
+}
 \newcommand{\chem}[3]{
     \node[#1](#2){} node at(#2){\setchemfig{cram width=3pt}\chemfig{#3}};
 }

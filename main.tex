@@ -10,6 +10,11 @@
     \begin{tikzpicture}
         \input{components/nodes/transcription.tex}
     \end{tikzpicture}
+    \chemmove{
+        \draw[arrow, blue](hydrogen1) to (oxygen1);
+        \commentAt{$(oxygen2)!.5!(hydrogen2)+(0,-.2)$}{fivePrime}{$5^{\prime}$}{?}
+        \commentAt{$(oxygen3)!.5!(hydrogen3)+(-.1,.1)$}{threePrime}{$3^{\prime}$}{?}
+    }
 \end{inctext}
 \begin{inctext}[label={overlay}, overlay={\node at($(page.north)+(0,-3)$){\Huge Soma};}]
     \begin{tikzpicture}
