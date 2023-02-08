@@ -1,14 +1,20 @@
 \node[default, draw](dna){DNA};
 \question{below=of dna}{rna}{RNA}{?}
-\question{right=3cm of dna}{mrna}{mRNA}{?}
-\question{left=3cm of dna}{ncRna}{ncRNA}{?}
+\question{left=3cm of dna}{mrna}{mRNA}{?}
+\question{right=3cm of dna}{ncRna}{ncRNA}{?}
 \draw[arrow](dna) to coordinate(rnaToMrna) (mrna);
 \comment{above=0 of rnaToMrna}{transcription}{Transcription}{?}
 \draw[arrow](dna) to coordinate(rnaToNcRna) (ncRna);
 \comment{above=0 of rnaToNcRna}{ncRnaText}{Transcription}{?}
-\comment{right=.2 of mrna}{mrnaText}{$1\sim 3$ \textcolor{black}{\% of total RNA samples}}{? \textcolor{black}{\% of total RNA samples}}
-\comment{above=.5 of mrnaText.west, anchor=west}{mrnaTextFirst}{Coding RNA}{?}
-\comment{left=of ncRna}{ncRnaTextSecond}{Not Translated}{?}
+\comment{left=.2 of mrna}{mrnaText}{$1\sim 3$ \textcolor{black}{\% of total RNA samples}}{? \textcolor{black}{\% of total RNA samples}}
+\comment{above=.5 of mrnaText.east, anchor=east}{mrnaTextFirst}{Coding RNA}{?}
+\question{below left=of mrna, xshift=1.7cm}{untranslatedRegion}{Untranslated Regions}{?}
+\question{below right=of mrna, xshift=-1.7cm}{codingRegion}{Coding Regions}{?}
+\draw[line](mrna) to (untranslatedRegion.north);
+\draw[line](mrna) to (codingRegion.north);
+\comment{below=of codingRegion}{template}{Act as a template for protein synthesis \textcolor{blue}{(Translation)}}{?}
+\draw[line](codingRegion) to (template);
+\comment{right=of ncRna}{ncRnaTextSecond}{Not Translated}{?}
 \draw[line](ncRna) to (ncRnaTextSecond);
 \draw[dashed, brown]($(rna.south)+(0,-.5)$)
 -| coordinate(nucleicAcid) ($(dna.east)+(.5,0)$) |- ($(dna.north)+(0,.5)$) -| ($(rna.west)+(-.5,0)$) |- cycle;
@@ -105,6 +111,8 @@ O=[:-30]P(-[:60]O-[:60])(-[:240]O^{-})-[:-30]O-[:-30]C@{oxygen2}H_2
 \comment{below=0 of minorGroove}{minorGrooveText}{\textcolor{blue}{Minor Groove}}{?}
 \draw[dashed, red]($(center4)+(-1.55,1.5)$) to ($(center4)+(-1.55, -1)$) coordinate(majorGroove);
 \comment{below=0 of majorGroove}{majorGrooveText}{\textcolor{red}{Major Groove}}{?}
+\comment{below=0 of majorGrooveText}{majorGrooveWidth}{22\textcolor{black}{\AA}}{?\textcolor{black}{\AA}}
+\comment{below=0 of minorGrooveText}{minorGrooveWidth}{\textcolor{blue}{12}\textcolor{black}{\AA}}{?\textcolor{black}{\AA}}
 
 \coordinate (center) at($(center4)+(-5.5,-6)$);
 \draw[arrow, latex-latex, dashed, red] ($(center)+(-30:4)$) arc (-30:210:4cm);
@@ -138,15 +146,40 @@ O=[:-30]P(-[:60]O-[:60])(-[:240]O^{-})-[:-30]O-[:-30]C@{oxygen2}H_2
 \draw[-](guanineCytosine) to (guanine);
 \comment{right=2 of guanineCytosine}{cytosine}{Cytosine}{?}
 \draw[-](guanineCytosine) to (cytosine);
-\draw[-latex, dashed]($(center)+(-7,-3)$) coordinate(threePrime2) to coordinate(transcribe) ($(center)+(-7,3)$) coordinate(fivePrime2);
+\draw[-latex, dashed]($(center)+(-7,-3)$) coordinate(threePrime2) to ($(center)+(-7,3)$) coordinate(fivePrime2);
 \draw[latex-, dashed]($(center2)+(7,-3)$) coordinate(fivePrime3) to ($(center2)+(7,3)$) coordinate(threePrime3);
 \comment{right=0 of threePrime2}{threePrimeText}{$3^{\prime}$}{?}
 \node[right=0 of fivePrime2](fivePrimeText){$5^{\prime}$};
 \comment{right=0 of threePrime3}{threePrimeTextSecond}{$3^{\prime}$}{?}
+\comment{right=of threePrimeTextSecond}{hydroxylGroup}{Hydroxyl Group}{?}
+\draw[line](threePrimeTextSecond) to (hydroxylGroup);
 \comment{right=0 of fivePrime3}{fivePrimeTextSecond}{$5^{\prime}$}{?}
-\comment{left=0 of transcribe}{transcribeText}{Transcribe}{?}
+\comment{right=of fivePrimeTextSecond}{phosphateGroup}{Phosphate Group}{?}
+\draw[line](fivePrimeTextSecond) to (phosphateGroup);
 \node at($(center2)+(0,-4.5)$){\href{https://www.labxchange.org/library/pathway/lx-pathway:c9f00da6-1b2b-43ec-9a0d-de38ccc3f97f/items/lx-pb:c9f00da6-1b2b-43ec-9a0d-de38ccc3f97f:html:e3d9ae3f}{Adress}};
 https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3195647/
+
+\node[left=5 of untranslatedRegion](dnaFirst){$5^{\prime}$ ...ATGGGGCTC... $3^{\prime}$};
+\comment{right=of dnaFirst}{senseStrand}{Sense Strand}{?}
+\draw[line](dnaFirst) to (senseStrand);
+\node[below=.25 of dnaFirst](dnaSecond){$3^{\prime}$ ...TACCCCGAG... $5^{\prime}$};
+\commentAt{$(dnaFirst.west)!.5!(dnaSecond.west)+(-.5,0)$}{dnaLeft}{DNA}{?}
+\comment{right=of dnaSecond}{antisenseStrand}{Antisense Strand}{?}
+\draw[line](dnaSecond) to (antisenseStrand);
+\comment{below=.5 of antisenseStrand.west, anchor=west}{templateStrand}{Template Strand}{?}
+\node[below=of dnaSecond](mrnaFirst){$5^{\prime}$ ...AUGGGGCUC... $3^{\prime}$};
+\comment{right=of mrnaFirst}{mrnaWithCodons}{mRNA with codons}{?}
+\draw[line](mrnaFirst) to (mrnaWithCodons);
+\node[below=.25 of mrnaFirst](mrnaSecond){UACCCCGAG};
+\commentAt{$(mrnaFirst.west)+(-.5,-.5)$}{mrnaLeft}{mRNA}{?}
+\draw[arrow](dnaSecond) to (mrnaFirst);
+\comment{below=of mrnaSecond}{peptide}{Peptide}{?}
+\draw[arrow](mrnaSecond) to coordinate(mrnaToProtein) (peptide);
+\comment{right=0 of mrnaToProtein}{translateText}{Translate}{?}
+\comment{below=1.25 of mrnaLeft}{proteinsText}{Protein}{?}
+
+
+
 https://www.youtube.com/watch?v=0E4p34mqJbg
 % https://www.vedantu.com/question-answer/which-of-the-following-would-not-be-considered-class-12-biology-cbse-5fb37455b8881b0c51d41bf3
 % https://www.youtube.com/watch?v=ad6h4ErsSTY

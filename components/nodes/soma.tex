@@ -3,7 +3,7 @@
 \question{below right=of soma, fill=gray}{organelle2}{Organelle}{?}
 \question{below=of cytoplasm, fill=gray}{organelle1}{Organelle}{?}
 \question{below=of organelle2}{nucleus}{Nucleus}{?}
-\draw[brown, dashed]($(nucleus.north)+(0,.5)$)
+\draw[purple, dashed]($(nucleus.north)+(0,.5)$)
 -| coordinate(nuclearEnvelopeSquare)
 ($(nucleus.east)+(.5,0)$)
 |- ($(nucleus.south)+(0,-.5)$)
@@ -38,6 +38,13 @@ node at(smoothEndoplasmicReticulum){
 \node[default, draw, right=5 of gene](rna){RNA};
 \question{right=5 of rna}{spliceosome}{Spliceosome}{?}
 \question{right=5 of spliceosome}{mrna}{Messenger Ribonucleic Acid}{?}
+\draw[dashed, brown]($(histone.west)+(-.4,0)$)
+|- coordinate(chromatin) ($(deoxyribonucleicAcid.south)+(0,-.4)$)
+-| ($(deoxyribonucleicAcid.east)+(.4,0)$)
+|- ($(histone.north)+(0,.4)$) -| cycle;
+\question{left=of chromatin}{chromatinText}{Chromatin}{?}
+\draw[line, dashed, brown](chromatin) to (chromatinText);
+\node[below= of chromatinText]{\href{https://www.youtube.com/watch?v=8Ayp7ReOUG8}{Adress}};
 % ------------------------------------ Arrows -----------------------------------------------------------
 \draw[line](soma) to (cytoplasm);
 \draw[line](soma) to (organelle2);
@@ -154,12 +161,15 @@ node[below=0 of terminator]{
 \node[default, below=2 of gene2](gene3){};
 \draw(gene3.north) -- +(4.85,0) |- (gene3.south) -- +(-4.85,0) node(space3){} |- cycle;
 \node[draw, rectangle, minimum width=.3cm, minimum height=1cm, fill=blue, switch ocg={capText capTexte}](cap) at($(gene3)+(-4.7,0)$){};
-\comment{below=0 of cap}{capText}{5' Cap}{?}
+\comment{below=0 of cap}{capText}{$5^{\prime}$ Cap}{?}
 \node[draw, rectangle, minimum width=.3cm, minimum height=1cm, fill=green, switch ocg={polyaText polyaTexte}](polya) at($(gene3)+(4.7,0)$){};
 \comment{right=of polya}{preMrna}{Pre-mRNA}{?}
 \draw[arrow](polya) to (preMrna);
 \comment{below=0 of polya}{polyaText}{$3^{\prime}$ Poly-A Tail}{?}
 \comment{below=0 of polyaText}{polyaTextSecond}{Polyadenylation}{?}
+\comment{right=of polyaText}{adenosineMonophosphates}{\textcolor{black}{Consists of }Adenosine Monophosphates}{\textcolor{black}{Consists of: }?}
+\comment{below=.5 of adenosineMonophosphates.west, anchor=west}{protect}{\textcolor{black}{Protects} mRNA from enzymatic degradation in cytoplasm}{\textcolor{black}{Protects: }?}
+\draw[-](polyaText) to (adenosineMonophosphates);
 \draw[arrow](gene2) to (gene3);
 
 \node[default, below=2 of gene3, switch ocg={exon exo}](gene4){

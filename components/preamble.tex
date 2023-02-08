@@ -51,6 +51,14 @@
         \basicr{#2e}{#4}
     };
 }
+\newcommand{\questionAt}[4]{
+    \node[default, draw, switch ocg={#2 #2e}](#2) at(#1){
+        \basic{#2}{#3}
+    };
+    \node at(#2){
+        \basicr{#2e}{#4}
+    };
+}
 \newcommand{\comment}[4]{
     \node[#1,
         switch ocg={#2 #2e}](#2){
