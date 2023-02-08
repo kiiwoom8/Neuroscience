@@ -28,7 +28,9 @@ node at(smoothEndoplasmicReticulum){
 };
 \question{below=of nucleus}{chromosome}{Chromosome}{?}
 \comment{right=of chromosome}{chromosomeText}{\textcolor{black}{Number of human's:} 46}{\textcolor{black}{Number of human's:} ?}
-\question{below= of chromosome}{deoxyribonucleicAcid}{Deoxyribonucleic Acid}{?}
+\question{below right= of chromosome}{deoxyribonucleicAcid}{Deoxyribonucleic Acid}{?}
+\question{below=of chromosome}{histone}{Histone}{?}
+\draw[line](chromosome) to (histone);
 \comment{right=.3 of deoxyribonucleicAcid}{dnaTextFirst}{Same in all the cells}{?}
 \comment{above=of dnaTextFirst.west, anchor=west, yshift=-.5cm}{size}{\textcolor{black}{Size: }2$\mu$m}{\textcolor{black}{Size: }?}
 \comment{below =of dnaTextFirst.west, anchor=west, yshift=.5cm}{geneExpression}{\textcolor{black}{What DNA reading is known as:} Gene Expression}{\textcolor{black}{What DNA reading is known as:} ?}
@@ -156,7 +158,8 @@ node[below=0 of terminator]{
 \node[draw, rectangle, minimum width=.3cm, minimum height=1cm, fill=green, switch ocg={polyaText polyaTexte}](polya) at($(gene3)+(4.7,0)$){};
 \comment{right=of polya}{preMrna}{Pre-mRNA}{?}
 \draw[arrow](polya) to (preMrna);
-\comment{below=0 of polya}{polyaText}{3' Poly-A Tail}{?}
+\comment{below=0 of polya}{polyaText}{$3^{\prime}$ Poly-A Tail}{?}
+\comment{below=0 of polyaText}{polyaTextSecond}{Polyadenylation}{?}
 \draw[arrow](gene2) to (gene3);
 
 \node[default, below=2 of gene3, switch ocg={exon exo}](gene4){
