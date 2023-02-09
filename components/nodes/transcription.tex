@@ -24,6 +24,14 @@
 \question{right=of nucleicAcidText}{nucleotide}{Nucleotide}{?}
 \comment{below=0 of nucleotide}{nucleotideTextFirst}{\textcolor{black}{1. }Provide Chemical Energy}{\textcolor{black}{1. }?}
 \comment{below=0 of nucleotideTextFirst}{nucleotideTextSecond}{\textcolor{black}{2. }Participate in Cell Signaling}{\textcolor{black}{2. }?}
+\comment{below=of nucleotideTextSecond}{nucleotideTextThird}{Nucleotide Polymorphism}{\textcolor{black}{What Mutation results from: }?}
+\draw[line](nucleotideTextSecond) to (nucleotideTextThird);
+\comment{below=of nucleotideTextThird}{knockout}{Knockout}{\textcolor{black}{Deleted: }?}
+\comment{below=0 of knockout}{transgenic}{Transgenic}{\textcolor{black}{Overexpressed: }?}
+\comment{below=0 of transgenic}{knockin}{Knockin}{\textcolor{black}{Replaced: }?}
+
+\draw[line](nucleotideTextThird) to (knockout);
+
 \comment{above=of nucleotide}{nucleotideText}{Monomer}{?}
 \draw[line](nucleotide) to (nucleotideText);
 \node at($(nucleicAcidText.east)!.5!(nucleotide.west)$){\huge$\ni$};
