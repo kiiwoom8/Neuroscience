@@ -172,11 +172,16 @@ https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3195647/
 \node[below=.25 of mrnaFirst](mrnaSecond){UACCCCGAG};
 \commentAt{$(mrnaFirst.west)+(-.5,-.5)$}{mrnaLeft}{mRNA}{?}
 \draw[arrow](dnaSecond) to (mrnaFirst);
-\comment{below=of mrnaSecond}{peptide}{Peptide}{?}
+\question{below=of mrnaSecond}{trna}{tRNA}{?}
+\comment{below=of trna}{peptide}{Peptides}{?}
+\comment{right=of peptide}{peptideText}{Short chain of amino acids}{?}
+\draw[line](peptide) to (peptideText);
 \node[below=of peptide]{\href{https://www.youtube.com/watch?v=-L0rikDOX5s}{Adress}};
-\draw[arrow](mrnaSecond) to coordinate(mrnaToProtein) (peptide);
-\comment{right=0 of mrnaToProtein}{translateText}{Translate}{?}
-\comment{below=1.25 of mrnaLeft}{proteinsText}{Protein}{?}
+\draw[arrow](mrnaSecond) to coordinate(mrnaToTrna) (trna);
+\draw[arrow](trna) to coordinate(trnaToPeptide) (peptide);
+\comment{below=3.25 of mrnaLeft}{proteinsText}{Protein}{?}
+\comment{left=of proteinsText}{proteinsTextText}{Long chain of amino acids}{?}
+\draw[line](proteinsText) to (proteinsTextText);
 
 
 
