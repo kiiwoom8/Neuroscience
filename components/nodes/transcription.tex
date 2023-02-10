@@ -181,15 +181,23 @@ https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3195647/
 \commentAt{$(mrnaFirst.west)+(-.5,-.5)$}{mrnaLeft}{mRNA}{?}
 \draw[arrow](dnaSecond) to (mrnaFirst);
 \question{below=of mrnaSecond}{trna}{tRNA}{?}
-\comment{below=of trna}{peptide}{Peptides}{?}
+\question{below=of trna}{peptide}{Peptides}{?}
 \comment{right=of peptide}{peptideText}{Short chain of amino acids}{?}
 \draw[line](peptide) to (peptideText);
-\node[below=of peptide]{\href{https://www.youtube.com/watch?v=-L0rikDOX5s}{Adress}};
 \draw[arrow](mrnaSecond) to coordinate(mrnaToTrna) (trna);
 \draw[arrow](trna) to coordinate(trnaToPeptide) (peptide);
-\comment{below=3.25 of mrnaLeft}{proteinsText}{Protein}{?}
-\comment{left=of proteinsText}{proteinsTextText}{Long chain of amino acids}{?}
-\draw[line](proteinsText) to (proteinsTextText);
+\question{below left=of peptide, xshift=1.5cm}{oligopeptide}{Oligopeptide}{?}
+\comment{left=of oligopeptide}{oligopeptideText}{Chain of fewer than 20 amino acids}{?}
+\draw[line](oligopeptide) to (oligopeptideText);
+\draw[line](peptide) to (oligopeptide);
+\comment{below=0 of oligopeptide}{dipeptide}{\textcolor{black}{1. }Dipeptide}{\textcolor{black}{1. }?}
+\comment{below=0 of dipeptide}{tripeptide}{\textcolor{black}{2. }Tripeptide}{\textcolor{black}{2. }?}
+\comment{below=0 of tripeptide}{tetrapeptide}{\textcolor{black}{3. }Tetrapeptide}{\textcolor{black}{3. }?}
+\question{below right=of peptide, xshift=-1.5cm}{polypeptide}{Polypeptide}{?}
+\draw[line](peptide) to (polypeptide);
+\question{right=5cm of polypeptide}{proteinSecond}{Protein}{?}
+\draw[arrow](polypeptide) to coordinate(polypeptideToProtein) (proteinSecond);
+\comment{above=0 of polypeptideToProtein}{polypeptideToProteinText}{More than 50 amino acids}{?}
 
 
 
