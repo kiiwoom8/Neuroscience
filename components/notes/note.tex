@@ -85,3 +85,23 @@
 \draw[-latex, blue](problemFirst.center) -- (solutionSecond.center) -- (problemThird.center) -- (solutionForth.center) -- ++(0,-1)
 ;
 \draw[-latex, red]($(problemThird)+(2,-3)$) to (problemThird.south);
+
+\node[default, draw, below=10 of trial](experience){Happy Experience};
+\node[default, draw, below=of experience](memory){Memory};
+\draw[arrow](experience) to (memory);
+\node[right=of memory](prediction){Prediction: I've been happy. So I will be happy};
+\draw[line](memory) to (prediction);
+
+\node[default, draw, left=of experience](badExperience){Bad Experience};
+\node[default, draw, below=of badExperience](memorySecond){Memory};
+\node[left=of memorySecond](memorySecondText){Prediction: I've been unfortunate. So I will be unfortunate};
+\draw[arrow](badExperience) to (memorySecond);
+\draw[line](memorySecond) to (memorySecondText);
+\node[default, draw, left=of memorySecondText](learnedHelplessness){Learned Helplessness};
+\draw[line](memorySecondText) to (learnedHelplessness);
+\node[default, draw, below=of memorySecond](stress){Stress};
+\node[left=of stress](threat){Threat to survival};
+\draw[line](stress) to (threat);
+\draw[arrow](memorySecond) to (stress);
+\node[below=of stress](stressText){Depend on midbrain while thinking, because it's in emergency};
+\draw[arrow](stress) to (stressText);
