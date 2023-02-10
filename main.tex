@@ -27,4 +27,9 @@
 \input{components/pages/first.tex}
 \input{components/pages/second.tex}
 \input{components/pages/third.tex}
+\begin{inctext}[label={overlay}, overlay={\node at($(page.north)+(0,-3)$){\Huge Behavior Mechanism};}]
+    \begin{tikzpicture}
+        \input{components/notes/note.tex}
+    \end{tikzpicture}
+\end{inctext}
 \end{document}
