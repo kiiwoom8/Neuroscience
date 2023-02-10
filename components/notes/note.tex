@@ -32,6 +32,8 @@
 \node[default, draw, below=of solve](trialThird){Trial};
 \node[default, draw, below=of game](trialSecond){Trial};
 \node[default, draw, below=of trialSecond](solveSecond){Solve};
+\node[right=of solveSecond](solveSecondText){Fast Feedback};
+\draw[line](solveSecond) to (solveSecondText);
 \node[default, draw, below=of solveSecond](trialForth){Trial};
 \draw[arrow](me.south) to (study.north);
 \draw[arrow](study) to (trial);
