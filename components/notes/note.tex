@@ -25,6 +25,8 @@
 \draw[arrow](environment) to (me);
 \node[default, draw, below left=2 of me](study){Study};
 \node[default, draw, below right=2 of me](game){Game};
+\node[right=of game](accessibility){High Accessibility};
+\draw[line](game) to (accessibility);
 \node[default, draw, below=of study](trial){Trial};
 \node[default, draw, below=of trial](solve){Solve};
 \node[default, draw, below=of solve](trialThird){Trial};
@@ -43,4 +45,15 @@
 \draw[arrow](solve) to (trialThird);
 \draw[arrow](solveSecond) to (trialForth);
 \draw[dotted, line width=3pt]($(trialThird.south)+(0,-.2cm)$) to ++(0,-.5);
-\draw[dotted, line width=3pt]($(trialForth.south)+(0,-.2cm)$) to ++(0,-.5);
+\draw[dotted, line width=3pt]($(trialForth.south)+(0,-.2cm)$) to ++(0,-.5) coordinate(end);
+\node[right=of trialToSolve](method){Good study method};
+\draw[line](trialToSolve) to (method);
+
+\draw[dashed, brown]($(game.north)+(0,.2cm)$)
+-| ($(trialForth.west)+(-.2cm,0)$)
+|- ($(end.south)+(0,-.2cm)$)
+-| ($(game.east)+(.2,0)$)
+|- cycle
+;
+\draw[arrow, brown, dashed](me.east) to coordinate(meToGame)($(game.north)+(0,.2cm)$);
+\node[right=.1 of meToGame, brown](predict){Prediction = \textcolor{black}{Pleasure $>$ }\textcolor{red}{Pain}};
