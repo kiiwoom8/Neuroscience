@@ -177,15 +177,25 @@ https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3195647/
 \node[below=of dnaSecond](mrnaFirst){$5^{\prime}$ ...AUGGGGCUC... $3^{\prime}$};
 \comment{right=of mrnaFirst}{mrnaWithCodons}{mRNA with codons}{?}
 \draw[line](mrnaFirst) to (mrnaWithCodons);
-\node[below=.25 of mrnaFirst](mrnaSecond){UACCCCGAG};
-\commentAt{$(mrnaFirst.west)+(-.5,-.5)$}{mrnaLeft}{mRNA}{?}
+\commentAt{$(mrnaFirst.west)+(-.5,0)$}{mrnaLeft}{mRNA}{?}
 \draw[arrow](dnaSecond) to (mrnaFirst);
-\question{below=of mrnaSecond}{trna}{tRNA}{?}
+\question{below=of mrnaFirst}{trna}{tRNA}{?}
+\comment{left=of trna}{trnaText}{Read Triplet}{?}
+\comment{left=of trnaText}{codon}{Codon}{?}
+\draw[line](trna) to (trnaText);
+\question{right=of trna}{aminoAcid}{Amino Acid}{?}
+\question{right=3 of aminoAcid}{aminoAcidSecond}{Amino Acid}{?}
+\draw[line](aminoAcid) to coordinate(aminoAcidBond) (aminoAcidSecond);
+\comment{above=0 of aminoAcidBond}{peptideBond}{Peptide Bond}{?}
+\comment{below=.5 of trnaText.east, anchor=east}{anticodon}{Contain Anticodon}{?}
+\draw[line](trna) to (aminoAcid);
+\draw[line](trnaText) to (codon);
+\draw[arrow](mrnaFirst) to (trna);
 \question{below=of trna}{peptide}{Peptides}{?}
+\draw[arrow](trna) to (peptide);
 \comment{right=of peptide}{peptideText}{Short chain of amino acids}{?}
 \draw[line](peptide) to (peptideText);
-\draw[arrow](mrnaSecond) to coordinate(mrnaToTrna) (trna);
-\draw[arrow](trna) to coordinate(trnaToPeptide) (peptide);
+
 \question{below left=of peptide, xshift=1.5cm}{oligopeptide}{Oligopeptide}{?}
 \comment{left=of oligopeptide}{oligopeptideText}{Chain of fewer than 20 amino acids}{?}
 \draw[line](oligopeptide) to (oligopeptideText);

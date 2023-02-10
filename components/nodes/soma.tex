@@ -1,5 +1,7 @@
 \question{}{soma}{Soma}{?}
 \question{below left=of soma}{cytoplasm}{Cytoplasm}{?}
+\question{above=2cm of cytoplasm}{trna}{tRNA}{?}
+\draw[line](cytoplasm) to (trna);
 \question{below right=of cytoplasm}{cytosol}{Cytosol}{?}
 \draw[line](cytoplasm) to (cytosol);
 \question{below right=of soma, fill=gray}{organelle2}{Organelle}{?}
@@ -33,10 +35,11 @@
 \draw[line](boundRibosome) to (boundRibosomeText);
 \draw[-](ribosome.west) to (freeRibosome.east);
 \draw[-](ribosome.west) to (boundRibosome.east);
-\question{left=4 of freeRibosome}{polyribosome}{Polyribosome}{?}
+\question{left=6 of freeRibosome}{polyribosome}{Polyribosome}{?}
 \draw[line](freeRibosome) to coordinate(freeRibosomeToPolyribosome) (polyribosome);
-\comment{below=0 of freeRibosomeToPolyribosome}{freeRibosomeToPolyribosomeText}{Attached by a thread}{?}
-\node[default, draw, above=of ribosome](proteinSynthesis){Protein Sysnthesis};
+\comment{below=0 of freeRibosomeToPolyribosome}{freeRibosomeToPolyribosomeText}{Attached by a strand of mRNA}{?}
+\comment{above=of ribosome}{ribosomeText}{Made of rRNA}{?}
+\draw[line](ribosome) to (ribosomeText);
 \question{below left=1cm of endoplasmicReticulum, xshift=2cm}{roughEndoplasmicReticulum}{Rough Endoplasmic Reticulum}{?}
 \question{below right=1cm of endoplasmicReticulum, xshift=-2cm}{smoothEndoplasmicReticulum}{Smooth Endoplasmic Reticulum}{?}
 \comment{left=of roughEndoplasmicReticulum}{roughEndoplasmicReticulumText}{\textcolor{black}{Mainly found }toward the nucleus of cell}{\textcolor{black}{Mainly found: }?}
@@ -89,7 +92,6 @@
 \comment{above=0 of spliceosomeToMrna}{splicing}{Splicing}{?}
 \draw[arrow, green](mrna) |- (space1.center) to (nucleus);
 \draw[arrow, green, postaction={decorate, decoration={text along path, text align=center, reverse path, raise=5pt, text={Export}}}](nuclearEnvelope) |- ($(soma.north west)+(0,1)$) to (ribosome);
-\draw[arrow, green](ribosome) to (proteinSynthesis);
 
 \question{below right=4 of transcription}{rnap}{RNA polymerase}{?}
 
