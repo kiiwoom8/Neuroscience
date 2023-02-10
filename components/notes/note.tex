@@ -57,3 +57,29 @@
 ;
 \draw[arrow, brown, dashed](me.east) to coordinate(meToGame)($(game.north)+(0,.2cm)$);
 \node[right=.1 of meToGame, brown](predict){Prediction = \textcolor{black}{Pleasure $>$ }\textcolor{red}{Pain}};
+
+\node[default,draw, right=3 of accessibility](episodeFirst){Episode \#1};
+\node[default,draw, right=of episodeFirst](episodeSecond){Episode \#2};
+\node[default,draw, right=of episodeSecond](episodeThird){Episode \#3};
+\node[default,draw, right=of episodeThird](episodeForth){Episode \#4};
+\draw[arrow, blue](episodeFirst) to (episodeSecond);
+\draw[arrow, blue](episodeSecond) to (episodeThird);
+\draw[arrow, blue](episodeThird) to (episodeForth);
+\node[above=of episodeSecond](episodeSecondText){Cannot concentrate in the middle because don't have trial};
+\draw[arrow, red](episodeSecondText) to (episodeSecond);
+\node[below=of episodeFirst](episodeFirstText){The highest accessibility};
+\draw[arrow](episodeFirstText) to (episodeFirst);
+
+\node[rectangle, draw, below=of episodeFirstText](problemFirst){Problem 1};
+\node[rectangle, draw, right=0 of problemFirst](solutionFirst){Solution 1};
+\node[rectangle, draw, right=0 of solutionFirst](problemSecond){Problem 2};
+\node[rectangle, draw, right=0 of problemSecond](solutionSecond){Solution 2};
+\node[rectangle, draw, below=0 of solutionSecond](problemThird){Problem 3};
+\node[rectangle, draw, left=0 of problemThird](solutionThird){Solution 3};
+\node[rectangle, draw, left=0 of solutionThird](problemForth){Problem 4};
+\node[rectangle, draw, left=0 of problemForth](solutionForth){Solution 4};
+\draw[dotted, line width=3pt]($(problemForth.south east)+(0,-.8)$) to +(0,.5);
+\draw(solutionForth.south west) -- ++(0,-7cm) -| coordinate(square) (problemThird.south east);
+\draw[-latex, blue](problemFirst.center) -- (solutionSecond.center) -- (problemThird.center) -- (solutionForth.center) -- ++(0,-1)
+;
+\draw[-latex, red]($(problemThird)+(2,-3)$) to (problemThird.south);
