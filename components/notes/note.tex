@@ -4,13 +4,13 @@
 \node[default, draw, below=of me](memory){Memory};
 \draw[arrow](me) to (memory);
 \node[default, draw, above left=of memory](hardKnowledge){Hard Knowledge};
-\draw[-latex](hardKnowledge) to (memory.west) to ($(memory.west)+(-1,-1)$);
+\draw[-latex, red](hardKnowledge) to (memory.west) to ($(memory.west)+(-1,-1)$);
 \node[default, draw, above right=of memory](properKnowledge){Proper Knowledge};
 \node[default, draw, above right=of properKnowledge, yshift=-1.2cm](primarySensoryFactor){Primary Sensory Factors};
 \node[default, draw, below right=of properKnowledge, yshift=1.2cm](Scholorship){Scholorship};
 \draw[-](properKnowledge.east) to (primarySensoryFactor.west);
 \draw[-](properKnowledge.east) to (Scholorship.west);
-\draw[-latex](properKnowledge) to (memory.east);
+\draw[-latex, blue](properKnowledge) to (memory.east);
 \node[default, draw, below right=of memory](easyKnowledge){Easy Knowledge};
 \draw[-latex, decorate, decoration={snake}](easyKnowledge) to (memory);
 \node[default, draw, below=of memory](dopamine){Dopamine Urge};
