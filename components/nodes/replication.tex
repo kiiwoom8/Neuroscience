@@ -1,0 +1,20 @@
+% \node[default, draw](dna){DNA};
+% \question{below=of dna}{primase}{Primase}{?}
+% \draw[arrow](dna) to (primase);
+% \question{below=of primase}{primer}{Primer}{?}
+% \draw[line](primase) to (primer);
+% \comment{left=of primer}{primerText}{Made of RNA}{?}
+% \draw[line](primer) to (primerText);
+% \question{left=of dna}{helicase}{Helicase}{?}
+% \draw[arrow](dna) to (helicase);
+% \comment{left=of helicase}{helicaseText}{Break hydrogen bonds}{?}
+% \draw[line](helicase) to (helicaseText);
+% \question{above=of dna}{dnaPolymerase}{DNA Polymerase}{?}
+% \draw[arrow](dna) to (dnaPolymerase);
+% \comment{above=of dnaPolymerase}{dnaPolymeraseText}{Replicate DNA molecule}{?}
+% \draw[line](dnaPolymerase) to (dnaPolymeraseText);
+\question{}{helicase}{Helicase}{?}
+\draw($(helicase.center)+(-3,3)$) to coordinate(ssbProteinFirst)++(3,0) to ++(3,-3) to ++(3,0);
+\draw($(helicase.center)+(-3,-3)$) to coordinate(ssbProteinSecond) ++(3,0) to ++(3,3) coordinate(end);
+\comment{above=0 of ssbProteinSecond}{singleStradedBindingProtein}{Single-Stranded Binding Proteins}{?}
+\comment{below=0 of ssbProteinFirst}{singleStradedBindingProtein}{Single-Stranded Binding Proteins}{?}
