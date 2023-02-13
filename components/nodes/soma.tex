@@ -58,7 +58,7 @@
 \comment{above=of dnaTextFirst.west, anchor=west, yshift=-.5cm}{size}{\textcolor{black}{Size: }2$\mu$m}{\textcolor{black}{Size: }?}
 \comment{below =of dnaTextFirst.west, anchor=west, yshift=.5cm}{geneExpression}{\textcolor{black}{What DNA reading is known as:} Gene Expression}{\textcolor{black}{What DNA reading is known as:} ?}
 \node[default, draw, below=of deoxyribonucleicAcid](gene){Gene};
-\node[default, draw, right=5 of gene](rna){RNA};
+\question{right=5 of gene}{rna}{Premature mRNA}{?}
 \question{right=5 of rna}{spliceosome}{Spliceosome}{?}
 \question{right=5 of spliceosome}{mrna}{Messenger Ribonucleic Acid}{?}
 \draw[dashed, brown]($(histone.west)+(-.4,0)$)
