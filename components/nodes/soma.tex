@@ -1,224 +1,228 @@
-\question{}{soma}{Soma}{?}
-\question{below left=of soma}{cytoplasm}{Cytoplasm}{?}
-\question{above=2cm of cytoplasm}{trna}{tRNA}{?}
-\draw[line](cytoplasm) to (trna);
-\question{below right=of cytoplasm}{cytosol}{Cytosol}{?}
-\draw[line](cytoplasm) to (cytosol);
-\question{below right=of soma, fill=gray}{organelle2}{Organelle}{?}
-\question{left=of organelle2}{cellMembrane}{Cell Membrane}{?}
-\draw[line](organelle2) to (cellMembrane);
-\question{below=of cytoplasm, fill=gray}{organelle1}{Organelle}{?}
-\draw[line] (organelle1) to node[circle,fill=white, scale=.7]{\textcolor{red}{$\times$}} (cytosol);
-\question{below=of organelle2}{nucleus}{Nucleus}{?}
-\draw[purple, dashed]($(nucleus.north)+(0,.5)$)
--| coordinate(nuclearEnvelopeSquare)
-($(nucleus.east)+(.5,0)$)
-|- ($(nucleus.south)+(0,-.5)$)
--| ($(nucleus.west)+(-.5,0)$)
-|- cycle;
-\comment{right=0 of nuclearEnvelopeSquare}{nuclearEnvelope}{Nuclear Envelope}{?}
-\node[below right=of nucleus, yshift=.3cm](space1){};
-\question{left=of organelle1}{golgiApparatus}{Golgi Apparatus}{?}
-\node[default, draw, above=1.2 of golgiApparatus.east, anchor=east](mitochondria){Mitochondria};
-\question{below=1.2 of golgiApparatus.east, anchor=east}{endoplasmicReticulum}{Endoplasmic Reticulum}{?}
-\comment{left=of endoplasmicReticulum}{endoplasmicReticulumText}{\textcolor{black}{Not Found in }red blood cells, spermatozoa}{\textcolor{black}{Not found in: }?}
-\comment{above=.5 of endoplasmicReticulumText.east, anchor=east}{endoplasmicReticulumTextSecond}{Transportaion system of the eukaryotic cell}{?}
-\draw[line](endoplasmicReticulum) to (endoplasmicReticulumText);
-\question{above=1.2 of mitochondria.east, anchor=east}{ribosome}{Ribosome}{?}
-% \comment{left=of ribosome}{ribosomeText}{Attached to rough ER}{?}
-% \draw[line](ribosome) to (ribosomeText);
-\question{below left=of ribosome, yshift=1.4cm}{freeRibosome}{Free Ribosome}{?}
-\comment{below left=.5 of freeRibosome}{freeRibosomeText}{\textcolor{black}{Sysnthesized when }the protein is destined to reside within the cytosol}{\textcolor{black}{Synthesized when: }?}
-\draw[line](freeRibosome) to (freeRibosomeText.east);
-\question{above left=of ribosome, yshift=-1.4cm}{boundRibosome}{Bound Ribosome}{?}
-\comment{left=of boundRibosome}{boundRibosomeText}{Attached to rough ER}{?}
-\draw[line](boundRibosome) to (boundRibosomeText);
-\draw[-](ribosome.west) to (freeRibosome.east);
-\draw[-](ribosome.west) to (boundRibosome.east);
-\question{left=6 of freeRibosome}{polyribosome}{Polyribosome}{?}
-\draw[line](freeRibosome) to coordinate(freeRibosomeToPolyribosome) (polyribosome);
-\comment{below=0 of freeRibosomeToPolyribosome}{freeRibosomeToPolyribosomeText}{Attached by a strand of mRNA}{?}
-\comment{above=of ribosome}{ribosomeText}{Made of rRNA}{?}
-\draw[line](ribosome) to (ribosomeText);
-\question{below left=1cm of endoplasmicReticulum, xshift=2cm}{roughEndoplasmicReticulum}{Rough Endoplasmic Reticulum}{?}
-\question{below right=1cm of endoplasmicReticulum, xshift=-2cm}{smoothEndoplasmicReticulum}{Smooth Endoplasmic Reticulum}{?}
-\comment{left=of roughEndoplasmicReticulum}{roughEndoplasmicReticulumText}{\textcolor{black}{Mainly found }toward the nucleus of cell}{\textcolor{black}{Mainly found: }?}
-\comment{below=.5 of roughEndoplasmicReticulumText.east, anchor=east}{roughEndoplasmicReticulumTextSecond}{\textcolor{black}{Synthesized when }the protein is destined to be inserted into the membrane of the cell or an organelle}{\textcolor{black}{Synthesized when: }?}
-\comment{below left=.5 of smoothEndoplasmicReticulum}{smoothEndoplasmicReticulumText}{\textcolor{black}{Mainly found }toward the plasma membrane of cell}{\textcolor{black}{Mainly found: }?}
-\comment{below=.5 of smoothEndoplasmicReticulumText.east, anchor=east}{smoothEndoplasmicReticulumTextSecond}{Synthesize lipids, phospholipids and steroids}{?}
-\draw[line](roughEndoplasmicReticulum) to (roughEndoplasmicReticulumText);
-\draw[line](smoothEndoplasmicReticulum) to (smoothEndoplasmicReticulumText.east);
-\question{below=of nucleus}{nucleoplasm}{Nucleoplasm}{?}
-\question{below=of nucleoplasm}{chromosome}{Chromosome}{?}
-\comment{right=of chromosome}{chromosomeText}{\textcolor{black}{Number of human's:} 46}{\textcolor{black}{Number of human's:} ?}
-\question{below right= of chromosome}{deoxyribonucleicAcid}{Deoxyribonucleic Acid}{?}
-\question{below=of chromosome}{histone}{Histone}{?}
-\draw[line](chromosome) to (histone);
-\comment{right=.3 of deoxyribonucleicAcid}{dnaTextFirst}{Same in all the cells}{?}
-\comment{above=of dnaTextFirst.west, anchor=west, yshift=-.5cm}{size}{\textcolor{black}{Size: }2$\mu$m}{\textcolor{black}{Size: }?}
-\comment{below =of dnaTextFirst.west, anchor=west, yshift=.5cm}{geneExpression}{\textcolor{black}{What DNA reading is known as:} Gene Expression}{\textcolor{black}{What DNA reading is known as:} ?}
-\node[default, draw, below=of deoxyribonucleicAcid](gene){Gene};
-\question{right=5 of gene}{rna}{Premature mRNA}{?}
-\question{right=5 of rna}{spliceosome}{Spliceosome}{?}
-\question{right=5 of spliceosome}{mrna}{Messenger Ribonucleic Acid}{?}
-\draw[dashed, brown]($(histone.west)+(-.4,0)$)
-|- coordinate(chromatin) ($(deoxyribonucleicAcid.south)+(0,-.4)$)
--| ($(deoxyribonucleicAcid.east)+(.4,0)$)
-|- ($(histone.north)+(0,.4)$) -| cycle;
-\question{left=of chromatin}{chromatinText}{Chromatin}{?}
-\draw[line, dashed, brown](chromatin) to (chromatinText);
-\node[below= of chromatinText]{\href{https://www.youtube.com/watch?v=8Ayp7ReOUG8}{Adress}};
-% ------------------------------------ Arrows -----------------------------------------------------------
-\draw[line](soma) to (cytoplasm);
-\draw[line](soma) to (organelle2);
-\draw[line](organelle2) to (nucleus);
-\draw[line](cytoplasm) to (organelle1);
-\draw[-](organelle1.west) to (mitochondria.east);
-\draw[-](organelle1.west) to (golgiApparatus.east);
-\draw[-](organelle1.west) to (endoplasmicReticulum.east);
-\draw[-](organelle1.west) to (ribosome.east);
-\draw[line](endoplasmicReticulum) to (roughEndoplasmicReticulum);
-\draw[line](endoplasmicReticulum) to (smoothEndoplasmicReticulum);
-\draw[line](nucleus) to (nucleoplasm);
-\draw[line](nucleoplasm) to (chromosome);
-\draw[line](chromosome) to (deoxyribonucleicAcid);
-\draw[line](chromosome) to (chromosomeText);
-\draw[line](deoxyribonucleicAcid) to (gene);
-\draw[arrow, green](gene) to coordinate(geneToRna) (rna);
-\comment{above=0 of geneToRna}{transcription}{Transcription}{?}
+\begin{inctext}[label={overlay}, overlay={\node at($(page.north)+(0,-3)$){\Huge Soma};}]
+    \begin{tikzpicture}
+        \question{}{soma}{Soma}{?}
+        \question{below left=of soma}{cytoplasm}{Cytoplasm}{?}
+        \question{above=2cm of cytoplasm}{trna}{tRNA}{?}
+        \draw[line](cytoplasm) to (trna);
+        \question{below right=of cytoplasm}{cytosol}{Cytosol}{?}
+        \draw[line](cytoplasm) to (cytosol);
+        \question{below right=of soma, fill=gray}{organelle2}{Organelle}{?}
+        \question{left=of organelle2}{cellMembrane}{Cell Membrane}{?}
+        \draw[line](organelle2) to (cellMembrane);
+        \question{below=of cytoplasm, fill=gray}{organelle1}{Organelle}{?}
+        \draw[line] (organelle1) to node[circle,fill=white, scale=.7]{\textcolor{red}{$\times$}} (cytosol);
+        \question{below=of organelle2}{nucleus}{Nucleus}{?}
+        \draw[purple, dashed]($(nucleus.north)+(0,.5)$)
+        -| coordinate(nuclearEnvelopeSquare)
+        ($(nucleus.east)+(.5,0)$)
+        |- ($(nucleus.south)+(0,-.5)$)
+        -| ($(nucleus.west)+(-.5,0)$)
+        |- cycle;
+        \comment{right=0 of nuclearEnvelopeSquare}{nuclearEnvelope}{Nuclear Envelope}{?}
+        \node[below right=of nucleus, yshift=.3cm](space1){};
+        \question{left=of organelle1}{golgiApparatus}{Golgi Apparatus}{?}
+        \node[default, draw, above=1.2 of golgiApparatus.east, anchor=east](mitochondria){Mitochondria};
+        \question{below=1.2 of golgiApparatus.east, anchor=east}{endoplasmicReticulum}{Endoplasmic Reticulum}{?}
+        \comment{left=of endoplasmicReticulum}{endoplasmicReticulumText}{\textcolor{black}{Not Found in }red blood cells, spermatozoa}{\textcolor{black}{Not found in: }?}
+        \comment{above=.5 of endoplasmicReticulumText.east, anchor=east}{endoplasmicReticulumTextSecond}{Transportaion system of the eukaryotic cell}{?}
+        \draw[line](endoplasmicReticulum) to (endoplasmicReticulumText);
+        \question{above=1.2 of mitochondria.east, anchor=east}{ribosome}{Ribosome}{?}
+        % \comment{left=of ribosome}{ribosomeText}{Attached to rough ER}{?}
+        % \draw[line](ribosome) to (ribosomeText);
+        \question{below left=of ribosome, yshift=1.4cm}{freeRibosome}{Free Ribosome}{?}
+        \comment{below left=.5 of freeRibosome}{freeRibosomeText}{\textcolor{black}{Sysnthesized when }the protein is destined to reside within the cytosol}{\textcolor{black}{Synthesized when: }?}
+        \draw[line](freeRibosome) to (freeRibosomeText.east);
+        \question{above left=of ribosome, yshift=-1.4cm}{boundRibosome}{Bound Ribosome}{?}
+        \comment{left=of boundRibosome}{boundRibosomeText}{Attached to rough ER}{?}
+        \draw[line](boundRibosome) to (boundRibosomeText);
+        \draw[-](ribosome.west) to (freeRibosome.east);
+        \draw[-](ribosome.west) to (boundRibosome.east);
+        \question{left=6 of freeRibosome}{polyribosome}{Polyribosome}{?}
+        \draw[line](freeRibosome) to coordinate(freeRibosomeToPolyribosome) (polyribosome);
+        \comment{below=0 of freeRibosomeToPolyribosome}{freeRibosomeToPolyribosomeText}{Attached by a strand of mRNA}{?}
+        \comment{above=of ribosome}{ribosomeText}{Made of rRNA}{?}
+        \draw[line](ribosome) to (ribosomeText);
+        \question{below left=1cm of endoplasmicReticulum, xshift=2cm}{roughEndoplasmicReticulum}{Rough Endoplasmic Reticulum}{?}
+        \question{below right=1cm of endoplasmicReticulum, xshift=-2cm}{smoothEndoplasmicReticulum}{Smooth Endoplasmic Reticulum}{?}
+        \comment{left=of roughEndoplasmicReticulum}{roughEndoplasmicReticulumText}{\textcolor{black}{Mainly found }toward the nucleus of cell}{\textcolor{black}{Mainly found: }?}
+        \comment{below=.5 of roughEndoplasmicReticulumText.east, anchor=east}{roughEndoplasmicReticulumTextSecond}{\textcolor{black}{Synthesized when }the protein is destined to be inserted into the membrane of the cell or an organelle}{\textcolor{black}{Synthesized when: }?}
+        \comment{below left=.5 of smoothEndoplasmicReticulum}{smoothEndoplasmicReticulumText}{\textcolor{black}{Mainly found }toward the plasma membrane of cell}{\textcolor{black}{Mainly found: }?}
+        \comment{below=.5 of smoothEndoplasmicReticulumText.east, anchor=east}{smoothEndoplasmicReticulumTextSecond}{Synthesize lipids, phospholipids and steroids}{?}
+        \draw[line](roughEndoplasmicReticulum) to (roughEndoplasmicReticulumText);
+        \draw[line](smoothEndoplasmicReticulum) to (smoothEndoplasmicReticulumText.east);
+        \question{below=of nucleus}{nucleoplasm}{Nucleoplasm}{?}
+        \question{below=of nucleoplasm}{chromosome}{Chromosome}{?}
+        \comment{right=of chromosome}{chromosomeText}{\textcolor{black}{Number of human's:} 46}{\textcolor{black}{Number of human's:} ?}
+        \question{below right= of chromosome}{deoxyribonucleicAcid}{Deoxyribonucleic Acid}{?}
+        \question{below=of chromosome}{histone}{Histone}{?}
+        \draw[line](chromosome) to (histone);
+        \comment{right=.3 of deoxyribonucleicAcid}{dnaTextFirst}{Same in all the cells}{?}
+        \comment{above=of dnaTextFirst.west, anchor=west, yshift=-.5cm}{size}{\textcolor{black}{Size: }2$\mu$m}{\textcolor{black}{Size: }?}
+        \comment{below =of dnaTextFirst.west, anchor=west, yshift=.5cm}{geneExpression}{\textcolor{black}{What DNA reading is known as:} Gene Expression}{\textcolor{black}{What DNA reading is known as:} ?}
+        \node[default, draw, below=of deoxyribonucleicAcid](gene){Gene};
+        \question{right=5 of gene}{rna}{Premature mRNA}{?}
+        \question{right=5 of rna}{spliceosome}{Spliceosome}{?}
+        \question{right=5 of spliceosome}{mrna}{Messenger Ribonucleic Acid}{?}
+        \draw[dashed, brown]($(histone.west)+(-.4,0)$)
+        |- coordinate(chromatin) ($(deoxyribonucleicAcid.south)+(0,-.4)$)
+        -| ($(deoxyribonucleicAcid.east)+(.4,0)$)
+        |- ($(histone.north)+(0,.4)$) -| cycle;
+        \question{left=of chromatin}{chromatinText}{Chromatin}{?}
+        \draw[line, dashed, brown](chromatin) to (chromatinText);
+        \node[below= of chromatinText]{\href{https://www.youtube.com/watch?v=8Ayp7ReOUG8}{Adress}};
+        % ------------------------------------ Arrows -----------------------------------------------------------
+        \draw[line](soma) to (cytoplasm);
+        \draw[line](soma) to (organelle2);
+        \draw[line](organelle2) to (nucleus);
+        \draw[line](cytoplasm) to (organelle1);
+        \draw[-](organelle1.west) to (mitochondria.east);
+        \draw[-](organelle1.west) to (golgiApparatus.east);
+        \draw[-](organelle1.west) to (endoplasmicReticulum.east);
+        \draw[-](organelle1.west) to (ribosome.east);
+        \draw[line](endoplasmicReticulum) to (roughEndoplasmicReticulum);
+        \draw[line](endoplasmicReticulum) to (smoothEndoplasmicReticulum);
+        \draw[line](nucleus) to (nucleoplasm);
+        \draw[line](nucleoplasm) to (chromosome);
+        \draw[line](chromosome) to (deoxyribonucleicAcid);
+        \draw[line](chromosome) to (chromosomeText);
+        \draw[line](deoxyribonucleicAcid) to (gene);
+        \draw[arrow, green](gene) to coordinate(geneToRna) (rna);
+        \comment{above=0 of geneToRna}{transcription}{Transcription}{?}
 
-\draw[arrow,green](rna) to (spliceosome);
-\draw[arrow, green](spliceosome)to coordinate(spliceosomeToMrna) (mrna);
-\comment{above=0 of spliceosomeToMrna}{splicing}{Splicing}{?}
-\draw[arrow, green](mrna) |- (space1.center) to (nucleus);
-\draw[arrow, green, postaction={decorate, decoration={text along path, text align=center, reverse path, raise=5pt, text={Export}}}](nuclearEnvelope) |- ($(soma.north west)+(0,1)$) to (ribosome);
+        \draw[arrow,green](rna) to (spliceosome);
+        \draw[arrow, green](spliceosome)to coordinate(spliceosomeToMrna) (mrna);
+        \comment{above=0 of spliceosomeToMrna}{splicing}{Splicing}{?}
+        \draw[arrow, green](mrna) |- (space1.center) to (nucleus);
+        \draw[arrow, green, postaction={decorate, decoration={text along path, text align=center, reverse path, raise=5pt, text={Export}}}](nuclearEnvelope) |- ($(soma.north west)+(0,1)$) to (ribosome);
 
-\question{below right=4 of transcription}{rnap}{RNA polymerase}{?}
+        \question{below right=4 of transcription}{rnap}{RNA polymerase}{?}
 
-\draw[arrow, red!50!green!100!blue!100](transcription) -- (rnap);
-\question{right=2cm of rnap}{dna}{DNA}{?}
-\draw[arrow, red!50!green!100!blue!100](rnap) to node[above](open){Open}(dna);
-\comment{below=of open}{helicase}{\textcolor{black}{Using} Helicase}{\textcolor{black}{Using: }?}
-\draw[line] (open) to (helicase);
+        \draw[arrow, red!50!green!100!blue!100](transcription) -- (rnap);
+        \question{right=2cm of rnap}{dna}{DNA}{?}
+        \draw[arrow, red!50!green!100!blue!100](rnap) to node[above](open){Open}(dna);
+        \comment{below=of open}{helicase}{\textcolor{black}{Using} Helicase}{\textcolor{black}{Using: }?}
+        \draw[line] (open) to (helicase);
 
-\question{right=2cm of dna}{nucleotides}{One strand of Nucleotides}{?}
-\draw[dashed, brown]($(dna.north)+(0,1)$) -| ($(rnap.east)+(.3,0)$) |- ($(dna.south)+(0,-1)$) -| ($(nucleotides.west)+(-0.3, 0)$) |- coordinate(elongationText) cycle;
-\comment{right=0 of elongationText}{elongation}{Elongation}{?}
-\draw[arrow, red!50!green!100!blue!100](dna) to node[above]{Export}(nucleotides);
-\draw[arrow, blue](rnap) |- coordinate(rnapToNucleotide) ($(helicase.south)+(0,-.5)$) -| (nucleotides);
-\comment{below=.3 of rnapToNucleotide, anchor=west}{first}{\textcolor{blue}{1. }Guide nucleotides into position}{\textcolor{blue}{1. }?}
-\comment{below=.5 of first.west, anchor=west}{second}{\textcolor{blue}{2. }Facilitate attachment and elongation}{\textcolor{blue}{2. }?}
-\comment{below=.5 of second.west, anchor=west}{third}{\textcolor{blue}{3. }Measure and proofread replacement capability and termination recognition capability}{\textcolor{blue}{3. }?}
+        \question{right=2cm of dna}{nucleotides}{One strand of Nucleotides}{?}
+        \draw[dashed, brown]($(dna.north)+(0,1)$) -| ($(rnap.east)+(.3,0)$) |- ($(dna.south)+(0,-1)$) -| ($(nucleotides.west)+(-0.3, 0)$) |- coordinate(elongationText) cycle;
+        \comment{right=0 of elongationText}{elongation}{Elongation}{?}
+        \draw[arrow, red!50!green!100!blue!100](dna) to node[above]{Export}(nucleotides);
+        \draw[arrow, blue](rnap) |- coordinate(rnapToNucleotide) ($(helicase.south)+(0,-.5)$) -| (nucleotides);
+        \comment{below=.3 of rnapToNucleotide, anchor=west}{first}{\textcolor{blue}{1. }Guide nucleotides into position}{\textcolor{blue}{1. }?}
+        \comment{below=.5 of first.west, anchor=west}{second}{\textcolor{blue}{2. }Facilitate attachment and elongation}{\textcolor{blue}{2. }?}
+        \comment{below=.5 of second.west, anchor=west}{third}{\textcolor{blue}{3. }Measure and proofread replacement capability and termination recognition capability}{\textcolor{blue}{3. }?}
 
-\question{below left=of third}{substrate}{Substrate}{?}
-\question{below=of substrate}{product}{Product}{?}
-\draw[arrow](substrate) to coordinate(substrateToProduct)(product);
-\question{circle, scale=.7, right=of substrateToProduct}{enzyme}{\Large Enzyme}{?}
-\draw[line](substrateToProduct) to (enzyme);
-\comment{right=.25cm of enzyme}{enzymeTextSecond}{\textcolor{black}{Lower }Activation Energy}{\textcolor{black}{Lower: }?}
-\comment{above=of enzymeTextSecond.west, anchor=west, yshift=-.5cm}{enzymeTextFirst}{\textcolor{black}{Needed in order to }occur at rates fast enough to sustain life}{\textcolor{black}{Needed in order to:} ?}
-\comment{below=of enzymeTextSecond.west, anchor=west, yshift=.5cm}{equilibrium}{\textcolor{black}{Do not alter the }Equilibrium}{\textcolor{black}{Do not alter the: }?}
-\question{below right=of enzyme}{drug}{Drugs, Poisons}{?}
-\draw[arrow,-|](drug) -| (enzyme);
+        \question{below left=of third}{substrate}{Substrate}{?}
+        \question{below=of substrate}{product}{Product}{?}
+        \draw[arrow](substrate) to coordinate(substrateToProduct)(product);
+        \question{circle, scale=.7, right=of substrateToProduct}{enzyme}{\Large Enzyme}{?}
+        \draw[line](substrateToProduct) to (enzyme);
+        \comment{right=.25cm of enzyme}{enzymeTextSecond}{\textcolor{black}{Lower }Activation Energy}{\textcolor{black}{Lower: }?}
+        \comment{above=of enzymeTextSecond.west, anchor=west, yshift=-.5cm}{enzymeTextFirst}{\textcolor{black}{Needed in order to }occur at rates fast enough to sustain life}{\textcolor{black}{Needed in order to:} ?}
+        \comment{below=of enzymeTextSecond.west, anchor=west, yshift=.5cm}{equilibrium}{\textcolor{black}{Do not alter the }Equilibrium}{\textcolor{black}{Do not alter the: }?}
+        \question{below right=of enzyme}{drug}{Drugs, Poisons}{?}
+        \draw[arrow,-|](drug) -| (enzyme);
 
-\draw[arrow, red!50!green!100!blue!100](nucleotides) -- (rna);
-\node[default, draw, above=of spliceosome](different){Different mRNAs};
-\draw[arrow, gray](spliceosome) to coordinate(spliceosomeToDifferent) (different);
-\comment{right=0 of spliceosomeToDifferent}{alternativeSplicing}{Alternative Splicing}{?}
-\draw[dashed, purple]($(rnap.east)+(.5,0)$) -- +(0,1) -| ($(rnap.west)+(-.5,0)$) --
-coordinate(transcriptionFactor)
-++(0,-1) -| cycle;
-\comment{left=0 of transcriptionFactor}{transcriptionFactorText}{Transcription Factor \textcolor{blue}{(Regulatory Proteins)}}{?}
-% Gene
-\node[default, right=8 of nucleotides](gene2){};
-\draw(gene2.north) -- +(5,0) |- (gene2.south) -- +(-5,0) node(space2){} |- cycle;
-\node[rectangle, draw, left=.17cm of gene2, minimum height=1cm, minimum width=1cm, switch ocg={intron intro}](intron1){
-    \basic{intron}{\textcolor{blue}{Intron1}}}
-node at(intron1){
-    \basicr{intro}{\textcolor{blue}{?}}
-};
-\node[below=of intron1, switch ocg={splice splicee}](splice){
-    \basic{splice}{\textcolor{black}{Removed while} Splicing}}
-node at(splice) {
-    \basicr{splicee}{\textcolor{black}{Removed while:} ?}
-};
-\draw[line](intron1) to (splice);
-\node[rectangle, draw, switch ocg={pm pmm}, minimum height=1cm, minimum width=.3cm, fill=gray](promotor) at($(gene2)+(-4.7,0)$){};
-\node[below=0 of promotor, switch ocg={pm pmm}](promotor2){
-    \basic{pm}{Promotor}}
-node[below=0 of promotor]{
-    \basicr{pmm}{?}
-};
-\node[above=of promotor, switch ocg={regulatorySequences regulatorySequencess}](regulatorySequences){
-    \basic{regulatorySequences}{Regulatory Sequences}}
-node at(regulatorySequences){
-    \basicr{regulatorySequencess}{\textcolor{black}{Found near it:} ?}
-};
-\node[minimum width=2cm,minimum height=1cm, switch ocg={exon exo}](exon1)at($(promotor.east)!0.5!(intron1.west)$) {
-    \basic{exon}{Exon1}
-} node at (exon1){
-    \basicr{exo}{?}
-};
-\node[rectangle, right=0cm of intron1, minimum height=1cm, minimum width=2cm, switch ocg={exon exo}](exon2){
-    \basic{exon}{Exon2}
-} node at (exon2){
-    \basicr{exo}{?}
-};
-\node[rectangle, draw, right=0cm of exon2, minimum height=1cm, minimum width=2.5cm, switch ocg={intron intro}](intron2){
-    \basic{intron}{\textcolor{blue}{Intron2}}}
-node at(intron2) {
-    \basicr{intro}{\textcolor{blue}{?}}
-};
-\node[rectangle, draw, switch ocg={term ter}, minimum height=1cm, minimum width=.3cm, fill=gray](terminator)
-at($(gene2)+(4.7,0)$){} node[below=0 of terminator, switch ocg={term ter}]{
-    \basic{term}{Terminator}}
-node[below=0 of terminator]{
-    \basicr{ter}{\textcolor{red}{?}}
-};
-\node[minimum height=1cm, switch ocg={exon exo}](exon2) at($(intron2.east)!0.5!(terminator.west)$){
-    \basic{exon}{Exon3}
-} node at (exon2){
-    \basicr{exo}{?}
-};
-\draw[line](promotor) to (regulatorySequences);
-\node[default, below=2 of gene2](gene3){};
-\draw(gene3.north) -- +(4.85,0) |- (gene3.south) -- +(-4.85,0) node(space3){} |- cycle;
-\node[draw, rectangle, minimum width=.3cm, minimum height=1cm, fill=blue, switch ocg={capText capTexte}](cap) at($(gene3)+(-4.7,0)$){};
-\comment{below=0 of cap}{capText}{$5^{\prime}$ Cap}{?}
-\node[draw, rectangle, minimum width=.3cm, minimum height=1cm, fill=green, switch ocg={polyaText polyaTexte}](polya) at($(gene3)+(4.7,0)$){};
-\comment{right=of polya}{preMrna}{Pre-mRNA}{?}
-\draw[arrow](polya) to (preMrna);
-\comment{below=0 of polya}{polyaText}{$3^{\prime}$ Poly-A Tail}{?}
-\comment{below=0 of polyaText}{polyaTextSecond}{Polyadenylation}{?}
-\comment{right=of polyaText}{adenosineMonophosphates}{\textcolor{black}{Consists of }Adenosine Monophosphates}{\textcolor{black}{Consists of: }?}
-\comment{below=.5 of adenosineMonophosphates.west, anchor=west}{protect}{\textcolor{black}{Protects} mRNA from enzymatic degradation in cytoplasm}{\textcolor{black}{Protects: }?}
-\draw[-](polyaText) to (adenosineMonophosphates);
-\draw[arrow](gene2) to (gene3);
+        \draw[arrow, red!50!green!100!blue!100](nucleotides) -- (rna);
+        \node[default, draw, above=of spliceosome](different){Different mRNAs};
+        \draw[arrow, gray](spliceosome) to coordinate(spliceosomeToDifferent) (different);
+        \comment{right=0 of spliceosomeToDifferent}{alternativeSplicing}{Alternative Splicing}{?}
+        \draw[dashed, purple]($(rnap.east)+(.5,0)$) -- +(0,1) -| ($(rnap.west)+(-.5,0)$) --
+        coordinate(transcriptionFactor)
+        ++(0,-1) -| cycle;
+        \comment{left=0 of transcriptionFactor}{transcriptionFactorText}{Transcription Factor \textcolor{blue}{(Regulatory Proteins)}}{?}
+        % Gene
+        \node[default, right=8 of nucleotides](gene2){};
+        \draw(gene2.north) -- +(5,0) |- (gene2.south) -- +(-5,0) node(space2){} |- cycle;
+        \node[rectangle, draw, left=.17cm of gene2, minimum height=1cm, minimum width=1cm, switch ocg={intron intro}](intron1){
+            \basic{intron}{\textcolor{blue}{Intron1}}}
+        node at(intron1){
+            \basicr{intro}{\textcolor{blue}{?}}
+        };
+        \node[below=of intron1, switch ocg={splice splicee}](splice){
+            \basic{splice}{\textcolor{black}{Removed while} Splicing}}
+        node at(splice) {
+            \basicr{splicee}{\textcolor{black}{Removed while:} ?}
+        };
+        \draw[line](intron1) to (splice);
+        \node[rectangle, draw, switch ocg={pm pmm}, minimum height=1cm, minimum width=.3cm, fill=gray](promotor) at($(gene2)+(-4.7,0)$){};
+        \node[below=0 of promotor, switch ocg={pm pmm}](promotor2){
+            \basic{pm}{Promotor}}
+        node[below=0 of promotor]{
+            \basicr{pmm}{?}
+        };
+        \node[above=of promotor, switch ocg={regulatorySequences regulatorySequencess}](regulatorySequences){
+            \basic{regulatorySequences}{Regulatory Sequences}}
+        node at(regulatorySequences){
+            \basicr{regulatorySequencess}{\textcolor{black}{Found near it:} ?}
+        };
+        \node[minimum width=2cm,minimum height=1cm, switch ocg={exon exo}](exon1)at($(promotor.east)!0.5!(intron1.west)$) {
+            \basic{exon}{Exon1}
+        } node at (exon1){
+            \basicr{exo}{?}
+        };
+        \node[rectangle, right=0cm of intron1, minimum height=1cm, minimum width=2cm, switch ocg={exon exo}](exon2){
+            \basic{exon}{Exon2}
+        } node at (exon2){
+            \basicr{exo}{?}
+        };
+        \node[rectangle, draw, right=0cm of exon2, minimum height=1cm, minimum width=2.5cm, switch ocg={intron intro}](intron2){
+            \basic{intron}{\textcolor{blue}{Intron2}}}
+        node at(intron2) {
+            \basicr{intro}{\textcolor{blue}{?}}
+        };
+        \node[rectangle, draw, switch ocg={term ter}, minimum height=1cm, minimum width=.3cm, fill=gray](terminator)
+        at($(gene2)+(4.7,0)$){} node[below=0 of terminator, switch ocg={term ter}]{
+            \basic{term}{Terminator}}
+        node[below=0 of terminator]{
+            \basicr{ter}{\textcolor{red}{?}}
+        };
+        \node[minimum height=1cm, switch ocg={exon exo}](exon2) at($(intron2.east)!0.5!(terminator.west)$){
+            \basic{exon}{Exon3}
+        } node at (exon2){
+            \basicr{exo}{?}
+        };
+        \draw[line](promotor) to (regulatorySequences);
+        \node[default, below=2 of gene2](gene3){};
+        \draw(gene3.north) -- +(4.85,0) |- (gene3.south) -- +(-4.85,0) node(space3){} |- cycle;
+        \node[draw, rectangle, minimum width=.3cm, minimum height=1cm, fill=blue, switch ocg={capText capTexte}](cap) at($(gene3)+(-4.7,0)$){};
+        \comment{below=0 of cap}{capText}{$5^{\prime}$ Cap}{?}
+        \node[draw, rectangle, minimum width=.3cm, minimum height=1cm, fill=green, switch ocg={polyaText polyaTexte}](polya) at($(gene3)+(4.7,0)$){};
+        \comment{right=of polya}{preMrna}{Pre-mRNA}{?}
+        \draw[arrow](polya) to (preMrna);
+        \comment{below=0 of polya}{polyaText}{$3^{\prime}$ Poly-A Tail}{?}
+        \comment{below=0 of polyaText}{polyaTextSecond}{Polyadenylation}{?}
+        \comment{right=of polyaText}{adenosineMonophosphates}{\textcolor{black}{Consists of }Adenosine Monophosphates}{\textcolor{black}{Consists of: }?}
+        \comment{below=.5 of adenosineMonophosphates.west, anchor=west}{protect}{\textcolor{black}{Protects} mRNA from enzymatic degradation in cytoplasm}{\textcolor{black}{Protects: }?}
+        \draw[-](polyaText) to (adenosineMonophosphates);
+        \draw[arrow](gene2) to (gene3);
 
-\node[default, below=2 of gene3, switch ocg={exon exo}](gene4){
-    \basic{exon}{Exon}
-}
-node at(gene4){
-    \basicr{exo}{?}
-};
-\draw(gene4.north) -- +(2.85,0) |- (gene4.south) -- +(-2.85,0) node(space3){} |- cycle;
-\node[draw, rectangle, minimum width=.3cm, minimum height=1cm, fill=blue, switch ocg={cap capp}](cap2) at($(gene4)+(-2.7,0)$){};
-\node[below=0 of cap2, switch ocg={cap capp}](cap2Text){
-    \basic{cap}{5' Cap}
-}
-node at(cap2Text){
-    \basicr{capp}{?}
-};
-\node[draw, rectangle, minimum width=.3cm, minimum height=1cm, fill=green, switch ocg={polya polyaa}](polya2) at($(gene4)+(2.7,0)$){};
-\node[below=0 of polya2, switch ocg={polya polyaa}](polya2Text){
-    \basic{polya}{3' Poly-A Tail}
-}
-node at(polya2Text){
-    \basicr{polyaa}{?}
-};
-\comment{right=of polya2}{mrnaSecond}{mRNA}{?}
-\draw[arrow](polya2) to (mrnaSecond);
-\draw[arrow](gene3) to coordinate(gene3ToGene4) (gene4);
-\comment{right=0 of gene3ToGene4}{splicingSecond}{Splicing}{?}
-\comment{left=0 of gene3ToGene4}{modification}{Post-Transcriptional Modification}{?}
-\draw[arrow, dotted](splicing) to ($(promotor.west)+(-2pt,0)$);
+        \node[default, below=2 of gene3, switch ocg={exon exo}](gene4){
+            \basic{exon}{Exon}
+        }
+        node at(gene4){
+            \basicr{exo}{?}
+        };
+        \draw(gene4.north) -- +(2.85,0) |- (gene4.south) -- +(-2.85,0) node(space3){} |- cycle;
+        \node[draw, rectangle, minimum width=.3cm, minimum height=1cm, fill=blue, switch ocg={cap capp}](cap2) at($(gene4)+(-2.7,0)$){};
+        \node[below=0 of cap2, switch ocg={cap capp}](cap2Text){
+            \basic{cap}{5' Cap}
+        }
+        node at(cap2Text){
+            \basicr{capp}{?}
+        };
+        \node[draw, rectangle, minimum width=.3cm, minimum height=1cm, fill=green, switch ocg={polya polyaa}](polya2) at($(gene4)+(2.7,0)$){};
+        \node[below=0 of polya2, switch ocg={polya polyaa}](polya2Text){
+            \basic{polya}{3' Poly-A Tail}
+        }
+        node at(polya2Text){
+            \basicr{polyaa}{?}
+        };
+        \comment{right=of polya2}{mrnaSecond}{mRNA}{?}
+        \draw[arrow](polya2) to (mrnaSecond);
+        \draw[arrow](gene3) to coordinate(gene3ToGene4) (gene4);
+        \comment{right=0 of gene3ToGene4}{splicingSecond}{Splicing}{?}
+        \comment{left=0 of gene3ToGene4}{modification}{Post-Transcriptional Modification}{?}
+        \draw[arrow, dotted](splicing) to ($(promotor.west)+(-2pt,0)$);
+    \end{tikzpicture}
+\end{inctext}

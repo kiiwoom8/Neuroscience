@@ -6,35 +6,11 @@
 
 \begin{document}
 % \maketitle
-\begin{inctext}[label={overlay}, overlay={\node at($(page.north)+(0,-3)$){\Huge DNA Replication};}]
-    \begin{tikzpicture}
-        \input{components/nodes/replication.tex}
-    \end{tikzpicture}
-\end{inctext}
-\begin{inctext}[label={overlay}, overlay={\node at($(page.north)+(0,-3)$){\Huge Transcription};}]
-    \begin{tikzpicture}
-        \input{components/nodes/transcription.tex}
-    \end{tikzpicture}
-    \chemmove{
-        \draw[arrow, blue](hydrogen1) to (oxygen1);
-        \commentAt{$(oxygen2)!.5!(hydrogen2)+(-.35,0)$}{fivePrime}{$5^{\prime}$ Carbon}{?}
-        \commentAt{$(oxygen3)!.5!(hydrogen3)+(-.1,.1)$}{threePrime}{$3^{\prime}$ Carbon}{?}
-        \coordinate(glycosidicBond) at($(nitrogen1)!.5!(hydrogen5)$);
-        \comment{above left=2.5 of glycosidicBond}{glycosidicBondText}{Glycosidic Bond}{?}
-        \draw[line, dotted](glycosidicBond) to ($(glycosidicBondText.east)+(-.2,0)$);
-    }
-\end{inctext}
-\begin{inctext}[label={overlay}, overlay={\node at($(page.north)+(0,-3)$){\Huge Soma};}]
-    \begin{tikzpicture}
-        \input{components/nodes/soma}
-    \end{tikzpicture}
-\end{inctext}
+\input{components/nodes/replication.tex}
+\input{components/nodes/transcription.tex}
+\input{components/nodes/soma}
 \input{components/pages/first.tex}
 \input{components/pages/second.tex}
 \input{components/pages/third.tex}
-\begin{inctext}[label={overlay}, overlay={\node at($(page.north)+(0,-3)$){\Huge Behavior Mechanism};}]
-    \begin{tikzpicture}
-        \input{components/notes/note.tex}
-    \end{tikzpicture}
-\end{inctext}
+\input{components/notes/note.tex}
 \end{document}

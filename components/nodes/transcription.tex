@@ -1,218 +1,229 @@
-\node[default, draw](dna){DNA};
-\question{below=of dna}{rna}{RNA}{?}
-\question{left=3cm of dna}{mrna}{mRNA}{?}
-\question{right=3cm of dna}{ncRna}{ncRNA}{?}
-\draw[arrow](dna) to coordinate(rnaToMrna) (mrna);
-\comment{above=0 of rnaToMrna}{transcription}{Transcription}{?}
-\draw[arrow](dna) to coordinate(rnaToNcRna) (ncRna);
-\comment{above=0 of rnaToNcRna}{ncRnaText}{Transcription}{?}
-\comment{left=.2 of mrna}{mrnaText}{$1\sim 3$ \textcolor{black}{\% of total RNA samples}}{? \textcolor{black}{\% of total RNA samples}}
-\question{below left=of mrna, xshift=1.7cm}{untranslatedRegion}{Untranslated Regions}{?}
-\question{below right=of mrna, xshift=-1.7cm}{codingRegion}{Coding Regions}{?}
-\draw[line](mrna) to (untranslatedRegion.north);
-\draw[line](mrna) to (codingRegion.north);
-\comment{below=of codingRegion}{template}{Act as a template for protein synthesis \textcolor{blue}{(Translation)}}{?}
-\draw[line](codingRegion) to (template);
-\comment{right=of ncRna}{ncRnaTextSecond}{Not Translated}{?}
-\draw[line](ncRna) to (ncRnaTextSecond);
-\draw[dashed, brown]($(rna.south)+(0,-.5)$)
--| coordinate(nucleicAcid) ($(dna.east)+(.5,0)$) |- ($(dna.north)+(0,.5)$) -| ($(rna.west)+(-.5,0)$) |- cycle;
-\question{right=of nucleicAcid}{nucleicAcidText}{Nucleic Acid}{?}
-\comment{above=of nucleicAcidText}{nucleicAcidTextSecond}{Polymer}{?}
-\draw[line](nucleicAcidText) to (nucleicAcidTextSecond);
-\draw[line, dashed, brown](nucleicAcid) to (nucleicAcidText);
-\question{right=of nucleicAcidText}{nucleotide}{Nucleotide}{?}
-\comment{below=0 of nucleotide}{nucleotideTextFirst}{\textcolor{black}{1. }Provide Chemical Energy}{\textcolor{black}{1. }?}
-\comment{below=0 of nucleotideTextFirst}{nucleotideTextSecond}{\textcolor{black}{2. }Participate in Cell Signaling}{\textcolor{black}{2. }?}
-\comment{below=of nucleotideTextSecond}{nucleotideTextThird}{Nucleotide Polymorphism}{\textcolor{black}{What Mutation results from: }?}
-\draw[line](nucleotideTextSecond) to (nucleotideTextThird);
-\comment{below=of nucleotideTextThird}{knockout}{Knockout}{\textcolor{black}{Deleted: }?}
-\comment{below=0 of knockout}{transgenic}{Transgenic}{\textcolor{black}{Overexpressed: }?}
-\comment{below=0 of transgenic}{knockin}{Knockin}{\textcolor{black}{Replaced: }?}
+\begin{inctext}[label={overlay}, overlay={\node at($(page.north)+(0,-3)$){\Huge Transcription};}]
+    \begin{tikzpicture}
+        \node[default, draw](dna){DNA};
+        \question{below=of dna}{rna}{RNA}{?}
+        \question{left=3cm of dna}{mrna}{mRNA}{?}
+        \question{right=3cm of dna}{ncRna}{ncRNA}{?}
+        \draw[arrow](dna) to coordinate(rnaToMrna) (mrna);
+        \comment{above=0 of rnaToMrna}{transcription}{Transcription}{?}
+        \draw[arrow](dna) to coordinate(rnaToNcRna) (ncRna);
+        \comment{above=0 of rnaToNcRna}{ncRnaText}{Transcription}{?}
+        \comment{left=0 of mrna}{mrnaText}{$1\sim 3$ \textcolor{black}{\% of total RNA samples}}{?}
+        \question{below left=of mrna, xshift=1.7cm}{untranslatedRegion}{Untranslated Regions}{?}
+        \question{below right=of mrna, xshift=-1.7cm}{codingRegion}{Coding Regions}{?}
+        \draw[line](mrna) to (untranslatedRegion.north);
+        \draw[line](mrna) to (codingRegion.north);
+        \comment{below=of codingRegion}{template}{Act as a template for protein synthesis \textcolor{blue}{(Translation)}}{?}
+        \draw[line](codingRegion) to (template);
+        \comment{right=of ncRna}{ncRnaTextSecond}{Not Translated}{?}
+        \draw[line](ncRna) to (ncRnaTextSecond);
+        \draw[dashed, brown]($(rna.south)+(0,-.5)$)
+        -| coordinate(nucleicAcid) ($(dna.east)+(.5,0)$) |- ($(dna.north)+(0,.5)$) -| ($(rna.west)+(-.5,0)$) |- cycle;
+        \question{right=of nucleicAcid}{nucleicAcidText}{Nucleic Acid}{?}
+        \comment{above=of nucleicAcidText}{nucleicAcidTextSecond}{Polymer}{?}
+        \draw[line](nucleicAcidText) to (nucleicAcidTextSecond);
+        \draw[line, dashed, brown](nucleicAcid) to (nucleicAcidText);
+        \question{right=of nucleicAcidText}{nucleotide}{Nucleotide}{?}
+        \comment{below=0 of nucleotide}{nucleotideTextFirst}{\textcolor{black}{1. }Provide Chemical Energy}{\textcolor{black}{1. }?}
+        \comment{below=0 of nucleotideTextFirst}{nucleotideTextSecond}{\textcolor{black}{2. }Participate in Cell Signaling}{\textcolor{black}{2. }?}
+        \comment{below=of nucleotideTextSecond}{nucleotideTextThird}{Nucleotide Polymorphism}{\textcolor{black}{What Mutation results from: }?}
+        \draw[line](nucleotideTextSecond) to (nucleotideTextThird);
+        \comment{below=of nucleotideTextThird}{knockout}{Knockout}{\textcolor{black}{Deleted: }?}
+        \comment{below=0 of knockout}{transgenic}{Transgenic}{\textcolor{black}{Overexpressed: }?}
+        \comment{below=0 of transgenic}{knockin}{Knockin}{\textcolor{black}{Replaced: }?}
 
-\draw[line](nucleotideTextThird) to (knockout);
+        \draw[line](nucleotideTextThird) to (knockout);
 
-\comment{above=of nucleotide}{nucleotideText}{Monomer}{?}
-\draw[line](nucleotide) to (nucleotideText);
-\node at($(nucleicAcidText.east)!.5!(nucleotide.west)$){\huge$\ni$};
-\node[right=of nucleotide](nucleotideStructure)
-{
-\chemfig{
-O^{-}-P(=[:90]O)(-[:-90]O^{-})-O
--[:-30]-[:-90]([:-18]<[:-60](-[6]OH)-[0,,,,line width=3pt]>[:60]
-(@{hydrogen5}-[:90]N@{nitrogen1}
-*5([:72]-
-*6(-N=-N=(-NH_2)-=)
---N=-))
--[:150,1.15]O-[:210,1.15])
-}};
-\draw[line](nucleotide) to (nucleotideStructure);
-\comment{right=0 of nucleotideStructure}{nucleotideStructureTextSecond}
-{\textcolor{black}{Center: }\textcolor{blue}{Ribose} \textcolor{black}{or} Deoxyribose}{\textcolor{black}{Center: }?}
-\comment{above=of nucleotideStructureTextSecond.west, anchor=west}{nucleotideStructureTextFirst}
-{\textcolor{black}{Upper Left: }Phosphate Group}{\textcolor{black}{Upper Left: }?}
-\comment{below=of nucleotideStructureTextSecond.west, anchor=west}{nucleotideStructureTextThird}
-{\textcolor{black}{Upper Right: }Nitrogenous Base}{\textcolor{black}{Upper Right: }?}
+        \comment{above=of nucleotide}{nucleotideText}{Monomer}{?}
+        \draw[line](nucleotide) to (nucleotideText);
+        \node at($(nucleicAcidText.east)!.5!(nucleotide.west)$){\huge$\ni$};
+        \node[right=of nucleotide](nucleotideStructure)
+        {
+        \chemfig{
+        O^{-}-P(=[:90]O)(-[:-90]O^{-})-O
+        -[:-30]-[:-90]([:-18]<[:-60](-[6]OH)-[0,,,,line width=3pt]>[:60]
+        (@{hydrogen5}-[:90]N@{nitrogen1}
+        *5([:72]-
+        *6(-N=-N=(-NH_2)-=)
+        --N=-))
+        -[:150,1.15]O-[:210,1.15])
+        }};
+        \draw[line](nucleotide) to (nucleotideStructure);
+        \comment{right=0 of nucleotideStructure}{nucleotideStructureTextSecond}
+        {\textcolor{black}{Center: }\textcolor{blue}{Ribose} \textcolor{black}{or} Deoxyribose}{\textcolor{black}{Center: }?}
+        \comment{above=of nucleotideStructureTextSecond.west, anchor=west}{nucleotideStructureTextFirst}
+        {\textcolor{black}{Upper Left: }Phosphate Group}{\textcolor{black}{Upper Left: }?}
+        \comment{below=of nucleotideStructureTextSecond.west, anchor=west}{nucleotideStructureTextThird}
+        {\textcolor{black}{Upper Right: }Nitrogenous Base}{\textcolor{black}{Upper Right: }?}
 
-\draw[dashed, brown](nucleotideStructureTextSecond.north)
--| (nucleotideStructureTextThird.south west)
--| (nucleotideStructureTextThird.east)
-|- coordinate(nucleoside) cycle;
-\question{right=of nucleoside}{nucleosideText}{Nucleoside}{?}
-\draw[dashed, brown](nucleoside) to (nucleosideText);
+        \draw[dashed, brown](nucleotideStructureTextSecond.north)
+        -| (nucleotideStructureTextThird.south west)
+        -| (nucleotideStructureTextThird.east)
+        |- coordinate(nucleoside) cycle;
+        \question{right=of nucleoside}{nucleosideText}{Nucleoside}{?}
+        \draw[dashed, brown](nucleoside) to (nucleosideText);
 
-\question{above=of transcription}{polymerase}{RNA Polymerase}{?}
-\draw[line](transcription) to (polymerase);
-\question{above=of polymerase}{transcriptionFactor}{Transcription Factor}{?}
-\draw[line](polymerase) to node[circle, fill=white]{+} (transcriptionFactor);
-\comment{right=of polymerase}{promotor}{Bind to the Promotor}{?}
-\draw[arrow](polymerase) to (promotor);
-\comment{right=of promotor}{transcriptionBubble}{Generate a Transcription Bubble}{?}
-\draw[arrow](promotor) to (transcriptionBubble);
-\comment{above=of transcriptionBubble}{transcriptionBubbleText}{\textcolor{black}{Size: }$12\sim 14$ base pairs}{\textcolor{black}{Size: }?}
-\draw[line](transcriptionBubble) to (transcriptionBubbleText);
-\coordinate(base) at($(nucleotideStructureTextThird.south)+(-1,-.5)$);
-\question {below=0 of base}{guanine}{Guanine}{?}
-\question{left=.5 of guanine}{adenine}{Adenine}{?}
-\question{right=.5 of guanine}{cytosine}{Cytosine}{?}
-\question{right=.5 of cytosine}{thymine}{Thymine}{?}
-\draw[dashed, green]($(cytosine.west)+(-.2,0)$)
-|- ($(thymine.south)+(0,-.2)$)
--| ($(thymine.east)+(.2,0)$)
-|- coordinate(pyrimidine) ($(cytosine.north)+(0,.2)$) -| cycle;
-\comment{right=of pyrimidine}{pyrimidineText}{Pyrimidine}{?}
-\draw[dashed, green](pyrimidine) to (pyrimidineText);
-\draw[dashed, blue]($(adenine.west)+(-.2,0)$)
-|- coordinate(purine) ($(guanine.south)+(0,-.2)$)
--| ($(guanine.east)+(.2,0)$) |- ($(adenine.north)+(0,.2)$) -| cycle;
-\comment{left=of purine}{purineText}{Purine}{?}
-\draw[dashed, blue](purine) to (purineText);
-\comment{right=of thymine}{uracil}{Replaced with Uracil in RNA}{?}
-\draw[-](thymine) to (uracil);
-\draw[arrow, latex-latex, out=300, in=240](guanine) to node[below]{pair} (cytosine);
-\draw[arrow, latex-latex, out=315, in=225](adenine) to coordinate(adenineToThymine) (thymine);
-\draw(nucleotideStructureTextFirst.east) -- ++(.3,0) coordinate(connection) |- (nucleotideStructureTextSecond.east);
-\comment{above right=.5 of connection}{connectionText}{Connected to form the long stand of DNA}{?}
-\node[right=of connectionText](phosphodiesterBondStructure){
-\chemfig{
-O=[:-30]P(-[:60]O-[:60])(-[:240]O^{-})-[:-30]O-[:-30]C@{oxygen2}H_2
--[:-90]?[a]@{hydrogen2}<[:-60]@{hydrogen3}
-(-[:240]@{oxygen3}O-[:240]P(=[:150]O)(-[:240]O^{-})-[:-30]O-[:-30])
--[0,,,,line width=3pt]
->[:60]-[:150,1.18]O?[a]
-}};
-\draw[-](connection) to (connectionText.south west);
-\draw[-latex](connectionText) to (phosphodiesterBondStructure);
-\comment{right=of phosphodiesterBondStructure}{phosphodiesterBond}{Phosphodiester Bond}{?}
-\comment{below=.5 of phosphodiesterBond.west, anchor=west}{clockwise}{Clockwise}{?}
-\draw[line](phosphodiesterBondStructure) to (phosphodiesterBond);
+        \question{above=of transcription}{polymerase}{RNA Polymerase}{?}
+        \draw[line](transcription) to (polymerase);
+        \question{above=of polymerase}{transcriptionFactor}{Transcription Factor}{?}
+        \draw[line](polymerase) to node[circle, fill=white]{+} (transcriptionFactor);
+        \comment{right=of polymerase}{promotor}{Bind to the Promotor}{?}
+        \draw[arrow](polymerase) to (promotor);
+        \comment{right=of promotor}{transcriptionBubble}{Generate a Transcription Bubble}{?}
+        \draw[arrow](promotor) to (transcriptionBubble);
+        \comment{above=of transcriptionBubble}{transcriptionBubbleText}{\textcolor{black}{Size: }$12\sim 14$ base pairs}{\textcolor{black}{Size: }?}
+        \draw[line](transcriptionBubble) to (transcriptionBubbleText);
+        \coordinate(base) at($(nucleotideStructureTextThird.south)+(-1,-.5)$);
+        \question {below=0 of base}{guanine}{Guanine}{?}
+        \question{left=.5 of guanine}{adenine}{Adenine}{?}
+        \question{right=.5 of guanine}{cytosine}{Cytosine}{?}
+        \question{right=.5 of cytosine}{thymine}{Thymine}{?}
+        \draw[dashed, green]($(cytosine.west)+(-.2,0)$)
+        |- ($(thymine.south)+(0,-.2)$)
+        -| ($(thymine.east)+(.2,0)$)
+        |- coordinate(pyrimidine) ($(cytosine.north)+(0,.2)$) -| cycle;
+        \comment{right=of pyrimidine}{pyrimidineText}{Pyrimidine}{?}
+        \draw[dashed, green](pyrimidine) to (pyrimidineText);
+        \draw[dashed, blue]($(adenine.west)+(-.2,0)$)
+        |- coordinate(purine) ($(guanine.south)+(0,-.2)$)
+        -| ($(guanine.east)+(.2,0)$) |- ($(adenine.north)+(0,.2)$) -| cycle;
+        \comment{left=of purine}{purineText}{Purine}{?}
+        \draw[dashed, blue](purine) to (purineText);
+        \comment{right=of thymine}{uracil}{Replaced with Uracil in RNA}{?}
+        \draw[-](thymine) to (uracil);
+        \draw[arrow, latex-latex, out=300, in=240](guanine) to node[below]{pair} (cytosine);
+        \draw[arrow, latex-latex, out=315, in=225](adenine) to coordinate(adenineToThymine) (thymine);
+        \draw(nucleotideStructureTextFirst.east) -- ++(.3,0) coordinate(connection) |- (nucleotideStructureTextSecond.east);
+        \comment{above right=.5 of connection}{connectionText}{Connected to form the long stand of DNA}{?}
+        \node[right=of connectionText](phosphodiesterBondStructure){
+        \chemfig{
+        O=[:-30]P(-[:60]O-[:60])(-[:240]O^{-})-[:-30]O-[:-30]C@{oxygen2}H_2
+        -[:-90]?[a]@{hydrogen2}<[:-60]@{hydrogen3}
+        (-[:240]@{oxygen3}O-[:240]P(=[:150]O)(-[:240]O^{-})-[:-30]O-[:-30])
+        -[0,,,,line width=3pt]
+        >[:60]-[:150,1.18]O?[a]
+        }};
+        \draw[-](connection) to (connectionText.south west);
+        \draw[-latex](connectionText) to (phosphodiesterBondStructure);
+        \comment{right=of phosphodiesterBondStructure}{phosphodiesterBond}{Phosphodiester Bond}{?}
+        \comment{below=.5 of phosphodiesterBond.west, anchor=west}{clockwise}{Clockwise}{?}
+        \draw[line](phosphodiesterBondStructure) to (phosphodiesterBond);
 
-\coordinate(center3) at($(adenineToThymine)+(0,-2)$);
-\coordinate(center4) at($(center3)+(-.5,0)$);
-\coordinate(center5) at($(center4)+(1.5cm,.5cm)$);
-\draw[yellow, samples=100, shift=(center4)] plot(\x, {cos(deg(2*\x))});
-\draw[brown, samples=100, shift=(center5)] plot (\x, {cos(2*deg(\x))});
+        \coordinate(center3) at($(adenineToThymine)+(0,-2)$);
+        \coordinate(center4) at($(center3)+(-.5,0)$);
+        \coordinate(center5) at($(center4)+(1.5cm,.5cm)$);
+        \draw[yellow, samples=100, shift=(center4)] plot(\x, {cos(deg(2*\x))});
+        \draw[brown, samples=100, shift=(center5)] plot (\x, {cos(2*deg(\x))});
 
-\draw[dashed, blue]($(center4)+(0,1)$) to ($(center4)+(0,-.5)$) coordinate(minorGroove);
-\comment{right=8 of minorGroove}{polynucleotide}{Polynucleotide}{?}
-\draw[-]($(polynucleotide.west)+(-1,0)$) to (polynucleotide);
-\comment{below=0 of minorGroove}{minorGrooveText}{\textcolor{blue}{Minor Groove}}{?}
-\draw[dashed, red]($(center4)+(-1.55,1.5)$) to ($(center4)+(-1.55, -1)$) coordinate(majorGroove);
-\comment{below=0 of majorGroove}{majorGrooveText}{\textcolor{red}{Major Groove}}{?}
-\comment{below=0 of majorGrooveText}{majorGrooveWidth}{22\textcolor{black}{\AA}}{?\textcolor{black}{\AA}}
-\comment{below=0 of minorGrooveText}{minorGrooveWidth}{\textcolor{blue}{12}\textcolor{black}{\AA}}{?\textcolor{black}{\AA}}
+        \draw[dashed, blue]($(center4)+(0,1)$) to ($(center4)+(0,-.5)$) coordinate(minorGroove);
+        \comment{right=8 of minorGroove}{polynucleotide}{Polynucleotide}{?}
+        \draw[-]($(polynucleotide.west)+(-1,0)$) to (polynucleotide);
+        \comment{below=0 of minorGroove}{minorGrooveText}{\textcolor{blue}{Minor Groove}}{?}
+        \draw[dashed, red]($(center4)+(-1.55,1.5)$) to ($(center4)+(-1.55, -1)$) coordinate(majorGroove);
+        \comment{below=0 of majorGroove}{majorGrooveText}{\textcolor{red}{Major Groove}}{?}
+        \comment{below=0 of majorGrooveText}{majorGrooveWidth}{22\textcolor{black}{\AA}}{?\textcolor{black}{\AA}}
+        \comment{below=0 of minorGrooveText}{minorGrooveWidth}{\textcolor{blue}{12}\textcolor{black}{\AA}}{?\textcolor{black}{\AA}}
 
-\coordinate (center) at($(center4)+(-5.5,-6)$);
-\draw[arrow, latex-latex, dashed, red] ($(center)+(-30:4)$) arc (-30:210:4cm);
-\draw[arrow, latex-latex, dashed, blue]($(center)+(210:4)$) arc (210:330:4cm);
+        \coordinate (center) at($(center4)+(-5.5,-6)$);
+        \draw[arrow, latex-latex, dashed, red] ($(center)+(-30:4)$) arc (-30:210:4cm);
+        \draw[arrow, latex-latex, dashed, blue]($(center)+(210:4)$) arc (210:330:4cm);
 
-\node at(center)(adenineThymine){
-\chemfig{
-[:45]-N*5(-*6(-N=-N?[a]-(-N(-[:120]H)-[:30]H
-(-[:0,2,,,thick,dotted,red]O=_[:-60]*6(-N(-H?[a,,thick,dotted,red])-(=_O)-N(-R)-=(-)-))
-)-=)--N=-)
-}};
-\coordinate(center2) at($(center4)+(6.5,-6)$);
-\draw[arrow, latex-latex, dashed, red]($(center2)+(-30:4)$) arc (-30:210:4cm);
-\draw[arrow, latex-latex, dashed, blue]($(center2)+(210:4)$) arc (210:330:4cm);
-\node at(center2)(guanineCytosine){
-\chemfig{
-[:45]-N*5(-*6(-N=
-(-N(-[:240]H)-[:0]@{hydrogen1}H?[b])
--N(-H?[a])=(=O
--[:0,2,,,thick,dotted,red]H-[:0]N(-[:60]H)-[:300]*6(
-=N?[a,,thick,dotted,red]-(=_@{oxygen1}O?[b,,thick,dotted,red])-N(-)-=-
-)
-)-=)--N=-)
-}
-};
-\comment{left=2 of adenineThymine}{adenine}{Adenine}{?}
-\draw[-](adenineThymine) to (adenine);
-\comment{below right=of adenineThymine}{thymine}{Thymine}{?}
-\draw[-](adenineThymine) to (thymine.north west);
-\comment{left=2 of guanineCytosine}{guanine}{Guanine}{?}
-\draw[-](guanineCytosine) to (guanine);
-\comment{right=2 of guanineCytosine}{cytosine}{Cytosine}{?}
-\draw[-](guanineCytosine) to (cytosine);
-\draw[-latex, dashed]($(center)+(-7,-3)$) coordinate(threePrime2) to ($(center)+(-7,3)$) coordinate(fivePrime2);
-\draw[latex-, dashed]($(center2)+(7,-3)$) coordinate(fivePrime3) to ($(center2)+(7,3)$) coordinate(threePrime3);
-\comment{right=0 of threePrime2}{threePrimeText}{$3^{\prime}$}{?}
-\node[right=0 of fivePrime2](fivePrimeText){$5^{\prime}$};
-\comment{right=0 of threePrime3}{threePrimeTextSecond}{$3^{\prime}$}{?}
-\comment{right=of threePrimeTextSecond}{hydroxylGroup}{Hydroxyl Group}{?}
-\draw[line](threePrimeTextSecond) to (hydroxylGroup);
-\comment{right=0 of fivePrime3}{fivePrimeTextSecond}{$5^{\prime}$}{?}
-\comment{right=of fivePrimeTextSecond}{phosphateGroup}{Phosphate Group}{?}
-\draw[line](fivePrimeTextSecond) to (phosphateGroup);
-\node at($(center2)+(0,-4.5)$){\href{https://www.labxchange.org/library/pathway/lx-pathway:c9f00da6-1b2b-43ec-9a0d-de38ccc3f97f/items/lx-pb:c9f00da6-1b2b-43ec-9a0d-de38ccc3f97f:html:e3d9ae3f}{Adress}};
-https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3195647/
+        \node at(center)(adenineThymine){
+        \chemfig{
+        [:45]-N*5(-*6(-N=-N?[a]-(-N(-[:120]H)-[:30]H
+        (-[:0,2,,,thick,dotted,red]O=_[:-60]*6(-N(-H?[a,,thick,dotted,red])-(=_O)-N(-R)-=(-)-))
+        )-=)--N=-)
+        }};
+        \coordinate(center2) at($(center4)+(6.5,-6)$);
+        \draw[arrow, latex-latex, dashed, red]($(center2)+(-30:4)$) arc (-30:210:4cm);
+        \draw[arrow, latex-latex, dashed, blue]($(center2)+(210:4)$) arc (210:330:4cm);
+        \node at(center2)(guanineCytosine){
+        \chemfig{
+        [:45]-N*5(-*6(-N=
+        (-N(-[:240]H)-[:0]@{hydrogen1}H?[b])
+        -N(-H?[a])=(=O
+        -[:0,2,,,thick,dotted,red]H-[:0]N(-[:60]H)-[:300]*6(
+        =N?[a,,thick,dotted,red]-(=_@{oxygen1}O?[b,,thick,dotted,red])-N(-)-=-
+        )
+        )-=)--N=-)
+        }
+        };
+        \comment{left=2 of adenineThymine}{adenine}{Adenine}{?}
+        \draw[-](adenineThymine) to (adenine);
+        \comment{below right=of adenineThymine}{thymine}{Thymine}{?}
+        \draw[-](adenineThymine) to (thymine.north west);
+        \comment{left=2 of guanineCytosine}{guanine}{Guanine}{?}
+        \draw[-](guanineCytosine) to (guanine);
+        \comment{right=2 of guanineCytosine}{cytosine}{Cytosine}{?}
+        \draw[-](guanineCytosine) to (cytosine);
+        \draw[-latex, dashed]($(center)+(-7,-3)$) coordinate(threePrime2) to ($(center)+(-7,3)$) coordinate(fivePrime2);
+        \draw[latex-, dashed]($(center2)+(7,-3)$) coordinate(fivePrime3) to ($(center2)+(7,3)$) coordinate(threePrime3);
+        \comment{right=0 of threePrime2}{threePrimeText}{$3^{\prime}$}{?}
+        \node[right=0 of fivePrime2](fivePrimeText){$5^{\prime}$};
+        \comment{right=0 of threePrime3}{threePrimeTextSecond}{$3^{\prime}$}{?}
+        \comment{right=of threePrimeTextSecond}{hydroxylGroup}{Hydroxyl Group}{?}
+        \draw[line](threePrimeTextSecond) to (hydroxylGroup);
+        \comment{right=0 of fivePrime3}{fivePrimeTextSecond}{$5^{\prime}$}{?}
+        \comment{right=of fivePrimeTextSecond}{phosphateGroup}{Phosphate Group}{?}
+        \draw[line](fivePrimeTextSecond) to (phosphateGroup);
+        \node at($(center2)+(0,-4.5)$){\href{https://www.labxchange.org/library/pathway/lx-pathway:c9f00da6-1b2b-43ec-9a0d-de38ccc3f97f/items/lx-pb:c9f00da6-1b2b-43ec-9a0d-de38ccc3f97f:html:e3d9ae3f}{Adress}};
+        https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3195647/
 
-\node[left=5 of untranslatedRegion](dnaFirst){$5^{\prime}$ ...ATGGGGCTC... $3^{\prime}$};
-\comment{right=of dnaFirst}{senseStrand}{Sense Strand}{?}
-\draw[line](dnaFirst) to (senseStrand);
-\node[below=.25 of dnaFirst](dnaSecond){$3^{\prime}$ ...TACCCCGAG... $5^{\prime}$};
-\commentAt{$(dnaFirst.west)!.5!(dnaSecond.west)+(-.5,0)$}{dnaLeft}{DNA}{?}
-\comment{right=of dnaSecond}{antisenseStrand}{Antisense Strand}{?}
-\draw[line](dnaSecond) to (antisenseStrand);
-\comment{below=.5 of antisenseStrand.west, anchor=west}{templateStrand}{Template Strand}{?}
-\node[below=of dnaSecond](mrnaFirst){$5^{\prime}$ ...AUGGGGCUC... $3^{\prime}$};
-\comment{right=of mrnaFirst}{mrnaWithCodons}{mRNA with codons}{?}
-\draw[line](mrnaFirst) to (mrnaWithCodons);
-\commentAt{$(mrnaFirst.west)+(-.5,0)$}{mrnaLeft}{mRNA}{?}
-\draw[arrow](dnaSecond) to (mrnaFirst);
-\question{below=of mrnaFirst}{trna}{tRNA}{?}
-\comment{left=of trna}{trnaText}{Read Triplet}{?}
-\comment{left=of trnaText}{codon}{Codon}{?}
-\draw[line](trna) to (trnaText);
-\question{right=of trna}{aminoAcid}{Amino Acid}{?}
-\question{right=3 of aminoAcid}{aminoAcidSecond}{Amino Acid}{?}
-\draw[line](aminoAcid) to coordinate(aminoAcidBond) (aminoAcidSecond);
-\comment{above=0 of aminoAcidBond}{peptideBond}{Peptide Bond}{?}
-\comment{below=.5 of trnaText.east, anchor=east}{anticodon}{Contain Anticodon}{?}
-\draw[line](trna) to (aminoAcid);
-\draw[line](trnaText) to (codon);
-\draw[arrow](mrnaFirst) to (trna);
-\question{below=of trna}{peptide}{Peptides}{?}
-\draw[arrow](trna) to (peptide);
-\comment{right=of peptide}{peptideText}{Short chain of amino acids}{?}
-\draw[line](peptide) to (peptideText);
+        \node[left=5 of untranslatedRegion](dnaFirst){$5^{\prime}$ ...ATGGGGCTC... $3^{\prime}$};
+        \comment{right=of dnaFirst}{senseStrand}{Sense Strand}{?}
+        \draw[line](dnaFirst) to (senseStrand);
+        \node[below=.25 of dnaFirst](dnaSecond){$3^{\prime}$ ...TACCCCGAG... $5^{\prime}$};
+        \commentAt{$(dnaFirst.west)!.5!(dnaSecond.west)+(-.5,0)$}{dnaLeft}{DNA}{?}
+        \comment{right=of dnaSecond}{antisenseStrand}{Antisense Strand}{?}
+        \draw[line](dnaSecond) to (antisenseStrand);
+        \comment{below=.5 of antisenseStrand.west, anchor=west}{templateStrand}{Template Strand}{?}
+        \node[below=of dnaSecond](mrnaFirst){$5^{\prime}$ ...AUGGGGCUC... $3^{\prime}$};
+        \comment{right=of mrnaFirst}{mrnaWithCodons}{mRNA with codons}{?}
+        \draw[line](mrnaFirst) to (mrnaWithCodons);
+        \commentAt{$(mrnaFirst.west)+(-.5,0)$}{mrnaLeft}{mRNA}{?}
+        \draw[arrow](dnaSecond) to (mrnaFirst);
+        \question{below=of mrnaFirst}{trna}{tRNA}{?}
+        \comment{left=of trna}{trnaText}{Read Triplet}{?}
+        \comment{left=of trnaText}{codon}{Codon}{?}
+        \draw[line](trna) to (trnaText);
+        \question{right=of trna}{aminoAcid}{Amino Acid}{?}
+        \question{right=3 of aminoAcid}{aminoAcidSecond}{Amino Acid}{?}
+        \draw[line](aminoAcid) to coordinate(aminoAcidBond) (aminoAcidSecond);
+        \comment{above=0 of aminoAcidBond}{peptideBond}{Peptide Bond}{?}
+        \comment{below=.5 of trnaText.east, anchor=east}{anticodon}{Contain Anticodon}{?}
+        \draw[line](trna) to (aminoAcid);
+        \draw[line](trnaText) to (codon);
+        \draw[arrow](mrnaFirst) to (trna);
+        \question{below=of trna}{peptide}{Peptides}{?}
+        \draw[arrow](trna) to (peptide);
+        \comment{right=of peptide}{peptideText}{Short chain of amino acids}{?}
+        \draw[line](peptide) to (peptideText);
 
-\question{below left=of peptide, xshift=1.5cm}{oligopeptide}{Oligopeptide}{?}
-\comment{left=of oligopeptide}{oligopeptideText}{Chain of fewer than 20 amino acids}{?}
-\draw[line](oligopeptide) to (oligopeptideText);
-\draw[line](peptide) to (oligopeptide);
-\comment{below=0 of oligopeptide}{dipeptide}{\textcolor{black}{1. }Dipeptide}{\textcolor{black}{1. }?}
-\comment{below=0 of dipeptide}{tripeptide}{\textcolor{black}{2. }Tripeptide}{\textcolor{black}{2. }?}
-\comment{below=0 of tripeptide}{tetrapeptide}{\textcolor{black}{3. }Tetrapeptide}{\textcolor{black}{3. }?}
-\question{below right=of peptide, xshift=-1.5cm}{polypeptide}{Polypeptide}{?}
-\draw[line](peptide) to (polypeptide);
-\question{right=5cm of polypeptide}{proteinSecond}{Protein}{?}
-\draw[arrow](polypeptide) to coordinate(polypeptideToProtein) (proteinSecond);
-\comment{above=0 of polypeptideToProtein}{polypeptideToProteinText}{More than 50 amino acids}{?}
+        \question{below left=of peptide, xshift=1.5cm}{oligopeptide}{Oligopeptide}{?}
+        \comment{left=of oligopeptide}{oligopeptideText}{Chain of fewer than 20 amino acids}{?}
+        \draw[line](oligopeptide) to (oligopeptideText);
+        \draw[line](peptide) to (oligopeptide);
+        \comment{below=0 of oligopeptide}{dipeptide}{\textcolor{black}{1. }Dipeptide}{\textcolor{black}{1. }?}
+        \comment{below=0 of dipeptide}{tripeptide}{\textcolor{black}{2. }Tripeptide}{\textcolor{black}{2. }?}
+        \comment{below=0 of tripeptide}{tetrapeptide}{\textcolor{black}{3. }Tetrapeptide}{\textcolor{black}{3. }?}
+        \question{below right=of peptide, xshift=-1.5cm}{polypeptide}{Polypeptide}{?}
+        \draw[line](peptide) to (polypeptide);
+        \question{right=5cm of polypeptide}{proteinSecond}{Protein}{?}
+        \draw[arrow](polypeptide) to coordinate(polypeptideToProtein) (proteinSecond);
+        \comment{above=0 of polypeptideToProtein}{polypeptideToProteinText}{More than 50 amino acids}{?}
 
 
 
-https://www.youtube.com/watch?v=0E4p34mqJbg
-% https://www.vedantu.com/question-answer/which-of-the-following-would-not-be-considered-class-12-biology-cbse-5fb37455b8881b0c51d41bf3
-% https://www.youtube.com/watch?v=ad6h4ErsSTY
-
+        https://www.youtube.com/watch?v=0E4p34mqJbg
+        % https://www.vedantu.com/question-answer/which-of-the-following-would-not-be-considered-class-12-biology-cbse-5fb37455b8881b0c51d41bf3
+        % https://www.youtube.com/watch?v=ad6h4ErsSTY
+    \end{tikzpicture}
+    \chemmove{
+        \draw[arrow, blue](hydrogen1) to (oxygen1);
+        \commentAt{$(oxygen2)!.5!(hydrogen2)+(-.35,0)$}{fivePrime}{$5^{\prime}$ Carbon}{?}
+        \commentAt{$(oxygen3)!.5!(hydrogen3)+(-.1,.1)$}{threePrime}{$3^{\prime}$ Carbon}{?}
+        \coordinate(glycosidicBond) at($(nitrogen1)!.5!(hydrogen5)$);
+        \comment{above left=2.5 of glycosidicBond}{glycosidicBondText}{Glycosidic Bond}{?}
+        \draw[line, dotted](glycosidicBond) to ($(glycosidicBondText.east)+(-.2,0)$);
+    }
+\end{inctext}

@@ -1,107 +1,111 @@
-\node[default, draw](me){Me};
-\node[default, draw, above=of me](environment){Environment};
-\draw[arrow](environment) to (me);
-\node[default, draw, below=of me](memory){Memory};
-\draw[arrow](me) to (memory);
-\node[default, draw, above left=of memory](hardKnowledge){Hard Knowledge};
-\draw[-latex, red](hardKnowledge) to (memory.west) to ($(memory.west)+(-1,-1)$);
-\node[default, draw, above right=of memory](properKnowledge){Proper Knowledge};
-\node[default, draw, above right=of properKnowledge, yshift=-1.2cm](primarySensoryFactor){Primary Sensory Factors};
-\node[default, draw, below right=of properKnowledge, yshift=1.2cm](Scholorship){Scholorship};
-\draw[-](properKnowledge.east) to (primarySensoryFactor.west);
-\draw[-](properKnowledge.east) to (Scholorship.west);
-\draw[-latex, blue](properKnowledge) to (memory.east);
-\node[default, draw, below right=of memory](easyKnowledge){Easy Knowledge};
-\draw[-latex, decorate, decoration={snake}](easyKnowledge) to (memory);
-\node[default, draw, below=of memory](dopamine){Dopamine Urge};
-\draw[arrow](memory) to (dopamine);
-\node[default, draw, below=of dopamine](behavior){Behavior};
-\draw[arrow](dopamine) to (behavior);
-\node[right=of memory](memoryText){Emergency or not};
-\draw[arrow, red, dashed](memory) to (memoryText);
+\begin{inctext}[label={overlay}, overlay={\node at($(page.north)+(0,-3)$){\Huge Behavior Mechanism};}]
+    \begin{tikzpicture}
+        \node[default, draw](me){Me};
+        \node[default, draw, above=of me](environment){Environment};
+        \draw[arrow](environment) to (me);
+        \node[default, draw, below=of me](memory){Memory};
+        \draw[arrow](me) to (memory);
+        \node[default, draw, above left=of memory](hardKnowledge){Hard Knowledge};
+        \draw[-latex, red](hardKnowledge) to (memory.west) to ($(memory.west)+(-1,-1)$);
+        \node[default, draw, above right=of memory](properKnowledge){Proper Knowledge};
+        \node[default, draw, above right=of properKnowledge, yshift=-1.2cm](primarySensoryFactor){Primary Sensory Factors};
+        \node[default, draw, below right=of properKnowledge, yshift=1.2cm](Scholorship){Scholorship};
+        \draw[-](properKnowledge.east) to (primarySensoryFactor.west);
+        \draw[-](properKnowledge.east) to (Scholorship.west);
+        \draw[-latex, blue](properKnowledge) to (memory.east);
+        \node[default, draw, below right=of memory](easyKnowledge){Easy Knowledge};
+        \draw[-latex, decorate, decoration={snake}](easyKnowledge) to (memory);
+        \node[default, draw, below=of memory](dopamine){Dopamine Urge};
+        \draw[arrow](memory) to (dopamine);
+        \node[default, draw, below=of dopamine](behavior){Behavior};
+        \draw[arrow](dopamine) to (behavior);
+        \node[right=of memory](memoryText){Emergency or not};
+        \draw[arrow, red, dashed](memory) to (memoryText);
 
-\node[default, draw, below=4cm of behavior](environment){Environment};
-\node[default, draw, below=of environment](me){Me};
-\draw[arrow](environment) to (me);
-\node[default, draw, below left=2 of me](study){Study};
-\node[default, draw, below right=2 of me](game){Game};
-\node[right=of game](accessibility){High Accessibility};
-\draw[line](game) to (accessibility);
-\node[default, draw, below=of study](trial){Trial};
-\node[default, draw, below=of trial](solve){Solve};
-\node[default, draw, below=of solve](trialThird){Trial};
-\node[default, draw, below=of game](trialSecond){Trial};
-\node[default, draw, below=of trialSecond](solveSecond){Solve};
-\node[right=of solveSecond](solveSecondText){Fast Feedback};
-\draw[line](solveSecond) to (solveSecondText);
-\node[default, draw, below=of solveSecond](trialForth){Trial};
-\draw[arrow](me.south) to (study.north);
-\draw[arrow](study) to (trial);
-\draw[arrow](trial) to coordinate(trialToSolve) (solve);
-\draw[arrow](trialSecond) to coordinate(trialSecondToSolveSecond) (solveSecond);
-\node[left=0 of trialToSolve]{\textcolor{red}{Dopamine}};
-\node[right=0 of trialSecondToSolveSecond]{\textcolor{red}{Dopamine}};
-\draw[arrow, postaction={decorate, decoration={text along path, raise=.1cm, text align=center, text color=red, text={Emergency}}}](me.south) to (game.north);
-\draw[arrow](game) to (trialSecond);
-\draw[arrow](trialSecond) to (solveSecond);
-\draw[arrow](solve) to (trialThird);
-\draw[arrow](solveSecond) to (trialForth);
-\draw[dotted, line width=3pt]($(trialThird.south)+(0,-.2cm)$) to ++(0,-.5);
-\draw[dotted, line width=3pt]($(trialForth.south)+(0,-.2cm)$) to ++(0,-.5) coordinate(end);
-\node[right=of trialToSolve](method){Good study method};
-\draw[line](trialToSolve) to (method);
+        \node[default, draw, below=4cm of behavior](environment){Environment};
+        \node[default, draw, below=of environment](me){Me};
+        \draw[arrow](environment) to (me);
+        \node[default, draw, below left=2 of me](study){Study};
+        \node[default, draw, below right=2 of me](game){Game};
+        \node[right=of game](accessibility){High Accessibility};
+        \draw[line](game) to (accessibility);
+        \node[default, draw, below=of study](trial){Trial};
+        \node[default, draw, below=of trial](solve){Solve};
+        \node[default, draw, below=of solve](trialThird){Trial};
+        \node[default, draw, below=of game](trialSecond){Trial};
+        \node[default, draw, below=of trialSecond](solveSecond){Solve};
+        \node[right=of solveSecond](solveSecondText){Fast Feedback};
+        \draw[line](solveSecond) to (solveSecondText);
+        \node[default, draw, below=of solveSecond](trialForth){Trial};
+        \draw[arrow](me.south) to (study.north);
+        \draw[arrow](study) to (trial);
+        \draw[arrow](trial) to coordinate(trialToSolve) (solve);
+        \draw[arrow](trialSecond) to coordinate(trialSecondToSolveSecond) (solveSecond);
+        \node[left=0 of trialToSolve]{\textcolor{red}{Dopamine}};
+        \node[right=0 of trialSecondToSolveSecond]{\textcolor{red}{Dopamine}};
+        \draw[arrow, postaction={decorate, decoration={text along path, raise=.1cm, text align=center, text color=red, text={Emergency}}}](me.south) to (game.north);
+        \draw[arrow](game) to (trialSecond);
+        \draw[arrow](trialSecond) to (solveSecond);
+        \draw[arrow](solve) to (trialThird);
+        \draw[arrow](solveSecond) to (trialForth);
+        \draw[dotted, line width=3pt]($(trialThird.south)+(0,-.2cm)$) to ++(0,-.5);
+        \draw[dotted, line width=3pt]($(trialForth.south)+(0,-.2cm)$) to ++(0,-.5) coordinate(end);
+        \node[right=of trialToSolve](method){Good study method};
+        \draw[line](trialToSolve) to (method);
 
-\draw[dashed, brown]($(game.north)+(0,.2cm)$)
--| ($(trialForth.west)+(-.2cm,0)$)
-|- ($(end.south)+(0,-.2cm)$)
--| ($(game.east)+(.2,0)$)
-|- cycle
-;
-\draw[arrow, brown, dashed](me.east) to coordinate(meToGame)($(game.north)+(0,.2cm)$);
-\node[right=.1 of meToGame, brown](predict){Prediction = \textcolor{black}{Pleasure $>$ }\textcolor{red}{Pain}};
+        \draw[dashed, brown]($(game.north)+(0,.2cm)$)
+        -| ($(trialForth.west)+(-.2cm,0)$)
+        |- ($(end.south)+(0,-.2cm)$)
+        -| ($(game.east)+(.2,0)$)
+        |- cycle
+        ;
+        \draw[arrow, brown, dashed](me.east) to coordinate(meToGame)($(game.north)+(0,.2cm)$);
+        \node[right=.1 of meToGame, brown](predict){Prediction = \textcolor{black}{Pleasure $>$ }\textcolor{red}{Pain}};
 
-\node[default,draw, right=3 of accessibility](episodeFirst){Episode \#1};
-\node[default,draw, right=of episodeFirst](episodeSecond){Episode \#2};
-\node[default,draw, right=of episodeSecond](episodeThird){Episode \#3};
-\node[default,draw, right=of episodeThird](episodeForth){Episode \#4};
-\draw[arrow, blue](episodeFirst) to (episodeSecond);
-\draw[arrow, blue](episodeSecond) to (episodeThird);
-\draw[arrow, blue](episodeThird) to (episodeForth);
-\node[above=of episodeSecond](episodeSecondText){Cannot concentrate in the middle because don't have trial};
-\draw[arrow, red](episodeSecondText) to (episodeSecond);
-\node[below=of episodeFirst](episodeFirstText){The highest accessibility \textcolor{blue}{(Trigger)}};
-\draw[arrow, blue](episodeFirstText) to (episodeFirst);
+        \node[default,draw, right=3 of accessibility](episodeFirst){Episode \#1};
+        \node[default,draw, right=of episodeFirst](episodeSecond){Episode \#2};
+        \node[default,draw, right=of episodeSecond](episodeThird){Episode \#3};
+        \node[default,draw, right=of episodeThird](episodeForth){Episode \#4};
+        \draw[arrow, blue](episodeFirst) to (episodeSecond);
+        \draw[arrow, blue](episodeSecond) to (episodeThird);
+        \draw[arrow, blue](episodeThird) to (episodeForth);
+        \node[above=of episodeSecond](episodeSecondText){Cannot concentrate in the middle because don't have trial};
+        \draw[arrow, red](episodeSecondText) to (episodeSecond);
+        \node[below=of episodeFirst](episodeFirstText){The highest accessibility \textcolor{blue}{(Trigger)}};
+        \draw[arrow, blue](episodeFirstText) to (episodeFirst);
 
-\node[rectangle, draw, below=of episodeFirstText](problemFirst){Problem 1};
-\node[rectangle, draw, right=0 of problemFirst](solutionFirst){Solution 1};
-\node[rectangle, draw, right=0 of solutionFirst](problemSecond){Problem 2};
-\node[rectangle, draw, right=0 of problemSecond](solutionSecond){Solution 2};
-\node[rectangle, draw, below=0 of solutionSecond](problemThird){Problem 3};
-\node[rectangle, draw, left=0 of problemThird](solutionThird){Solution 3};
-\node[rectangle, draw, left=0 of solutionThird](problemForth){Problem 4};
-\node[rectangle, draw, left=0 of problemForth](solutionForth){Solution 4};
-\draw[dotted, line width=3pt]($(problemForth.south east)+(0,-.8)$) to +(0,.5);
-\draw(solutionForth.south west) -- ++(0,-7cm) -| coordinate(square) (problemThird.south east);
-\draw[-latex, blue](problemFirst.center) -- (solutionSecond.center) -- (problemThird.center) -- (solutionForth.center) -- ++(0,-1)
-;
-\draw[-latex, red]($(problemThird)+(2,-3)$) to (problemThird.south);
+        \node[rectangle, draw, below=of episodeFirstText](problemFirst){Problem 1};
+        \node[rectangle, draw, right=0 of problemFirst](solutionFirst){Solution 1};
+        \node[rectangle, draw, right=0 of solutionFirst](problemSecond){Problem 2};
+        \node[rectangle, draw, right=0 of problemSecond](solutionSecond){Solution 2};
+        \node[rectangle, draw, below=0 of solutionSecond](problemThird){Problem 3};
+        \node[rectangle, draw, left=0 of problemThird](solutionThird){Solution 3};
+        \node[rectangle, draw, left=0 of solutionThird](problemForth){Problem 4};
+        \node[rectangle, draw, left=0 of problemForth](solutionForth){Solution 4};
+        \draw[dotted, line width=3pt]($(problemForth.south east)+(0,-.8)$) to +(0,.5);
+        \draw(solutionForth.south west) -- ++(0,-7cm) -| coordinate(square) (problemThird.south east);
+        \draw[-latex, blue](problemFirst.center) -- (solutionSecond.center) -- (problemThird.center) -- (solutionForth.center) -- ++(0,-1)
+        ;
+        \draw[-latex, red]($(problemThird)+(2,-3)$) to (problemThird.south);
 
-\node[default, draw, below=10 of trial](experience){Happy Experience};
-\node[default, draw, below=of experience](memory){Memory};
-\draw[arrow](experience) to (memory);
-\node[right=of memory](prediction){Prediction: I've been happy. So I will be happy};
-\draw[line](memory) to (prediction);
+        \node[default, draw, below=10 of trial](experience){Happy Experience};
+        \node[default, draw, below=of experience](memory){Memory};
+        \draw[arrow](experience) to (memory);
+        \node[right=of memory](prediction){Prediction: I've been happy. So I will be happy};
+        \draw[line](memory) to (prediction);
 
-\node[default, draw, left=of experience](badExperience){Bad Experience};
-\node[default, draw, below=of badExperience](memorySecond){Memory};
-\node[left=of memorySecond](memorySecondText){Prediction: I've been unfortunate. So I will be unfortunate};
-\draw[arrow](badExperience) to (memorySecond);
-\draw[line](memorySecond) to (memorySecondText);
-\node[default, draw, left=of memorySecondText](learnedHelplessness){Learned Helplessness};
-\draw[line](memorySecondText) to (learnedHelplessness);
-\node[default, draw, below=of memorySecond](stress){Stress};
-\node[left=of stress](threat){Threat to survival};
-\draw[line](stress) to (threat);
-\draw[arrow](memorySecond) to (stress);
-\node[below=of stress](stressText){Depend on midbrain while thinking, because it's in emergency};
-\draw[arrow](stress) to (stressText);
+        \node[default, draw, left=of experience](badExperience){Bad Experience};
+        \node[default, draw, below=of badExperience](memorySecond){Memory};
+        \node[left=of memorySecond](memorySecondText){Prediction: I've been unfortunate. So I will be unfortunate};
+        \draw[arrow](badExperience) to (memorySecond);
+        \draw[line](memorySecond) to (memorySecondText);
+        \node[default, draw, left=of memorySecondText](learnedHelplessness){Learned Helplessness};
+        \draw[line](memorySecondText) to (learnedHelplessness);
+        \node[default, draw, below=of memorySecond](stress){Stress};
+        \node[left=of stress](threat){Threat to survival};
+        \draw[line](stress) to (threat);
+        \draw[arrow](memorySecond) to (stress);
+        \node[below=of stress](stressText){Depend on midbrain while thinking, because it's in emergency};
+        \draw[arrow](stress) to (stressText);
+    \end{tikzpicture}
+\end{inctext}

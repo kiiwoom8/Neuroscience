@@ -1,46 +1,50 @@
-\question{}{helicase}{Helicase}{?}
-\draw($(helicase.center)+(-3,3)$) coordinate(threePrime) to coordinate(ssbProteinFirst)++(3,0) coordinate(upPolymeraseEnd) to ++(3,-3) coordinate(topoisomerase) to ++(3,0) coordinate(endOfDna);
-\draw($(helicase.center)+(-3,-3)$) coordinate(fivePrime) to coordinate(ssbProteinSecond) ++(3,0) coordinate(primerSecond) to ++(3,3) coordinate(end);
-\comment{left=0 of fivePrime}{fivePrimeText}{$5^{\prime}$ (Lagging Strand)}{?}
-\comment{left=0 of threePrime}{threePrimeText}{$3^{\prime}$ (Leading Strand)}{?}
-\node[circle, draw, fill=blue, above=0 of ssbProteinSecond](ssbProteinCircleFirst){};
-\draw[line width=3pt, pink](primerSecond) to ++(-.5,0) coordinate(primerSecondEnd);
-\coordinate(primerCenter) at($(primerSecond)+(-.25,0)$);
-\comment{above=of primerCenter}{primerText}{Primer}{?}
-\draw[line](primerCenter) to (primerText);
-\draw[line width=3pt, green](primerSecondEnd) to ++(-1,0) coordinate(polymeraseEnd);
-\draw[line width=3pt, pink](polymeraseEnd) to ++(-.5,0) coordinate(primerThirdEnd);
-\draw[line width=3pt, green](primerThirdEnd) to ++(-1,0) coordinate(polymeraseSecondEnd);
-\coordinate(polymeraseCenter) at($(primerThirdEnd)+(-.5,0)$);
-\comment{above=of polymeraseCenter}{newStrand}{New Strand}{?}
-\draw[line](polymeraseCenter) to (newStrand);
-\draw($(ssbProteinCircleFirst.east)+(5pt,0)$) to ++(.5,0) to ++(.5,-.7) coordinate(ssbProteinEnd);
-\comment{below=0 of ssbProteinEnd, xshift=4pt}{ssbProteinText}{SSB Protein}{?}
+\begin{inctext}[label={overlay}, overlay={\node at($(page.north)+(0,-3)$){\Huge DNA Replication};}]
+    \begin{tikzpicture}
+        \question{}{helicase}{Helicase}{?}
+        \draw($(helicase.center)+(-3,3)$) coordinate(threePrime) to coordinate(ssbProteinFirst)++(3,0) coordinate(upPolymeraseEnd) to ++(3,-3) coordinate(topoisomerase) to ++(3,0) coordinate(endOfDna);
+        \draw($(helicase.center)+(-3,-3)$) coordinate(fivePrime) to coordinate(ssbProteinSecond) ++(3,0) coordinate(primerSecond) to ++(3,3) coordinate(end);
+        \comment{left=0 of fivePrime}{fivePrimeText}{$5^{\prime}$ (Lagging Strand)}{?}
+        \comment{left=0 of threePrime}{threePrimeText}{$3^{\prime}$ (Leading Strand)}{?}
+        \node[circle, draw, fill=blue, above=0 of ssbProteinSecond](ssbProteinCircleFirst){};
+        \draw[line width=3pt, pink](primerSecond) to ++(-.5,0) coordinate(primerSecondEnd);
+        \coordinate(primerCenter) at($(primerSecond)+(-.25,0)$);
+        \comment{above=of primerCenter}{primerText}{Primer}{?}
+        \draw[line](primerCenter) to (primerText);
+        \draw[line width=3pt, green](primerSecondEnd) to ++(-1,0) coordinate(polymeraseEnd);
+        \draw[line width=3pt, pink](polymeraseEnd) to ++(-.5,0) coordinate(primerThirdEnd);
+        \draw[line width=3pt, green](primerThirdEnd) to ++(-1,0) coordinate(polymeraseSecondEnd);
+        \coordinate(polymeraseCenter) at($(primerThirdEnd)+(-.5,0)$);
+        \comment{above=of polymeraseCenter}{newStrand}{New Strand}{?}
+        \draw[line](polymeraseCenter) to (newStrand);
+        \draw($(ssbProteinCircleFirst.east)+(5pt,0)$) to ++(.5,0) to ++(.5,-.7) coordinate(ssbProteinEnd);
+        \comment{below=0 of ssbProteinEnd, xshift=4pt}{ssbProteinText}{SSB Protein}{?}
 
-\draw[line width=3pt, yellow]($(polymeraseEnd)+(.1,0)$) to ++(-.2,0);
-\comment{below=of polymeraseEnd}{ligase}{Glue}{?}
-\draw[line](polymeraseEnd) to (ligase);
-\comment{below=of ligase}{ligaseText}{Ligase}{?}
-\draw[line](ligase) to (ligaseText);
-\draw[line width=3pt, pink](threePrime) to ++(.5,0) coordinate(upPrimerSecondEnd);
-\draw[line width=3pt, green](upPrimerSecondEnd) to (upPolymeraseEnd);
+        \draw[line width=3pt, yellow]($(polymeraseEnd)+(.1,0)$) to ++(-.2,0);
+        \comment{below=of polymeraseEnd}{ligase}{Glue}{?}
+        \draw[line](polymeraseEnd) to (ligase);
+        \comment{below=of ligase}{ligaseText}{Ligase}{?}
+        \draw[line](ligase) to (ligaseText);
+        \draw[line width=3pt, pink](threePrime) to ++(.5,0) coordinate(upPrimerSecondEnd);
+        \draw[line width=3pt, green](upPrimerSecondEnd) to (upPolymeraseEnd);
 
-\node[circle, draw, fill=green, below=0 of upPolymeraseEnd](dnaPolymeraseSecond){};
-\comment{right=of dnaPolymeraseSecond}{dnaPolymeraseTextSecond}{DNA Polymerase}{?}
-\draw[line](dnaPolymeraseSecond) to (dnaPolymeraseTextSecond);
-\node[circle, draw, fill=pink, below=0 of upPrimerSecondEnd](primase){};
-\comment{below=of primase}{primaseText}{Primase}{?}
-\draw[line](primase) to (primaseText);
+        \node[circle, draw, fill=green, below=0 of upPolymeraseEnd](dnaPolymeraseSecond){};
+        \comment{right=of dnaPolymeraseSecond}{dnaPolymeraseTextSecond}{DNA Polymerase}{?}
+        \draw[line](dnaPolymeraseSecond) to (dnaPolymeraseTextSecond);
+        \node[circle, draw, fill=pink, below=0 of upPrimerSecondEnd](primase){};
+        \comment{below=of primase}{primaseText}{Primase}{?}
+        \draw[line](primase) to (primaseText);
 
-\node[draw, circle, fill=orange](origin) at($(threePrime)!.5!(fivePrime)$){};
-\comment{left=0 of origin}{originText}{Eukaryotes have multiple origins while prokaryotes have only one}{?}
+        \node[draw, circle, fill=orange](origin) at($(threePrime)!.5!(fivePrime)$){};
+        \comment{left=0 of origin}{originText}{Eukaryotes have multiple origins while prokaryotes have only one}{?}
 
-\node[draw, circle, fill=red](topoisomeraseCircle) at(topoisomerase){};
-\question{above right=of topoisomerase}{topoisomeraseText}{Topoisomerase}{?}
-\draw[line](topoisomeraseCircle) to (topoisomeraseText);
-\comment{right=0 of topoisomeraseText}{topoisomeraseTextSecond}{Temporarily break the DNA strands to relieve the tension}{?}
-\draw($(fivePrime.south)+(0,-5pt)$) to ++(0,-5pt) to coordinate(okazaki) ++(1.4,0) to ++(0,5pt);
-\comment{below left=of okazaki}{okazakiFragment}{Okazaki Fragment}{?}
-\draw[-](okazaki) to (okazakiFragment.north east);
+        \node[draw, circle, fill=red](topoisomeraseCircle) at(topoisomerase){};
+        \question{above right=of topoisomerase}{topoisomeraseText}{Topoisomerase}{?}
+        \draw[line](topoisomeraseCircle) to (topoisomeraseText);
+        \comment{right=0 of topoisomeraseText}{topoisomeraseTextSecond}{Temporarily break the DNA strands to relieve the tension}{?}
+        \draw($(fivePrime.south)+(0,-5pt)$) to ++(0,-5pt) to coordinate(okazaki) ++(1.4,0) to ++(0,5pt);
+        \comment{below left=of okazaki}{okazakiFragment}{Okazaki Fragment}{?}
+        \draw[-](okazaki) to (okazakiFragment.north east);
 
-\comment{right=0 of endOfDna}{semiConservative}{Semi-Conservative}{?}
+        \comment{right=0 of endOfDna}{semiConservative}{Semi-Conservative}{?}
+    \end{tikzpicture}
+\end{inctext}
